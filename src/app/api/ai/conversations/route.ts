@@ -12,11 +12,10 @@ export async function GET() {
   if (!session?.user?.id) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   const uid = session.user.id
 
-  const convs = db.select().from(aiConversations)
+  const convs = await db.select().from(aiConversations)
     .where(eq(aiConversations.userId, uid))
     .orderBy(desc(aiConversations.updatedAt))
     .limit(30)
-    .all()
 
   return NextResponse.json(convs)
 }
@@ -29,7 +28,7 @@ export async function POST(req: NextRequest) {
   const { title } = await req.json().catch(() => ({}))
 
   const id = generateId()
-  db.insert(aiConversations).values({ id, userId: uid, title: title ?? null }).run()
+  await db.insert(aiConversations).values({ id, userId: uid, title: title ?? null })
 
   return NextResponse.json({ id })
 }
@@ -42,16 +41,15 @@ export async function PATCH(req: NextRequest) {
   const { conversationId, role, content } = await req.json()
   if (!conversationId || !role || !content) return NextResponse.json({ error: 'Bad request' }, { status: 400 })
 
-  const conv = db.select().from(aiConversations)
+  const [conv] = await db.select().from(aiConversations)
     .where(and(eq(aiConversations.userId, uid), eq(aiConversations.id, conversationId)))
-    .get()
+    .limit(1)
   if (!conv) return NextResponse.json({ error: 'Not found' }, { status: 404 })
 
-  db.insert(aiMessages).values({ id: generateId(), conversationId, role, content }).run()
-  db.update(aiConversations)
+  await db.insert(aiMessages).values({ id: generateId(), conversationId, role, content })
+  await db.update(aiConversations)
     .set({ updatedAt: new Date() })
     .where(eq(aiConversations.id, conversationId))
-    .run()
 
   return NextResponse.json({ ok: true })
 }

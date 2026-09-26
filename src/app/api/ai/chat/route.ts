@@ -22,16 +22,13 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ role: 'assistant', content: fallback })
   }
 
-  // Build context from user data
-  const profile = db.select().from(profiles).where(eq(profiles.userId, uid)).get()
-  const recentWorkouts = db.select().from(workouts)
+  const [profile] = await db.select().from(profiles).where(eq(profiles.userId, uid)).limit(1)
+  const recentWorkouts = await db.select().from(workouts)
     .where(eq(workouts.userId, uid))
     .orderBy(desc(workouts.startedAt))
     .limit(5)
-    .all()
 
-  // Top 5 weight PRs with exercise names
-  const topPRs = db.select({
+  const topPRs = await db.select({
     exerciseName: exercises.nameEn,
     exerciseNameIt: exercises.nameIt,
     weightKg: personalRecords.weightKg,
@@ -42,12 +39,11 @@ export async function POST(req: NextRequest) {
     .where(and(eq(personalRecords.userId, uid), eq(personalRecords.type, 'weight')))
     .orderBy(desc(personalRecords.value))
     .limit(5)
-    .all()
 
-  const latestMeasurement = db.select().from(bodyMeasurements)
+  const [latestMeasurement] = await db.select().from(bodyMeasurements)
     .where(eq(bodyMeasurements.userId, uid))
     .orderBy(desc(bodyMeasurements.measuredAt))
-    .get()
+    .limit(1)
 
   const it = lang === 'it'
   const avgVol = recentWorkouts.length
@@ -77,19 +73,17 @@ Profile: goal=${profile?.goal ?? 'not set'}, level=${profile?.level ?? 'intermed
 Last ${recentWorkouts.length} workouts: avg volume ${avgVol}kg, avg duration ${avgDur}min.${prLines ? `\nPersonal records: ${prLines}.` : ''}${bodyLine ? `\nBody stats: ${bodyLine}.` : ''}
 Give practical, motivating advice grounded in the user's real data.`
 
-  // Persist user message
   if (conversationId && userMessage) {
-    const conv = db.select().from(aiConversations)
+    const [conv] = await db.select().from(aiConversations)
       .where(and(eq(aiConversations.id, conversationId), eq(aiConversations.userId, uid)))
-      .get()
+      .limit(1)
     if (conv) {
-      db.insert(aiMessages).values({
+      await db.insert(aiMessages).values({
         id: generateId(), conversationId, role: 'user', content: userMessage,
-      }).run()
-      db.update(aiConversations)
+      })
+      await db.update(aiConversations)
         .set({ updatedAt: new Date() })
         .where(eq(aiConversations.id, conversationId))
-        .run()
     }
   }
 
@@ -101,7 +95,7 @@ Give practical, motivating advice grounded in the user's real data.`
         model: 'llama-3.1-8b-instant',
         messages: [
           { role: 'system', content: systemPrompt },
-          ...messages.slice(-8), // keep last 8 messages for context
+          ...messages.slice(-8),
         ],
         temperature: 0.7,
         max_tokens: 300,
@@ -111,7 +105,6 @@ Give practical, motivating advice grounded in the user's real data.`
 
     if (!res.ok) throw new Error(`Groq error ${res.status}`)
 
-    // Stream SSE response as-is
     return new Response(res.body, {
       headers: {
         'Content-Type': 'text/event-stream',

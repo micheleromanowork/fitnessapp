@@ -15,8 +15,7 @@ export async function GET(
   const { id: exerciseId } = await context.params
   const uid = session.user.id
 
-  // Get the last 5 workouts where this exercise was performed
-  const wexRows = db.select({
+  const wexRows = await db.select({
     wexId: workoutExercises.id,
     workoutId: workoutExercises.workoutId,
     workoutName: workouts.name,
@@ -31,14 +30,12 @@ export async function GET(
     .where(eq(workoutExercises.exerciseId, exerciseId))
     .orderBy(desc(workouts.startedAt))
     .limit(5)
-    .all()
 
-  const result = wexRows.map(row => {
-    const completedSets = db.select()
+  const result = await Promise.all(wexRows.map(async row => {
+    const completedSets = await db.select()
       .from(sets)
       .where(and(eq(sets.workoutExId, row.wexId), eq(sets.isCompleted, true)))
       .orderBy(sets.setOrder)
-      .all()
 
     const totalVol = completedSets.reduce((a, s) => a + (s.weightKg ?? 0) * (s.reps ?? 0), 0)
     const bestSet = completedSets.reduce((best, s) =>
@@ -55,7 +52,7 @@ export async function GET(
       bestWeightKg: bestSet?.weightKg ?? 0,
       bestReps: bestSet?.reps ?? 0,
     }
-  })
+  }))
 
   return NextResponse.json(result)
 }

@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { auth } from '@/lib/auth/config'
 import db from '@/lib/db/client'
 import { workouts, bodyMeasurements } from '@/lib/db/schema'
-import { eq, desc, gte, sql } from 'drizzle-orm'
+import { eq, desc } from 'drizzle-orm'
 import { generateId } from '@/lib/utils'
 
 export const runtime = 'nodejs'
@@ -12,7 +12,7 @@ export async function GET() {
   if (!session?.user?.id) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   const uid = session.user.id
 
-  const allWorkouts = db.select({
+  const allWorkouts = await db.select({
     id: workouts.id,
     startedAt: workouts.startedAt,
     totalVolumeKg: workouts.totalVolumeKg,
@@ -22,9 +22,8 @@ export async function GET() {
     .from(workouts)
     .where(eq(workouts.userId, uid))
     .orderBy(desc(workouts.startedAt))
-    .all()
 
-  // Streak calculation (consecutive days)
+  // Streak calculation
   const daySet = new Set(allWorkouts.map(w => new Date(w.startedAt!).toDateString()))
   let streak = 0
   const today = new Date()
@@ -58,11 +57,10 @@ export async function GET() {
     })
   }
 
-  // Latest measurements
-  const latestMeasurement = db.select().from(bodyMeasurements)
+  const [latestMeasurement] = await db.select().from(bodyMeasurements)
     .where(eq(bodyMeasurements.userId, uid))
     .orderBy(desc(bodyMeasurements.measuredAt))
-    .get()
+    .limit(1)
 
   return NextResponse.json({
     totalWorkouts: allWorkouts.length,
@@ -72,7 +70,7 @@ export async function GET() {
       ? Math.round(allWorkouts.reduce((a, w) => a + (w.durationSec ?? 0), 0) / allWorkouts.length)
       : 0,
     volumeByWeek,
-    latestMeasurement,
+    latestMeasurement: latestMeasurement ?? null,
   })
 }
 
@@ -82,7 +80,7 @@ export async function POST(req: NextRequest) {
 
   const body = await req.json()
   const id = generateId()
-  db.insert(bodyMeasurements).values({
+  await db.insert(bodyMeasurements).values({
     id,
     userId: session.user.id,
     measuredAt: new Date(body.measuredAt ?? Date.now()),
@@ -95,7 +93,7 @@ export async function POST(req: NextRequest) {
     rightArmCm: body.rightArmCm ?? null,
     leftThighCm: body.leftThighCm ?? null,
     notes: body.notes ?? null,
-  }).run()
+  })
 
   return NextResponse.json({ id })
 }

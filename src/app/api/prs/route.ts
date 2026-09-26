@@ -17,7 +17,7 @@ export async function GET(req: NextRequest) {
   const conditions = [eq(personalRecords.userId, uid)]
   if (exerciseId) conditions.push(eq(personalRecords.exerciseId, exerciseId))
 
-  const rows = db.select({
+  const rows = await db.select({
     id: personalRecords.id,
     exerciseId: personalRecords.exerciseId,
     type: personalRecords.type,
@@ -33,7 +33,6 @@ export async function GET(req: NextRequest) {
     .leftJoin(exercises, eq(personalRecords.exerciseId, exercises.id))
     .where(and(...conditions))
     .orderBy(desc(personalRecords.achievedAt))
-    .all()
 
   return NextResponse.json(rows.map(r => ({
     ...r,

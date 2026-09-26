@@ -15,23 +15,20 @@ export async function POST(
   if (!session?.user?.id) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   const { id: programId, dayId } = await context.params
 
-  // Verify ownership
-  const program = db.select().from(workoutPrograms)
+  const [program] = await db.select().from(workoutPrograms)
     .where(and(eq(workoutPrograms.id, programId), eq(workoutPrograms.userId, session.user.id)))
-    .get()
   if (!program) return NextResponse.json({ error: 'Not found' }, { status: 404 })
 
-  const day = db.select().from(programDays)
+  const [day] = await db.select().from(programDays)
     .where(and(eq(programDays.id, dayId), eq(programDays.programId, programId)))
-    .get()
   if (!day) return NextResponse.json({ error: 'Day not found' }, { status: 404 })
 
   const body = await req.json()
-  const existing = db.select().from(templateExercises)
-    .where(eq(templateExercises.programDayId, dayId)).all()
+  const existing = await db.select().from(templateExercises)
+    .where(eq(templateExercises.programDayId, dayId))
 
   const texId = generateId()
-  db.insert(templateExercises).values({
+  await db.insert(templateExercises).values({
     id: texId,
     programDayId: dayId,
     exerciseId: body.exerciseId,
@@ -40,7 +37,7 @@ export async function POST(
     repsMin: body.repsMin ?? 8,
     repsMax: body.repsMax ?? 12,
     restSec: body.restSec ?? 90,
-  }).run()
+  })
 
   return NextResponse.json({ id: texId })
 }
@@ -51,14 +48,13 @@ export async function DELETE(
 ) {
   const session = await auth()
   if (!session?.user?.id) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-  const { id: programId, dayId } = await context.params
+  const { id: programId } = await context.params
 
-  const program = db.select().from(workoutPrograms)
+  const [program] = await db.select().from(workoutPrograms)
     .where(and(eq(workoutPrograms.id, programId), eq(workoutPrograms.userId, session.user.id)))
-    .get()
   if (!program) return NextResponse.json({ error: 'Not found' }, { status: 404 })
 
   const { texId } = await req.json()
-  db.delete(templateExercises).where(eq(templateExercises.id, texId)).run()
+  await db.delete(templateExercises).where(eq(templateExercises.id, texId))
   return NextResponse.json({ ok: true })
 }

@@ -11,7 +11,7 @@ export async function GET() {
   const session = await auth()
   if (!session?.user?.id) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 
-  const profile = db.select().from(profiles).where(eq(profiles.userId, session.user.id)).get()
+  const [profile] = await db.select().from(profiles).where(eq(profiles.userId, session.user.id))
   return NextResponse.json(profile ?? null)
 }
 
@@ -22,10 +22,10 @@ export async function POST(req: NextRequest) {
   const body = await req.json()
   const userId = session.user.id
 
-  const existing = db.select({ id: profiles.id }).from(profiles).where(eq(profiles.userId, userId)).get()
+  const [existing] = await db.select({ id: profiles.id }).from(profiles).where(eq(profiles.userId, userId))
 
   if (existing) {
-    db.update(profiles)
+    await db.update(profiles)
       .set({
         goal: body.goal,
         level: body.level,
@@ -39,9 +39,8 @@ export async function POST(req: NextRequest) {
         updatedAt: new Date(),
       })
       .where(eq(profiles.userId, userId))
-      .run()
   } else {
-    db.insert(profiles).values({
+    await db.insert(profiles).values({
       id: generateId(),
       userId,
       goal: body.goal,
@@ -53,7 +52,7 @@ export async function POST(req: NextRequest) {
       units: body.units ?? 'metric',
       theme: body.theme ?? 'dark',
       onboardingDone: body.onboardingDone ?? false,
-    }).run()
+    })
   }
 
   return NextResponse.json({ ok: true })

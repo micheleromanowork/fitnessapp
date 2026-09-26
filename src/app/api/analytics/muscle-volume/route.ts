@@ -11,9 +11,9 @@ export async function GET() {
   if (!session?.user?.id) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   const uid = session.user.id
 
-  const since = new Date(Date.now() - 28 * 24 * 60 * 60 * 1000) // last 4 weeks
+  const since = new Date(Date.now() - 28 * 24 * 60 * 60 * 1000)
 
-  const rows = db.select({
+  const rows = await db.select({
     weightKg: sets.weightKg,
     reps: sets.reps,
     primaryMuscles: exercises.primaryMuscles,
@@ -27,7 +27,6 @@ export async function GET() {
     ))
     .innerJoin(exercises, eq(workoutExercises.exerciseId, exercises.id))
     .where(eq(sets.isCompleted, true))
-    .all()
 
   const volumeByMuscle: Record<string, number> = {}
 

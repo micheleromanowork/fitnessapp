@@ -17,11 +17,10 @@ export async function GET(req: NextRequest) {
 
   const now = new Date()
 
-  // Return cached unexpired insight
-  const cached = db.select().from(aiInsights)
+  const [cached] = await db.select().from(aiInsights)
     .where(and(eq(aiInsights.userId, uid), gt(aiInsights.expiresAt, now)))
     .orderBy(desc(aiInsights.createdAt))
-    .get()
+    .limit(1)
 
   if (cached) {
     return NextResponse.json({
@@ -33,13 +32,12 @@ export async function GET(req: NextRequest) {
   const groqKey = process.env.GROQ_API_KEY
   if (!groqKey) return NextResponse.json({ content: null })
 
-  const profile = db.select().from(profiles).where(eq(profiles.userId, uid)).get()
-  const recentWorkouts = db.select().from(workouts)
+  const [profile] = await db.select().from(profiles).where(eq(profiles.userId, uid)).limit(1)
+  const recentWorkouts = await db.select().from(workouts)
     .where(eq(workouts.userId, uid))
     .orderBy(desc(workouts.startedAt))
     .limit(7)
-    .all()
-  const topPRs = db.select({
+  const topPRs = await db.select({
     exerciseName: exercises.nameEn,
     weightKg: personalRecords.weightKg,
     reps: personalRecords.reps,
@@ -49,7 +47,6 @@ export async function GET(req: NextRequest) {
     .where(and(eq(personalRecords.userId, uid), eq(personalRecords.type, 'weight')))
     .orderBy(desc(personalRecords.value))
     .limit(3)
-    .all()
 
   const count = recentWorkouts.length
   const avgVol = count ? Math.round(recentWorkouts.reduce((a, w) => a + (w.totalVolumeKg ?? 0), 0) / count) : 0
@@ -86,14 +83,14 @@ Rispondi SOLO con il testo dell'insight. Niente preamboli, niente JSON.`
 
     const type = count === 0 ? 'suggestion' : 'progress'
 
-    db.insert(aiInsights).values({
+    await db.insert(aiInsights).values({
       id: generateId(),
       userId: uid,
       type,
       contentEn,
       contentIt,
       expiresAt: new Date(Date.now() + TTL_MS),
-    }).run()
+    })
 
     return NextResponse.json({ content: lang === 'it' ? contentIt : contentEn, type })
   } catch (err) {

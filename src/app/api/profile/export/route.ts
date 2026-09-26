@@ -11,13 +11,12 @@ export async function GET() {
   if (!session?.user?.id) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   const uid = session.user.id
 
-  const allWorkouts = db.select().from(workouts)
+  const allWorkouts = await db.select().from(workouts)
     .where(eq(workouts.userId, uid))
     .orderBy(desc(workouts.startedAt))
-    .all()
 
-  const workoutsWithDetail = allWorkouts.map(w => {
-    const wexRows = db.select({
+  const workoutsWithDetail = await Promise.all(allWorkouts.map(async w => {
+    const wexRows = await db.select({
       wexId: workoutExercises.id,
       exerciseId: workoutExercises.exerciseId,
       exerciseOrder: workoutExercises.exerciseOrder,
@@ -27,22 +26,20 @@ export async function GET() {
       .from(workoutExercises)
       .leftJoin(exercises, eq(workoutExercises.exerciseId, exercises.id))
       .where(eq(workoutExercises.workoutId, w.id))
-      .all()
 
-    const exercisesWithSets = wexRows.map(ex => ({
+    const exercisesWithSets = await Promise.all(wexRows.map(async ex => ({
       exerciseId: ex.exerciseId,
       name: ex.nameEn,
       order: ex.exerciseOrder,
-      sets: db.select().from(sets)
-        .where(and(eq(sets.workoutExId, ex.wexId), eq(sets.isCompleted, true)))
-        .all()
+      sets: (await db.select().from(sets)
+        .where(and(eq(sets.workoutExId, ex.wexId), eq(sets.isCompleted, true))))
         .map(s => ({ setOrder: s.setOrder, weightKg: s.weightKg, reps: s.reps, setType: s.setType })),
-    }))
+    })))
 
     return { ...w, exercises: exercisesWithSets }
-  })
+  }))
 
-  const prs = db.select({
+  const prs = await db.select({
     exerciseId: personalRecords.exerciseId,
     type: personalRecords.type,
     value: personalRecords.value,
@@ -54,12 +51,10 @@ export async function GET() {
     .from(personalRecords)
     .leftJoin(exercises, eq(personalRecords.exerciseId, exercises.id))
     .where(eq(personalRecords.userId, uid))
-    .all()
 
-  const measurements = db.select().from(bodyMeasurements)
+  const measurements = await db.select().from(bodyMeasurements)
     .where(eq(bodyMeasurements.userId, uid))
     .orderBy(desc(bodyMeasurements.measuredAt))
-    .all()
 
   const exportData = {
     exportedAt: new Date().toISOString(),

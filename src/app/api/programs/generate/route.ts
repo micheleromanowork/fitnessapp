@@ -5,7 +5,6 @@ import { exercises } from '@/lib/db/schema'
 
 export const runtime = 'nodejs'
 
-// Returns a structured program JSON compatible with POST /api/programs body
 export async function POST(req: NextRequest) {
   const session = await auth()
   if (!session?.user?.id) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
@@ -13,12 +12,11 @@ export async function POST(req: NextRequest) {
   const body = await req.json()
   const { goal = 'muscle_gain', level = 'intermediate', daysPerWeek = 3, lang = 'en' } = body
 
-  // If Groq key is available, use AI; otherwise fall back to a template
   const groqKey = process.env.GROQ_API_KEY
   if (groqKey) {
     return generateWithGroq(goal, level, daysPerWeek, lang, groqKey)
   }
-  return generateTemplate(goal, level, daysPerWeek, lang, session.user.id)
+  return generateTemplate(goal, level, daysPerWeek, lang)
 }
 
 async function generateWithGroq(
@@ -58,8 +56,7 @@ Use only these valid exerciseIds: bench-press, incline-bench-press, dumbbell-fly
     const jsonMatch = text.match(/\{[\s\S]*\}/)
     if (!jsonMatch) throw new Error('No JSON in response')
     const program = JSON.parse(jsonMatch[0])
-    // Map slug-based exerciseIds to actual DB ids
-    const allEx = db.select({ id: exercises.id, slug: exercises.slug }).from(exercises).all()
+    const allEx = await db.select({ id: exercises.id, slug: exercises.slug }).from(exercises)
     const slugMap = Object.fromEntries(allEx.map(e => [e.slug, e.id]))
     for (const day of program.days ?? []) {
       for (const ex of day.exercises ?? []) {
@@ -68,14 +65,13 @@ Use only these valid exerciseIds: bench-press, incline-bench-press, dumbbell-fly
     }
     return NextResponse.json({ ...program, isAiGenerated: true, goal, level, daysPerWeek })
   } catch {
-    // Fall back to template on any error
-    return generateTemplate(goal, level, daysPerWeek, lang, '')
+    return generateTemplate(goal, level, daysPerWeek, lang)
   }
 }
 
-function generateTemplate(goal: string, level: string, daysPerWeek: number, lang: string, _userId: string) {
+async function generateTemplate(goal: string, level: string, daysPerWeek: number, lang: string) {
   const it = lang === 'it'
-  const allEx = db.select({ id: exercises.id, slug: exercises.slug }).from(exercises).all()
+  const allEx = await db.select({ id: exercises.id, slug: exercises.slug }).from(exercises)
   const slugMap = Object.fromEntries(allEx.map(e => [e.slug, e.id]))
   const s = (slug: string) => slugMap[slug] ?? slug
 

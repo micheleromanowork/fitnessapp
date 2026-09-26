@@ -13,11 +13,10 @@ export async function GET(
   const lang = (req.nextUrl.searchParams.get('lang') ?? 'en') as 'en' | 'it'
 
   try {
-    const ex = db
+    const [ex] = await db
       .select()
       .from(exercises)
       .where(or(eq(exercises.id, params.id), eq(exercises.slug, params.id)))
-      .get()
 
     if (!ex) {
       return NextResponse.json({ error: 'Exercise not found' }, { status: 404 })

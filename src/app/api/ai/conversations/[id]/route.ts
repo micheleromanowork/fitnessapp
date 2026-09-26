@@ -12,15 +12,14 @@ export async function GET(_req: NextRequest, { params }: { params: Promise<{ id:
   const uid = session.user.id
   const { id } = await params
 
-  const conv = db.select().from(aiConversations)
+  const [conv] = await db.select().from(aiConversations)
     .where(and(eq(aiConversations.id, id), eq(aiConversations.userId, uid)))
-    .get()
+    .limit(1)
   if (!conv) return NextResponse.json({ error: 'Not found' }, { status: 404 })
 
-  const msgs = db.select().from(aiMessages)
+  const msgs = await db.select().from(aiMessages)
     .where(eq(aiMessages.conversationId, id))
     .orderBy(asc(aiMessages.createdAt))
-    .all()
 
   return NextResponse.json(msgs)
 }
@@ -31,11 +30,11 @@ export async function DELETE(_req: NextRequest, { params }: { params: Promise<{ 
   const uid = session.user.id
   const { id } = await params
 
-  const conv = db.select().from(aiConversations)
+  const [conv] = await db.select().from(aiConversations)
     .where(and(eq(aiConversations.id, id), eq(aiConversations.userId, uid)))
-    .get()
+    .limit(1)
   if (!conv) return NextResponse.json({ error: 'Not found' }, { status: 404 })
 
-  db.delete(aiConversations).where(eq(aiConversations.id, id)).run()
+  await db.delete(aiConversations).where(eq(aiConversations.id, id))
   return NextResponse.json({ ok: true })
 }

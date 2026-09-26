@@ -11,12 +11,11 @@ export async function GET() {
   const session = await auth()
   if (!session?.user?.id) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 
-  const programs = db
+  const programs = await db
     .select()
     .from(workoutPrograms)
     .where(eq(workoutPrograms.userId, session.user.id))
     .orderBy(desc(workoutPrograms.createdAt))
-    .all()
 
   return NextResponse.json(programs)
 }
@@ -32,7 +31,7 @@ export async function POST(req: NextRequest) {
 
   const programId = generateId()
 
-  db.insert(workoutPrograms).values({
+  await db.insert(workoutPrograms).values({
     id: programId,
     userId: session.user.id,
     name: name.trim(),
@@ -41,26 +40,25 @@ export async function POST(req: NextRequest) {
     level: level ?? null,
     daysPerWeek: daysPerWeek ?? null,
     isAiGenerated: isAiGenerated ?? false,
-  }).run()
+  })
 
-  // Optionally insert days + exercises (used by AI generator)
   if (Array.isArray(days)) {
     for (let di = 0; di < days.length; di++) {
       const day = days[di]
       const dayId = generateId()
-      db.insert(programDays).values({
+      await db.insert(programDays).values({
         id: dayId,
         programId,
         name: day.name,
         dayOrder: di,
         targetMuscles: day.targetMuscles ? JSON.stringify(day.targetMuscles) : null,
         durationMin: day.durationMin ?? null,
-      }).run()
+      })
 
       if (Array.isArray(day.exercises)) {
         for (let ei = 0; ei < day.exercises.length; ei++) {
           const ex = day.exercises[ei]
-          db.insert(templateExercises).values({
+          await db.insert(templateExercises).values({
             id: generateId(),
             programDayId: dayId,
             exerciseId: ex.exerciseId,
@@ -71,7 +69,7 @@ export async function POST(req: NextRequest) {
             rpe: ex.rpe ?? null,
             restSec: ex.restSec ?? null,
             notes: ex.notes ?? null,
-          }).run()
+          })
         }
       }
     }

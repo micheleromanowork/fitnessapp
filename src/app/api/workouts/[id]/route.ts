@@ -16,13 +16,12 @@ export async function GET(
   const { id } = await context.params
   const lang = (req.nextUrl.searchParams.get('lang') ?? 'en') as 'en' | 'it'
 
-  const workout = db.select().from(workouts)
+  const [workout] = await db.select().from(workouts)
     .where(and(eq(workouts.id, id), eq(workouts.userId, session.user.id)))
-    .get()
 
   if (!workout) return NextResponse.json({ error: 'Not found' }, { status: 404 })
 
-  const wexs = db.select({
+  const wexs = await db.select({
     id: workoutExercises.id,
     exerciseId: workoutExercises.exerciseId,
     exerciseOrder: workoutExercises.exerciseOrder,
@@ -33,13 +32,11 @@ export async function GET(
     .leftJoin(exercises, eq(workoutExercises.exerciseId, exercises.id))
     .where(eq(workoutExercises.workoutId, id))
     .orderBy(asc(workoutExercises.exerciseOrder))
-    .all()
 
-  const exercisesWithSets = wexs.map(ex => {
-    const exSets = db.select().from(sets)
+  const exercisesWithSets = await Promise.all(wexs.map(async ex => {
+    const exSets = await db.select().from(sets)
       .where(eq(sets.workoutExId, ex.id))
       .orderBy(asc(sets.setOrder))
-      .all()
     return {
       id: ex.id,
       exerciseId: ex.exerciseId,
@@ -47,7 +44,7 @@ export async function GET(
       order: ex.exerciseOrder,
       sets: exSets,
     }
-  })
+  }))
 
   return NextResponse.json({ ...workout, exercises: exercisesWithSets })
 }
@@ -61,12 +58,11 @@ export async function DELETE(
 
   const { id } = await context.params
 
-  const workout = db.select({ id: workouts.id }).from(workouts)
+  const [workout] = await db.select({ id: workouts.id }).from(workouts)
     .where(and(eq(workouts.id, id), eq(workouts.userId, session.user.id)))
-    .get()
 
   if (!workout) return NextResponse.json({ error: 'Not found' }, { status: 404 })
 
-  db.delete(workouts).where(eq(workouts.id, id)).run()
+  await db.delete(workouts).where(eq(workouts.id, id))
   return NextResponse.json({ ok: true })
 }

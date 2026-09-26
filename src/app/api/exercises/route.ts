@@ -51,19 +51,19 @@ export async function GET(req: NextRequest) {
 
     const where = conditions.length > 0 ? and(...conditions) : undefined
 
-    const rows = db
+    const rows = await db
       .select()
       .from(exercises)
       .where(where)
       .limit(limit)
       .offset(offset)
-      .all()
 
-    const total = db
+    const allRows = await db
       .select({ id: exercises.id })
       .from(exercises)
       .where(where)
-      .all().length
+
+    const total = allRows.length
 
     const data = rows.map(ex => ({
       id: ex.id,

@@ -15,7 +15,7 @@ export async function GET(
   const { id: exerciseId } = await context.params
   const uid = session.user.id
 
-  const wexRows = db.select({
+  const wexRows = await db.select({
     wexId: workoutExercises.id,
     startedAt: workouts.startedAt,
   })
@@ -27,30 +27,25 @@ export async function GET(
     .where(eq(workoutExercises.exerciseId, exerciseId))
     .orderBy(desc(workouts.startedAt))
     .limit(20)
-    .all()
 
-  const result = wexRows
-    .map(row => {
-      const completedSets = db.select()
-        .from(sets)
-        .where(and(eq(sets.workoutExId, row.wexId), eq(sets.isCompleted, true)))
-        .all()
+  const rows = await Promise.all(wexRows.map(async row => {
+    const completedSets = await db.select()
+      .from(sets)
+      .where(and(eq(sets.workoutExId, row.wexId), eq(sets.isCompleted, true)))
 
-      const best = completedSets.reduce((max, s) => {
-        if (!s.weightKg || !s.reps) return max
-        const e1rm = s.weightKg * (1 + s.reps / 30)
-        return e1rm > max ? e1rm : max
-      }, 0)
+    const best = completedSets.reduce((max, s) => {
+      if (!s.weightKg || !s.reps) return max
+      const e1rm = s.weightKg * (1 + s.reps / 30)
+      return e1rm > max ? e1rm : max
+    }, 0)
 
-      if (best === 0) return null
-      return {
-        date: new Date(row.startedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
-        e1rm: Math.round(best * 10) / 10,
-        rawDate: row.startedAt,
-      }
-    })
-    .filter(Boolean)
-    .reverse()
+    if (best === 0) return null
+    return {
+      date: new Date(row.startedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
+      e1rm: Math.round(best * 10) / 10,
+      rawDate: row.startedAt,
+    }
+  }))
 
-  return NextResponse.json(result)
+  return NextResponse.json(rows.filter(Boolean).reverse())
 }

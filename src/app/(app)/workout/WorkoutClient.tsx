@@ -1,51 +1,144 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import { Plus, Dumbbell } from 'lucide-react'
-import { useWorkout } from '@/stores/workout'
+import { useWorkout, type ActiveWorkout } from '@/stores/workout'
 import { useProfile } from '@/stores/profile'
 import { t } from '@/i18n'
+import { RestTimerOverlay } from './components/RestTimerOverlay'
+import { ExerciseCard } from './components/ExerciseCard'
+import { AddExerciseSheet } from './components/AddExerciseSheet'
+import { WorkoutSummaryModal } from './components/WorkoutSummaryModal'
+
+function fmtElapsed(ms: number): string {
+  const s = Math.floor(ms / 1000)
+  const m = Math.floor(s / 60)
+  const h = Math.floor(m / 60)
+  if (h > 0) return `${h}:${String(m % 60).padStart(2, '0')}:${String(s % 60).padStart(2, '0')}`
+  return `${String(m).padStart(2, '0')}:${String(s % 60).padStart(2, '0')}`
+}
 
 export function WorkoutClient() {
   const lang = useProfile(s => s.language)
-  const { active, startWorkout } = useWorkout()
+  const units = useProfile(s => s.units)
+  const { active, startWorkout, finishWorkout, discardWorkout, timerRunning, tickTimer } = useWorkout()
+
+  const [elapsed, setElapsed] = useState(0)
+  const [showAddExercise, setShowAddExercise] = useState(false)
+  const [finishedWorkout, setFinishedWorkout] = useState<ActiveWorkout | null>(null)
+
+  // Elapsed display ticker
+  useEffect(() => {
+    if (!active?.startedAt) return
+    const start = active.startedAt
+    setElapsed(Date.now() - start)
+    const id = setInterval(() => setElapsed(Date.now() - start), 1000)
+    return () => clearInterval(id)
+  }, [active?.startedAt])
+
+  // Rest timer ticker
+  useEffect(() => {
+    if (!timerRunning) return
+    const id = setInterval(() => tickTimer(), 1000)
+    return () => clearInterval(id)
+  }, [timerRunning, tickTimer])
 
   function handleQuickStart() {
     startWorkout(lang === 'it' ? 'Allenamento libero' : 'Quick Workout')
   }
 
-  return (
-    <div className="min-h-screen px-4 py-6">
-      <h1 className="text-2xl font-bold text-t1 mb-6">{t(lang, 'nav.workout')}</h1>
+  function handleFinish() {
+    const w = finishWorkout()
+    if (w) setFinishedWorkout(w)
+  }
 
-      {!active ? (
+  function handleDiscard() {
+    if (confirm(t(lang, 'workout.confirmDiscard'))) {
+      discardWorkout()
+    }
+  }
+
+  // No active workout — start screen
+  if (!active) {
+    return (
+      <div className="min-h-screen px-4 py-6">
+        <h1 className="text-2xl font-bold text-t1 mb-6">{t(lang, 'nav.workout')}</h1>
         <div className="space-y-4">
-          <button
-            onClick={handleQuickStart}
-            className="btn-primary w-full text-base gap-2"
-          >
+          <button onClick={handleQuickStart} className="btn-primary w-full text-base gap-2">
             <Plus size={20} />
             {t(lang, 'home.quickStart')}
           </button>
           <p className="text-t3 text-center text-sm">{t(lang, 'workout.noWorkouts')}</p>
         </div>
-      ) : (
-        <div className="card p-4 space-y-3">
-          <div className="flex items-center gap-3">
-            <Dumbbell size={24} className="text-primary" />
-            <div>
-              <h2 className="text-t1 font-semibold">{active.name}</h2>
-              <p className="text-t3 text-xs">{t(lang, 'workout.active')}</p>
+      </div>
+    )
+  }
+
+  return (
+    <>
+      <div className="pb-nav">
+        {/* Sticky header */}
+        <div className="sticky top-0 z-30 bg-[rgba(10,10,15,0.92)] backdrop-blur-xl border-b border-white/[0.06] px-4 py-3">
+          <div className="flex items-center justify-between gap-2">
+            <div className="min-w-0">
+              <h1 className="text-t1 font-bold text-base leading-tight truncate">{active.name}</h1>
+              <p className="timer-font text-primary text-sm font-semibold">{fmtElapsed(elapsed)}</p>
+            </div>
+            <div className="flex gap-2 flex-shrink-0">
+              <button
+                onClick={handleDiscard}
+                className="btn-ghost h-9 px-3 text-sm text-danger"
+              >
+                {t(lang, 'workout.discard')}
+              </button>
+              <button
+                onClick={handleFinish}
+                className="btn-success h-9 px-4 text-sm"
+              >
+                {t(lang, 'workout.finish')}
+              </button>
             </div>
           </div>
-          <p className="text-t2 text-sm">
-            {t(lang, 'workout.sets')}: {active.exercises.reduce((a, e) => a + e.sets.length, 0)}
-          </p>
-          {/* Full workout tracker — Milestone 4 */}
-          <div className="text-center py-8 text-t3 text-sm border border-dashed border-white/10 rounded-xl">
-            Workout tracker — Milestone 4
-          </div>
         </div>
+
+        {/* Exercise list */}
+        <div className="px-4 py-4 space-y-4">
+          {active.exercises.length === 0 && (
+            <div className="flex flex-col items-center gap-3 py-14 text-t3">
+              <Dumbbell size={36} className="opacity-30" />
+              <p className="text-sm">{t(lang, 'workout.addExercise')}</p>
+            </div>
+          )}
+
+          {active.exercises.map(ex => (
+            <ExerciseCard key={ex.id} exercise={ex} lang={lang} units={units} />
+          ))}
+
+          <button
+            onClick={() => setShowAddExercise(true)}
+            className="btn-secondary w-full gap-2"
+          >
+            <Plus size={18} />
+            {t(lang, 'workout.addExercise')}
+          </button>
+        </div>
+      </div>
+
+      <RestTimerOverlay />
+
+      {showAddExercise && (
+        <AddExerciseSheet onClose={() => setShowAddExercise(false)} />
       )}
-    </div>
+
+      {finishedWorkout && (
+        <WorkoutSummaryModal
+          workout={finishedWorkout}
+          lang={lang}
+          units={units}
+          onSave={() => setFinishedWorkout(null)}
+          onDiscard={() => setFinishedWorkout(null)}
+        />
+      )}
+    </>
   )
 }

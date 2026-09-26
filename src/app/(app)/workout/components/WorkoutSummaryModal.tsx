@@ -1,5 +1,5 @@
 'use client'
-import { CheckCircle, Clock, Dumbbell, TrendingUp, X } from 'lucide-react'
+import { CheckCircle, Clock, Dumbbell, TrendingUp, X, Trophy } from 'lucide-react'
 import type { ActiveWorkout } from '@/stores/workout'
 import { t, type Locale } from '@/i18n'
 
@@ -25,9 +25,18 @@ export function WorkoutSummaryModal({ workout, lang, units, onSave, onDiscard }:
   const duration = Date.now() - workout.startedAt
   const wUnit = units === 'imperial' ? 'lbs' : 'kg'
 
+  // Collect new PRs from the workout
+  const newPRs = workout.exercises
+    .map(ex => {
+      const prSet = ex.sets.find(s => s.isPr && s.isCompleted)
+      if (!prSet) return null
+      return { name: ex.exerciseName, weightKg: prSet.weightKg, reps: prSet.reps }
+    })
+    .filter(Boolean) as { name: string; weightKg: number; reps: number }[]
+
   return (
     <div className="fixed inset-0 z-50 flex items-end justify-center overlay">
-      <div className="w-full max-w-sm bg-[#111118] border border-white/10 rounded-t-3xl p-6 pb-10 space-y-6">
+      <div className="w-full max-w-sm bg-[#111118] border border-white/10 rounded-t-3xl p-6 pb-10 space-y-5 max-h-[90dvh] overflow-y-auto">
         {/* Title */}
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-2xl bg-success/20 flex items-center justify-center flex-shrink-0">
@@ -58,6 +67,24 @@ export function WorkoutSummaryModal({ workout, lang, units, onSave, onDiscard }:
           </div>
         </div>
 
+        {/* New PRs celebration */}
+        {newPRs.length > 0 && (
+          <div className="bg-warning/10 border border-warning/20 rounded-2xl p-4 space-y-2">
+            <div className="flex items-center gap-2">
+              <Trophy size={16} className="text-warning" />
+              <p className="text-warning text-sm font-bold">
+                {lang === 'it' ? `${newPRs.length} nuovo/i record!` : `${newPRs.length} new PR${newPRs.length > 1 ? 's' : ''}!`}
+              </p>
+            </div>
+            {newPRs.map((pr, i) => (
+              <div key={i} className="flex items-center justify-between">
+                <span className="text-t2 text-sm truncate max-w-[60%]">{pr.name}</span>
+                <span className="text-warning font-semibold text-sm">{pr.weightKg}kg × {pr.reps}</span>
+              </div>
+            ))}
+          </div>
+        )}
+
         {/* Exercise breakdown */}
         {workout.exercises.length > 0 && (
           <div className="space-y-2">
@@ -65,9 +92,13 @@ export function WorkoutSummaryModal({ workout, lang, units, onSave, onDiscard }:
               const done = ex.sets.filter(s => s.isCompleted)
               if (!done.length) return null
               const lastW = done[done.length - 1]?.weightKg ?? 0
+              const hasPr = done.some(s => s.isPr)
               return (
                 <div key={ex.id} className="flex items-center justify-between py-2 border-b border-white/[0.05]">
-                  <p className="text-t2 text-sm font-medium">{ex.exerciseName}</p>
+                  <div className="flex items-center gap-1.5">
+                    {hasPr && <Trophy size={12} className="text-warning flex-shrink-0" />}
+                    <p className="text-t2 text-sm font-medium">{ex.exerciseName}</p>
+                  </div>
                   <p className="text-t3 text-xs">
                     {done.length} {t(lang, 'workout.sets').toLowerCase()} · {lastW} {wUnit}
                   </p>

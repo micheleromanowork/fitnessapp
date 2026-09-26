@@ -1,11 +1,11 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
-import { Flame, TrendingUp, Dumbbell, Clock, Plus, X, ChevronRight } from 'lucide-react'
+import { Flame, TrendingUp, Dumbbell, Clock, Plus, X, ChevronRight, Trophy } from 'lucide-react'
 import { useProfile } from '@/stores/profile'
 import { t, type Locale } from '@/i18n'
 import {
-  BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid,
+  BarChart, Bar, LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid,
 } from 'recharts'
 
 interface VolWeek { week: string; volumeKg: number; count: number }
@@ -52,7 +52,7 @@ export default function ProgressPage() {
   const units = useProfile(s => s.units)
   const [stats, setStats] = useState<Stats | null>(null)
   const [loading, setLoading] = useState(true)
-  const [tab, setTab] = useState<'stats' | 'body' | 'history'>('stats')
+  const [tab, setTab] = useState<'stats' | 'body' | 'history' | 'prs'>('stats')
   const [showAddMeasure, setShowAddMeasure] = useState(false)
 
   const load = useCallback(async () => {
@@ -79,17 +79,18 @@ export default function ProgressPage() {
       </div>
 
       {/* Tab switcher */}
-      <div className="flex gap-2 mb-5">
-        {(['stats', 'history', 'body'] as const).map(tab_ => (
+      <div className="flex gap-1.5 mb-5 overflow-x-auto scrollbar-none">
+        {(['stats', 'history', 'prs', 'body'] as const).map(tab_ => (
           <button
             key={tab_}
             onClick={() => setTab(tab_)}
-            className={`flex-1 h-9 rounded-xl text-xs font-semibold transition-colors ${
+            className={`shrink-0 h-9 px-3 rounded-xl text-xs font-semibold transition-colors ${
               tab === tab_ ? 'bg-primary text-white' : 'bg-[#1a1a24] text-t2'
             }`}
           >
             {tab_ === 'stats' ? t(lang, 'analytics.title')
               : tab_ === 'history' ? (lang === 'it' ? 'Storico' : 'History')
+              : tab_ === 'prs' ? 'Records'
               : t(lang, 'progress.measurements')}
           </button>
         ))}
@@ -155,21 +156,10 @@ export default function ProgressPage() {
 
       {!loading && tab === 'history' && <HistoryTab lang={lang} units={units} />}
 
-      {!loading && stats && tab === 'body' && (
-        <div className="space-y-4">
-          {!stats.latestMeasurement ? (
-            <div className="text-center py-12 text-t3 text-sm space-y-3">
-              <p className="text-4xl">📏</p>
-              <p>{t(lang, 'progress.addMeasurement')}</p>
-              <button onClick={() => setShowAddMeasure(true)} className="btn-secondary gap-2 mx-auto text-sm">
-                <Plus size={14} />
-                {t(lang, 'progress.addMeasurement')}
-              </button>
-            </div>
-          ) : (
-            <MeasurementCard m={stats.latestMeasurement} lang={lang} units={units} />
-          )}
-        </div>
+      {!loading && tab === 'prs' && <PRsTab lang={lang} />}
+
+      {!loading && tab === 'body' && (
+        <BodyTab lang={lang} units={units} stats={stats} onAddMeasure={() => setShowAddMeasure(true)} />
       )}
 
       {showAddMeasure && (
@@ -344,6 +334,205 @@ function MeasurementCard({ m, lang, units }: { m: Record<string, number | null>;
           <span className="text-t1 font-semibold text-sm">{val} {unit}</span>
         </div>
       ))}
+    </div>
+  )
+}
+
+// ── PRs Tab ───────────────────────────────────────────────────────────────────
+interface PRRow {
+  id: string
+  exerciseId: string
+  exerciseName: string | null
+  type: string
+  value: number
+  weightKg: number | null
+  reps: number | null
+  achievedAt: string
+}
+
+function PRsTab({ lang }: { lang: Locale }) {
+  const [prs, setPrs] = useState<PRRow[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    fetch(`/api/prs?lang=${lang}`)
+      .then(r => r.ok ? r.json() : [])
+      .then((rows: PRRow[]) => {
+        // Keep best per exercise+type
+        const best: Record<string, PRRow> = {}
+        for (const row of rows) {
+          const key = `${row.exerciseId}::${row.type}`
+          if (!best[key] || row.value > best[key].value) best[key] = row
+        }
+        // Group by exercise
+        setPrs(Object.values(best))
+        setLoading(false)
+      })
+      .catch(() => setLoading(false))
+  }, [lang])
+
+  if (loading) return <div className="text-center py-12 text-t3 text-sm">{t(lang, 'common.loading')}</div>
+
+  // Group by exerciseId
+  const byExercise: Record<string, PRRow[]> = {}
+  for (const pr of prs) {
+    if (!byExercise[pr.exerciseId]) byExercise[pr.exerciseId] = []
+    byExercise[pr.exerciseId].push(pr)
+  }
+
+  const exerciseIds = Object.keys(byExercise)
+
+  if (!exerciseIds.length) return (
+    <div className="text-center py-12 text-t3 space-y-2">
+      <p className="text-4xl">🏆</p>
+      <p className="text-sm">{lang === 'it' ? 'Nessun record ancora. Continua ad allenarti!' : 'No records yet. Keep training!'}</p>
+    </div>
+  )
+
+  return (
+    <div className="space-y-3">
+      {exerciseIds.map(exId => {
+        const rows = byExercise[exId]
+        const name = rows[0].exerciseName ?? exId.replace(/-/g, ' ')
+        const weightPR = rows.find(r => r.type === 'weight')
+        const e1rmPR = rows.find(r => r.type === 'estimated_1rm')
+        return (
+          <div key={exId} className="card p-4 space-y-2">
+            <div className="flex items-center gap-2">
+              <Trophy size={14} className="text-warning shrink-0" />
+              <p className="text-t1 font-semibold text-sm capitalize">{name}</p>
+            </div>
+            <div className="grid grid-cols-2 gap-2">
+              {weightPR && (
+                <div className="bg-warning/10 rounded-xl p-2.5 text-center">
+                  <p className="text-[10px] text-t3 uppercase tracking-wide mb-0.5">Max weight</p>
+                  <p className="text-lg font-bold text-warning leading-none">{weightPR.weightKg}<span className="text-xs font-normal"> kg</span></p>
+                  <p className="text-[10px] text-t3 mt-0.5">{weightPR.reps} reps</p>
+                </div>
+              )}
+              {e1rmPR && (
+                <div className="bg-primary/10 rounded-xl p-2.5 text-center">
+                  <p className="text-[10px] text-t3 uppercase tracking-wide mb-0.5">Est. 1RM</p>
+                  <p className="text-lg font-bold text-primary leading-none">{Math.round(e1rmPR.value)}<span className="text-xs font-normal"> kg</span></p>
+                  <p className="text-[10px] text-t3 mt-0.5">Epley</p>
+                </div>
+              )}
+            </div>
+          </div>
+        )
+      })}
+    </div>
+  )
+}
+
+// ── Body Tab ──────────────────────────────────────────────────────────────────
+interface BodyMeasurement {
+  id: string
+  measuredAt: string
+  weightKg: number | null
+  bodyFatPct: number | null
+  waistCm: number | null
+  leftArmCm: number | null
+  notes: string | null
+}
+
+function BodyTab({ lang, units, stats, onAddMeasure }: {
+  lang: Locale
+  units: string
+  stats: Stats | null
+  onAddMeasure: () => void
+}) {
+  const wUnit = units === 'imperial' ? 'lbs' : 'kg'
+  const [measurements, setMeasurements] = useState<BodyMeasurement[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    fetch('/api/body-measurements')
+      .then(r => r.ok ? r.json() : [])
+      .then((d: BodyMeasurement[]) => { setMeasurements(d); setLoading(false) })
+      .catch(() => setLoading(false))
+  }, [])
+
+  if (loading) return <div className="text-center py-12 text-t3 text-sm">{t(lang, 'common.loading')}</div>
+
+  if (!measurements.length) return (
+    <div className="text-center py-12 text-t3 space-y-3">
+      <p className="text-4xl">📏</p>
+      <p className="text-sm">{lang === 'it' ? 'Nessuna misurazione ancora.' : 'No measurements yet.'}</p>
+      <button onClick={onAddMeasure} className="btn-primary mx-auto gap-2">
+        <Plus size={14} />
+        {t(lang, 'progress.addMeasurement')}
+      </button>
+    </div>
+  )
+
+  const chartData = measurements
+    .filter(m => m.weightKg != null)
+    .slice(0, 12)
+    .reverse()
+    .map(m => ({
+      date: new Date(m.measuredAt).toLocaleDateString(lang === 'it' ? 'it-IT' : 'en-US', { day: 'numeric', month: 'short' }),
+      weight: m.weightKg,
+    }))
+
+  const latest = measurements[0]
+
+  return (
+    <div className="space-y-4">
+      {chartData.length > 1 && (
+        <div className="card p-4 space-y-3">
+          <p className="text-t2 text-sm font-semibold">{t(lang, 'progress.weight')} ({wUnit})</p>
+          <ResponsiveContainer width="100%" height={140}>
+            <LineChart data={chartData} margin={{ top: 4, right: 8, left: -20, bottom: 0 }}>
+              <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" vertical={false} />
+              <XAxis dataKey="date" tick={{ fill: '#64748b', fontSize: 10 }} axisLine={false} tickLine={false} />
+              <YAxis tick={{ fill: '#64748b', fontSize: 10 }} axisLine={false} tickLine={false} domain={['auto', 'auto']} />
+              <Tooltip
+                contentStyle={{ background: '#1a1a24', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 12, fontSize: 12 }}
+                labelStyle={{ color: '#94a3b8' }}
+                itemStyle={{ color: '#22c55e' }}
+                formatter={(v: number) => [`${v} ${wUnit}`, t(lang, 'progress.weight')]}
+              />
+              <Line type="monotone" dataKey="weight" stroke="var(--success)" strokeWidth={2} dot={{ r: 3, fill: 'var(--success)' }} activeDot={{ r: 5 }} />
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
+      )}
+
+      {latest && (
+        <div className="card p-4 space-y-3">
+          <div className="flex items-center justify-between">
+            <p className="text-t3 text-xs font-medium uppercase tracking-wider">{t(lang, 'progress.measurements')}</p>
+            <p className="text-t3 text-[11px]">{fmtDate(latest.measuredAt, lang)}</p>
+          </div>
+          {([
+            [t(lang, 'progress.weight'), latest.weightKg, wUnit],
+            ['Body Fat', latest.bodyFatPct, '%'],
+            [t(lang, 'progress.waist'), latest.waistCm, 'cm'],
+            [t(lang, 'progress.arms'), latest.leftArmCm, 'cm'],
+          ] as [string, number | null, string][]).filter(([, v]) => v != null).map(([label, val, unit]) => (
+            <div key={label} className="flex justify-between items-center py-1.5 border-b border-white/[0.05] last:border-0">
+              <span className="text-t2 text-sm">{label}</span>
+              <span className="text-t1 font-semibold text-sm">{val} {unit}</span>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {measurements.length > 1 && (
+        <div className="card p-4 space-y-2">
+          <p className="text-t3 text-xs font-medium uppercase tracking-wider">{lang === 'it' ? 'Storico misurazioni' : 'Measurement history'}</p>
+          {measurements.slice(0, 10).map(m => (
+            <div key={m.id} className="flex items-center justify-between py-1.5 border-b border-white/[0.05] last:border-0">
+              <p className="text-t2 text-xs">{fmtDate(m.measuredAt, lang)}</p>
+              <div className="flex gap-3">
+                {m.weightKg != null && <span className="text-t1 text-xs font-semibold">{m.weightKg} {wUnit}</span>}
+                {m.bodyFatPct != null && <span className="text-t3 text-xs">{m.bodyFatPct}%</span>}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   )
 }

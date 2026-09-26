@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import { useParams, useRouter } from 'next/navigation'
-import { ArrowLeft, Dumbbell, Target, Lightbulb, AlertTriangle, Plus, Trophy } from 'lucide-react'
+import { ArrowLeft, Dumbbell, Target, Lightbulb, AlertTriangle, Plus, Trophy, History } from 'lucide-react'
 import { useProfile } from '@/stores/profile'
 import { useWorkout } from '@/stores/workout'
 import { t, type Locale } from '@/i18n'
@@ -31,6 +31,16 @@ interface PR {
   weightKg: number | null
   reps: number | null
   achievedAt: string
+}
+
+interface HistoryEntry {
+  workoutId: string
+  workoutName: string
+  startedAt: string
+  sets: number
+  totalVolumeKg: number
+  bestWeightKg: number
+  bestReps: number
 }
 
 const DIFFICULTY_COLOR: Record<string, string> = {
@@ -66,6 +76,7 @@ export default function ExerciseDetailPage() {
 
   const [exercise, setExercise] = useState<ExerciseDetail | null>(null)
   const [prs, setPrs] = useState<PR[]>([])
+  const [history, setHistory] = useState<HistoryEntry[]>([])
   const [loading, setLoading] = useState(true)
   const [added, setAdded] = useState(false)
 
@@ -74,20 +85,21 @@ export default function ExerciseDetailPage() {
   const load = useCallback(async () => {
     setLoading(true)
     try {
-      const [exRes, prRes] = await Promise.all([
+      const [exRes, prRes, histRes] = await Promise.all([
         fetch(`/api/exercises/${id}?lang=${lang}`),
         fetch(`/api/prs?exerciseId=${id}&lang=${lang}`),
+        fetch(`/api/exercises/${id}/history`),
       ])
       if (exRes.ok) setExercise(await exRes.json())
       if (prRes.ok) {
         const all: PR[] = await prRes.json()
-        // Keep only best per type
         const best: Record<string, PR> = {}
         for (const pr of all) {
           if (!best[pr.type] || pr.value > best[pr.type].value) best[pr.type] = pr
         }
         setPrs(Object.values(best))
       }
+      if (histRes.ok) setHistory(await histRes.json())
     } finally {
       setLoading(false)
     }
@@ -222,6 +234,28 @@ export default function ExerciseDetailPage() {
                 </li>
               ))}
             </ul>
+          </Section>
+        )}
+
+        {/* Exercise history */}
+        {history.length > 0 && (
+          <Section title={t(lang, 'exercises.history')} icon={<History size={16} className="text-accent" />}>
+            <div className="space-y-2">
+              {history.map((h, i) => (
+                <div key={i} className="flex items-center justify-between py-1.5 border-b border-white/[0.05] last:border-0">
+                  <div>
+                    <p className="text-t2 text-xs">
+                      {new Date(h.startedAt).toLocaleDateString(lang === 'it' ? 'it-IT' : 'en-US', { day: 'numeric', month: 'short' })}
+                    </p>
+                    <p className="text-t3 text-[11px]">{h.sets} sets · {h.totalVolumeKg} kg</p>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-t1 text-sm font-semibold">{h.bestWeightKg} kg</p>
+                    <p className="text-t3 text-[11px]">× {h.bestReps}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </Section>
         )}
 

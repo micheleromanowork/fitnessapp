@@ -17,7 +17,7 @@ import { armsExercises2 } from './seed-data/exercises-arms2'
 import { coreExercises2 } from './seed-data/exercises-core2'
 import { cardioExercises2 } from './seed-data/exercises-cardio2'
 
-const ALL_EXERCISES = [
+export const ALL_EXERCISES = [
   ...CHEST_EXERCISES,
   ...BACK_EXERCISES,
   ...SHOULDER_EXERCISES,
@@ -34,43 +34,26 @@ const ALL_EXERCISES = [
   ...cardioExercises2,
 ]
 
-async function seed() {
-  console.log('🌱 Seeding database...')
-
-  // Muscles
-  console.log('  → Inserting muscles...')
+export async function runSeed() {
   for (const muscle of MUSCLES) {
-    db.insert(muscles).values(muscle).onConflictDoNothing().run()
+    await db.insert(muscles).values(muscle).onConflictDoNothing()
   }
-  console.log(`     ✓ ${MUSCLES.length} muscles`)
-
-  // Equipment
-  console.log('  → Inserting equipment...')
   for (const eq of EQUIPMENT) {
-    db.insert(equipment).values(eq).onConflictDoNothing().run()
+    await db.insert(equipment).values(eq).onConflictDoNothing()
   }
-  console.log(`     ✓ ${EQUIPMENT.length} equipment types`)
-
-  // Exercises
-  console.log('  → Inserting exercises...')
   let inserted = 0
-  let skipped = 0
   for (const exercise of ALL_EXERCISES) {
     try {
-      db.insert(exercises).values(exercise).onConflictDoNothing().run()
+      await db.insert(exercises).values(exercise).onConflictDoNothing()
       inserted++
-    } catch (err) {
-      console.warn(`     ⚠ Skipped ${exercise.id}: ${(err as Error).message}`)
-      skipped++
-    }
+    } catch { /* skip duplicates */ }
   }
-  console.log(`     ✓ ${inserted} exercises inserted, ${skipped} skipped`)
-  console.log(`     📊 Total: ${ALL_EXERCISES.length} exercises in seed data`)
-
-  console.log('\n✅ Seed complete!')
+  return { muscles: MUSCLES.length, equipment: EQUIPMENT.length, exercises: inserted }
 }
 
-seed().catch((err) => {
-  console.error('❌ Seed failed:', err)
-  process.exit(1)
-})
+// CLI entry point
+if (process.argv[1] === import.meta.url?.replace('file://', '')) {
+  runSeed()
+    .then(r => console.log('✅ Seed complete:', r))
+    .catch(err => { console.error('❌ Seed failed:', err); process.exit(1) })
+}

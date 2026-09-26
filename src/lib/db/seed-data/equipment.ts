@@ -1,0 +1,16 @@
+export const EQUIPMENT = [
+  { id: 'bodyweight',      nameEn: 'Bodyweight',       nameIt: 'Corpo Libero',         category: 'bodyweight' },
+  { id: 'dumbbell',        nameEn: 'Dumbbell',         nameIt: 'Manubri',              category: 'free_weight' },
+  { id: 'barbell',         nameEn: 'Barbell',          nameIt: 'Bilanciere',           category: 'free_weight' },
+  { id: 'ez_bar',          nameEn: 'EZ Bar',           nameIt: 'Bilanciere EZ',        category: 'free_weight' },
+  { id: 'kettlebell',      nameEn: 'Kettlebell',       nameIt: 'Kettlebell',           category: 'free_weight' },
+  { id: 'cable',           nameEn: 'Cable',            nameIt: 'Cavi',                 category: 'cable' },
+  { id: 'machine',         nameEn: 'Machine',          nameIt: 'Macchina',             category: 'machine' },
+  { id: 'smith_machine',   nameEn: 'Smith Machine',    nameIt: 'Multipower',           category: 'machine' },
+  { id: 'bench',           nameEn: 'Bench',            nameIt: 'Panca',                category: 'accessory' },
+  { id: 'resistance_band', nameEn: 'Resistance Band',  nameIt: 'Elastico',             category: 'bodyweight' },
+  { id: 'pullup_bar',      nameEn: 'Pull-up Bar',      nameIt: 'Sbarra Trazioni',      category: 'bodyweight' },
+  { id: 'dip_station',     nameEn: 'Dip Station',      nameIt: 'Parallele',            category: 'bodyweight' },
+  { id: 'trx',             nameEn: 'TRX / Suspension', nameIt: 'TRX / Sospensioni',    category: 'bodyweight' },
+  { id: 'cardio',          nameEn: 'Cardio Equipment', nameIt: 'Attrezzo Cardio',      category: 'cardio' },
+]

@@ -67,6 +67,8 @@ interface WorkoutStore {
   removeSet(wexId: string, setId: string): void
   duplicateLastSet(wexId: string): void
 
+  toggleSuperset(wexId: string): void
+
   startTimer(sec: number): void
   pauseTimer(): void
   skipTimer(): void
@@ -230,6 +232,45 @@ export const useWorkout = create<WorkoutStore>()(
                 return { ...e, sets: [...e.sets, { ...last, id: generateId(), order: e.sets.length, isCompleted: false, completedAt: undefined }] }
               }),
             },
+          }
+        }),
+
+      toggleSuperset: (wexId) =>
+        set(s => {
+          if (!s.active) return s
+          const exercises = s.active.exercises
+          const idx = exercises.findIndex(e => e.id === wexId)
+          if (idx < 0 || idx >= exercises.length - 1) return s
+          const ex = exercises[idx]
+          const next = exercises[idx + 1]
+
+          if (ex.supersetGroupId && ex.supersetGroupId === next.supersetGroupId) {
+            // Clear superset for both
+            return {
+              active: {
+                ...s.active,
+                exercises: exercises.map(e =>
+                  e.id === wexId || e.id === next.id
+                    ? { ...e, supersetGroupId: undefined, supersetOrder: undefined }
+                    : e
+                ),
+              },
+            }
+          } else {
+            // Group together
+            const groupId = ex.supersetGroupId ?? generateId()
+            return {
+              active: {
+                ...s.active,
+                exercises: exercises.map(e =>
+                  e.id === wexId
+                    ? { ...e, supersetGroupId: groupId, supersetOrder: 0 }
+                    : e.id === next.id
+                    ? { ...e, supersetGroupId: groupId, supersetOrder: 1 }
+                    : e
+                ),
+              },
+            }
           }
         }),
 

@@ -14,6 +14,25 @@ interface Stats {
   weeklyVolumeKg: number
 }
 
+interface Badge {
+  id: string
+  emoji: string
+  labelEn: string
+  labelIt: string
+  condition: (s: Stats) => boolean
+}
+
+const BADGES: Badge[] = [
+  { id: 'first', emoji: '🏋️', labelEn: 'First Workout', labelIt: 'Primo allenamento', condition: s => s.totalWorkouts >= 1 },
+  { id: 'w10', emoji: '💪', labelEn: '10 Workouts', labelIt: '10 allenamenti', condition: s => s.totalWorkouts >= 10 },
+  { id: 'w25', emoji: '🥈', labelEn: '25 Workouts', labelIt: '25 allenamenti', condition: s => s.totalWorkouts >= 25 },
+  { id: 'w50', emoji: '🥇', labelEn: '50 Workouts', labelIt: '50 allenamenti', condition: s => s.totalWorkouts >= 50 },
+  { id: 'w100', emoji: '💯', labelEn: '100 Workouts', labelIt: '100 allenamenti', condition: s => s.totalWorkouts >= 100 },
+  { id: 's7', emoji: '🔥', labelEn: '7-Day Streak', labelIt: 'Streak 7 giorni', condition: s => s.streak >= 7 },
+  { id: 's30', emoji: '🔥🔥', labelEn: '30-Day Streak', labelIt: 'Streak 30 giorni', condition: s => s.streak >= 30 },
+  { id: 'vol', emoji: '🚀', labelEn: 'Volume Beast', labelIt: 'Bestia del Volume', condition: s => s.weeklyVolumeKg >= 5000 },
+]
+
 interface ToggleProps {
   checked: boolean
   onChange: (v: boolean) => void
@@ -96,6 +115,34 @@ export function ProfileClient({ user }: { user: User }) {
             </p>
             <p className="text-t3 text-[11px]">{lang === 'it' ? 'Vol. sett. (kg)' : 'Weekly vol.'}</p>
           </div>
+        </div>
+      )}
+
+      {/* Achievement badges */}
+      {stats && (
+        <div className="card p-4 space-y-3">
+          <p className="text-t3 text-xs font-medium uppercase tracking-wider">{lang === 'it' ? 'Achievements' : 'Achievements'}</p>
+          <div className="flex flex-wrap gap-2">
+            {BADGES.map(b => {
+              const unlocked = b.condition(stats)
+              return (
+                <div
+                  key={b.id}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
+                    unlocked
+                      ? 'bg-warning/15 text-warning border border-warning/30'
+                      : 'bg-white/[0.04] text-t3 border border-white/[0.06] opacity-40'
+                  }`}
+                >
+                  <span>{b.emoji}</span>
+                  <span>{lang === 'it' ? b.labelIt : b.labelEn}</span>
+                </div>
+              )
+            })}
+          </div>
+          <p className="text-t3 text-[11px]">
+            {BADGES.filter(b => b.condition(stats)).length}/{BADGES.length} {lang === 'it' ? 'sbloccati' : 'unlocked'}
+          </p>
         </div>
       )}
 

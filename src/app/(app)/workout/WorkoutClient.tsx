@@ -144,8 +144,15 @@ export function WorkoutClient() {
             </div>
           )}
 
-          {active.exercises.map(ex => (
-            <ExerciseCard key={ex.id} exercise={ex} lang={lang} units={units} />
+          {active.exercises.map((ex, idx) => (
+            <ExerciseCard
+              key={ex.id}
+              exercise={ex}
+              lang={lang}
+              units={units}
+              isLast={idx === active.exercises.length - 1}
+              nextExercise={active.exercises[idx + 1]}
+            />
           ))}
 
           <button

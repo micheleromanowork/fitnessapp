@@ -605,24 +605,27 @@ function BodyTab({ lang, units, stats, onAddMeasure }: {
     </div>
   )
 
-  const chartData = measurements
-    .filter(m => m.weightKg != null)
+  const allChartData = measurements
     .slice(0, 12)
     .reverse()
     .map(m => ({
       date: new Date(m.measuredAt).toLocaleDateString(lang === 'it' ? 'it-IT' : 'en-US', { day: 'numeric', month: 'short' }),
       weight: m.weightKg,
+      bf: m.bodyFatPct,
     }))
+
+  const weightData = allChartData.filter(d => d.weight != null)
+  const bfData = allChartData.filter(d => d.bf != null)
 
   const latest = measurements[0]
 
   return (
     <div className="space-y-4">
-      {chartData.length > 1 && (
+      {weightData.length > 1 && (
         <div className="card p-4 space-y-3">
           <p className="text-t2 text-sm font-semibold">{t(lang, 'progress.weight')} ({wUnit})</p>
           <ResponsiveContainer width="100%" height={140}>
-            <LineChart data={chartData} margin={{ top: 4, right: 8, left: -20, bottom: 0 }}>
+            <LineChart data={weightData} margin={{ top: 4, right: 8, left: -20, bottom: 0 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" vertical={false} />
               <XAxis dataKey="date" tick={{ fill: '#64748b', fontSize: 10 }} axisLine={false} tickLine={false} />
               <YAxis tick={{ fill: '#64748b', fontSize: 10 }} axisLine={false} tickLine={false} domain={['auto', 'auto']} />
@@ -633,6 +636,26 @@ function BodyTab({ lang, units, stats, onAddMeasure }: {
                 formatter={(v: number) => [`${v} ${wUnit}`, t(lang, 'progress.weight')]}
               />
               <Line type="monotone" dataKey="weight" stroke="var(--success)" strokeWidth={2} dot={{ r: 3, fill: 'var(--success)' }} activeDot={{ r: 5 }} />
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
+      )}
+
+      {bfData.length > 1 && (
+        <div className="card p-4 space-y-3">
+          <p className="text-t2 text-sm font-semibold">Body Fat %</p>
+          <ResponsiveContainer width="100%" height={120}>
+            <LineChart data={bfData} margin={{ top: 4, right: 8, left: -20, bottom: 0 }}>
+              <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" vertical={false} />
+              <XAxis dataKey="date" tick={{ fill: '#64748b', fontSize: 10 }} axisLine={false} tickLine={false} />
+              <YAxis tick={{ fill: '#64748b', fontSize: 10 }} axisLine={false} tickLine={false} domain={['auto', 'auto']} unit="%" />
+              <Tooltip
+                contentStyle={{ background: '#1a1a24', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 12, fontSize: 12 }}
+                labelStyle={{ color: '#94a3b8' }}
+                itemStyle={{ color: '#f97316' }}
+                formatter={(v: number) => [`${v}%`, 'Body Fat']}
+              />
+              <Line type="monotone" dataKey="bf" stroke="#f97316" strokeWidth={2} dot={{ r: 3, fill: '#f97316' }} activeDot={{ r: 5 }} />
             </LineChart>
           </ResponsiveContainer>
         </div>

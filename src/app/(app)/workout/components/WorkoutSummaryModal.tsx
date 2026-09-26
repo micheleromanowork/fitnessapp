@@ -1,5 +1,6 @@
 'use client'
-import { CheckCircle, Clock, Dumbbell, TrendingUp, X, Trophy } from 'lucide-react'
+import { useState } from 'react'
+import { CheckCircle, Clock, Dumbbell, TrendingUp, X, Trophy, BookmarkPlus, ChevronRight } from 'lucide-react'
 import type { ActiveWorkout } from '@/stores/workout'
 import { t, type Locale } from '@/i18n'
 
@@ -9,6 +10,32 @@ interface Props {
   units: 'metric' | 'imperial'
   onSave: () => void
   onDiscard: () => void
+}
+
+interface Program { id: string; name: string }
+
+async function saveAsTemplate(workout: ActiveWorkout, programId: string, dayName: string) {
+  const dayRes = await fetch(`/api/programs/${programId}/days`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name: dayName }),
+  })
+  if (!dayRes.ok) throw new Error('Failed to create day')
+  const { id: dayId } = await dayRes.json()
+
+  for (const ex of workout.exercises) {
+    const completed = ex.sets.filter(s => s.isCompleted)
+    if (!completed.length) continue
+    await fetch(`/api/programs/${programId}/days/${dayId}/exercises`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        exerciseId: ex.exerciseId,
+        sets: completed.length,
+        restSec: ex.restSec ?? 90,
+      }),
+    })
+  }
 }
 
 function fmtDuration(ms: number): string {
@@ -24,6 +51,28 @@ export function WorkoutSummaryModal({ workout, lang, units, onSave, onDiscard }:
   const totalVol = completedSets.reduce((a, s) => a + s.weightKg * s.reps, 0)
   const duration = Date.now() - workout.startedAt
   const wUnit = units === 'imperial' ? 'lbs' : 'kg'
+
+  const [showTemplate, setShowTemplate] = useState(false)
+  const [programs, setPrograms] = useState<Program[]>([])
+  const [saving, setSaving] = useState(false)
+  const [saved, setSaved] = useState(false)
+
+  async function openTemplateSheet() {
+    const r = await fetch('/api/programs').catch(() => null)
+    if (r?.ok) setPrograms(await r.json())
+    setShowTemplate(true)
+  }
+
+  async function handleSaveTemplate(program: Program) {
+    setSaving(true)
+    try {
+      await saveAsTemplate(workout, program.id, workout.name)
+      setSaved(true)
+      setShowTemplate(false)
+    } catch { /* ignore */ } finally {
+      setSaving(false)
+    }
+  }
 
   // Collect new PRs from the workout
   const newPRs = workout.exercises
@@ -108,6 +157,21 @@ export function WorkoutSummaryModal({ workout, lang, units, onSave, onDiscard }:
           </div>
         )}
 
+        {/* Save as template */}
+        <button
+          onClick={saved ? undefined : openTemplateSheet}
+          className={`w-full h-10 rounded-2xl border text-sm flex items-center justify-center gap-2 transition-colors ${
+            saved
+              ? 'border-success/30 text-success bg-success/10'
+              : 'border-white/10 text-t3 hover:text-t1 hover:border-white/20'
+          }`}
+        >
+          <BookmarkPlus size={15} />
+          {saved
+            ? (lang === 'it' ? 'Salvato nel programma!' : 'Saved to program!')
+            : (lang === 'it' ? 'Salva come template' : 'Save as template')}
+        </button>
+
         {/* Actions */}
         <div className="flex gap-3">
           <button onClick={onDiscard} className="btn-ghost flex-1 gap-2">
@@ -120,6 +184,39 @@ export function WorkoutSummaryModal({ workout, lang, units, onSave, onDiscard }:
           </button>
         </div>
       </div>
+
+      {/* Program picker sheet */}
+      {showTemplate && (
+        <div className="fixed inset-0 z-[60] flex flex-col" onClick={() => setShowTemplate(false)}>
+          <div className="flex-1 overlay" />
+          <div className="bg-[#111118] border-t border-white/10 rounded-t-3xl p-5 pb-10 max-h-[60dvh] overflow-y-auto"
+               onClick={e => e.stopPropagation()}>
+            <div className="flex justify-center -mt-1 mb-4"><div className="w-10 h-1 bg-white/20 rounded-full" /></div>
+            <h3 className="text-t1 font-bold mb-4">
+              {lang === 'it' ? 'Salva in programma' : 'Save to program'}
+            </h3>
+            {programs.length === 0 ? (
+              <p className="text-t3 text-sm text-center py-6">
+                {lang === 'it' ? 'Nessun programma. Creane uno prima.' : 'No programs. Create one first.'}
+              </p>
+            ) : (
+              <div className="space-y-2">
+                {programs.map(p => (
+                  <button
+                    key={p.id}
+                    onClick={() => handleSaveTemplate(p)}
+                    disabled={saving}
+                    className="card-2 w-full p-4 text-left flex items-center justify-between hover:border-primary/40 transition-colors"
+                  >
+                    <span className="text-t1 text-sm font-medium">{p.name}</span>
+                    <ChevronRight size={16} className="text-t3" />
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   )
 }

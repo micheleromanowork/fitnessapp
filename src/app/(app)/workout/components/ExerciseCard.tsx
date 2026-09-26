@@ -1,6 +1,6 @@
 'use client'
 import { useState, useEffect } from 'react'
-import { Plus, Trash2, RefreshCcw, Timer } from 'lucide-react'
+import { Plus, Trash2, RefreshCcw, Timer, Link2, Link2Off } from 'lucide-react'
 import { useWorkout, type ActiveExercise } from '@/stores/workout'
 import { t, type Locale } from '@/i18n'
 import { SetRow } from './SetRow'
@@ -10,10 +10,14 @@ interface Props {
   exercise: ActiveExercise
   lang: Locale
   units: 'metric' | 'imperial'
+  isLast?: boolean
+  nextExercise?: ActiveExercise
 }
 
-export function ExerciseCard({ exercise, lang, units }: Props) {
-  const { removeExercise, replaceExercise, setExerciseRest, addSet, updateSet, completeSet, removeSet } = useWorkout()
+export function ExerciseCard({ exercise, lang, units, isLast, nextExercise }: Props) {
+  const { removeExercise, replaceExercise, setExerciseRest, addSet, updateSet, completeSet, removeSet, toggleSuperset } = useWorkout()
+  const inSuperset = !!exercise.supersetGroupId
+  const supersetWithNext = inSuperset && nextExercise?.supersetGroupId === exercise.supersetGroupId
   const weightLabel = units === 'imperial' ? 'lbs' : 'kg'
   const [prWeightKg, setPrWeightKg] = useState(0)
   const [showReplace, setShowReplace] = useState(false)
@@ -39,13 +43,29 @@ export function ExerciseCard({ exercise, lang, units }: Props) {
   }
 
   return (
-    <div className="card overflow-hidden">
+    <div className={`card overflow-hidden ${inSuperset ? 'border border-accent/30' : ''}`}>
+      {/* Superset label */}
+      {inSuperset && (
+        <div className="px-4 pt-2 pb-0">
+          <span className="text-accent text-[10px] font-bold uppercase tracking-widest">Superset</span>
+        </div>
+      )}
+
       {/* Header */}
       <div className="flex items-center justify-between px-4 pt-4 pb-2">
         <h3 className="text-t1 font-semibold flex-1 mr-2 text-base leading-snug">
           {exercise.exerciseName}
         </h3>
         <div className="flex items-center gap-1 flex-shrink-0">
+          {!isLast && (
+            <button
+              onClick={() => toggleSuperset(exercise.id)}
+              className={`w-8 h-8 flex items-center justify-center transition-colors ${supersetWithNext ? 'text-accent' : 'text-t3 hover:text-accent'}`}
+              aria-label="Superset"
+            >
+              {supersetWithNext ? <Link2Off size={13} /> : <Link2 size={13} />}
+            </button>
+          )}
           <button
             onClick={() => setShowRestPicker(v => !v)}
             className={`w-8 h-8 flex items-center justify-center transition-colors ${exercise.restSec ? 'text-accent' : 'text-t3 hover:text-accent'}`}

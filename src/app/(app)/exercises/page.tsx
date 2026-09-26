@@ -34,6 +34,17 @@ const MUSCLE_FILTERS = [
   { key: 'forearms', label: 'Forearms' },
 ]
 
+const EQUIPMENT_FILTERS = [
+  { key: '', label: 'Any' },
+  { key: 'barbell', label: 'Barbell' },
+  { key: 'dumbbell', label: 'Dumbbell' },
+  { key: 'bodyweight', label: 'Bodyweight' },
+  { key: 'machine', label: 'Machine' },
+  { key: 'cable', label: 'Cable' },
+  { key: 'kettlebell', label: 'Kettlebell' },
+  { key: 'bands', label: 'Bands' },
+]
+
 const DIFFICULTY_COLOR: Record<string, string> = {
   beginner: 'badge-success',
   intermediate: 'badge-warning',
@@ -46,6 +57,7 @@ export default function ExercisesPage() {
   const [exercises, setExercises] = useState<Exercise[]>([])
   const [query, setQuery] = useState('')
   const [muscle, setMuscle] = useState('')
+  const [equipment, setEquipment] = useState('')
   const [loading, setLoading] = useState(true)
   const [total, setTotal] = useState(0)
 
@@ -54,6 +66,7 @@ export default function ExercisesPage() {
     const params = new URLSearchParams({ lang, limit: '40' })
     if (query) params.set('q', query)
     if (muscle) params.set('muscle', muscle)
+    if (equipment) params.set('equipment', equipment)
     try {
       const r = await fetch(`/api/exercises?${params}`)
       const d = await r.json()
@@ -62,7 +75,7 @@ export default function ExercisesPage() {
     } finally {
       setLoading(false)
     }
-  }, [lang, query, muscle])
+  }, [lang, query, muscle, equipment])
 
   useEffect(() => { load() }, [load])
 
@@ -95,6 +108,23 @@ export default function ExercisesPage() {
               className={`shrink-0 px-3 py-1 rounded-full text-xs font-medium transition-colors ${
                 muscle === f.key
                   ? 'bg-primary text-white'
+                  : 'bg-white/[0.06] text-t3 hover:bg-white/10'
+              }`}
+            >
+              {f.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Equipment filter chips */}
+        <div className="flex gap-2 overflow-x-auto scrollbar-none pb-1 -mx-1 px-1">
+          {EQUIPMENT_FILTERS.map(f => (
+            <button
+              key={f.key}
+              onClick={() => setEquipment(f.key)}
+              className={`shrink-0 px-3 py-1 rounded-full text-xs font-medium transition-colors ${
+                equipment === f.key
+                  ? 'bg-accent text-white'
                   : 'bg-white/[0.06] text-t3 hover:bg-white/10'
               }`}
             >

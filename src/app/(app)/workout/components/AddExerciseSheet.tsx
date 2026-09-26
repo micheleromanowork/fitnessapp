@@ -12,7 +12,12 @@ interface ExerciseItem {
   difficulty: string
 }
 
-export function AddExerciseSheet({ onClose }: { onClose: () => void }) {
+interface Props {
+  onClose: () => void
+  onAdd?: (exerciseId: string, name: string) => void  // if provided, skips workout store
+}
+
+export function AddExerciseSheet({ onClose, onAdd }: Props) {
   const lang = useProfile(s => s.language)
   const { addExercise } = useWorkout()
   const [query, setQuery] = useState('')
@@ -32,7 +37,8 @@ export function AddExerciseSheet({ onClose }: { onClose: () => void }) {
   }, [query, lang])
 
   function handlePick(ex: ExerciseItem) {
-    addExercise(ex.id, ex.name)
+    if (onAdd) onAdd(ex.id, ex.name)
+    else addExercise(ex.id, ex.name)
     onClose()
   }
 

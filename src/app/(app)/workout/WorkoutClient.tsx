@@ -135,7 +135,26 @@ export function WorkoutClient() {
           workout={finishedWorkout}
           lang={lang}
           units={units}
-          onSave={() => setFinishedWorkout(null)}
+          onSave={async () => {
+            if (finishedWorkout) {
+              await fetch('/api/workouts', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  name: finishedWorkout.name,
+                  startedAt: finishedWorkout.startedAt,
+                  programId: finishedWorkout.programId,
+                  programDayId: finishedWorkout.programDayId,
+                  exercises: finishedWorkout.exercises.map(e => ({
+                    exerciseId: e.exerciseId,
+                    order: e.order,
+                    sets: e.sets,
+                  })),
+                }),
+              }).catch(console.error)
+            }
+            setFinishedWorkout(null)
+          }}
           onDiscard={() => setFinishedWorkout(null)}
         />
       )}

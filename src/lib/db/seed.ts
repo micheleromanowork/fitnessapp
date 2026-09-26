@@ -9,6 +9,13 @@ import { ARM_EXERCISES } from './seed-data/exercises-arms'
 import { LEG_EXERCISES } from './seed-data/exercises-legs'
 import { CORE_EXERCISES } from './seed-data/exercises-core'
 import { CARDIO_EXERCISES } from './seed-data/exercises-cardio'
+import { chestExercises2 } from './seed-data/exercises-chest2'
+import { backExercises2 } from './seed-data/exercises-back2'
+import { legsExercises2 } from './seed-data/exercises-legs2'
+import { shouldersExercises2 } from './seed-data/exercises-shoulders2'
+import { armsExercises2 } from './seed-data/exercises-arms2'
+import { coreExercises2 } from './seed-data/exercises-core2'
+import { cardioExercises2 } from './seed-data/exercises-cardio2'
 
 const ALL_EXERCISES = [
   ...CHEST_EXERCISES,
@@ -18,6 +25,13 @@ const ALL_EXERCISES = [
   ...LEG_EXERCISES,
   ...CORE_EXERCISES,
   ...CARDIO_EXERCISES,
+  ...chestExercises2,
+  ...backExercises2,
+  ...legsExercises2,
+  ...shouldersExercises2,
+  ...armsExercises2,
+  ...coreExercises2,
+  ...cardioExercises2,
 ]
 
 async function seed() {

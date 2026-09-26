@@ -1,0 +1,91 @@
+{
+  "nav": { "home": "Home", "workout": "Workout", "programs": "Programs", "exercises": "Exercises", "progress": "Progress", "coach": "AI Coach", "profile": "Profile" },
+  "auth": {
+    "signIn": "Sign In", "signOut": "Sign Out",
+    "withGoogle": "Continue with Google", "withApple": "Continue with Apple",
+    "title": "Welcome to FitOS", "subtitle": "Your AI-powered personal trainer, always with you.",
+    "privacy": "By signing in, you agree to our Privacy Policy and Terms of Service."
+  },
+  "onboarding": {
+    "step": "Step {n} of {total}",
+    "personalInfo": "Personal information", "goal": "What's your goal?",
+    "level": "Experience level", "frequency": "Training days per week",
+    "duration": "Session duration", "equipment": "Available equipment",
+    "ready": "You're all set!", "readyDesc": "Profile configured. Start your journey.",
+    "generateAI": "Generate my program with AI", "skip": "Skip"
+  },
+  "goals": {
+    "muscle_gain": "Muscle Gain", "fat_loss": "Fat Loss",
+    "recomposition": "Recomposition", "strength": "Strength",
+    "general_fitness": "General Fitness", "endurance": "Endurance", "maintenance": "Maintenance"
+  },
+  "levels": { "beginner": "Beginner", "intermediate": "Intermediate", "advanced": "Advanced" },
+  "home": {
+    "morning": "Good morning", "afternoon": "Good afternoon", "evening": "Good evening",
+    "todayWorkout": "Today's workout", "noWorkout": "No workout scheduled",
+    "startWorkout": "Start Workout", "quickStart": "Quick workout",
+    "streak": "{n} days in a row", "weeklyVol": "Weekly volume",
+    "thisWeek": "This week", "recentPRs": "Recent PRs",
+    "aiInsight": "AI Insight", "noInsights": "Complete more workouts to receive insights."
+  },
+  "workout": {
+    "active": "Active Workout", "start": "Start", "finish": "Finish", "discard": "Discard",
+    "addExercise": "Add exercise", "restTimer": "Rest timer",
+    "set": "Set", "warmup": "Warm-up", "dropSet": "Drop set",
+    "failure": "Failure", "amrap": "AMRAP", "restPause": "Rest-pause",
+    "completeSet": "Complete set", "prev": "Previous", "newPR": "New PR!",
+    "duration": "Duration", "totalVol": "Total volume", "summary": "Summary",
+    "noWorkouts": "No workouts yet.", "confirmDiscard": "Discard workout? Unsaved data will be lost.",
+    "elapsed": "Elapsed", "sets": "Sets", "rpe": "RPE", "rir": "RIR"
+  },
+  "exercises": {
+    "title": "Exercises", "search": "Search exercises...",
+    "muscle": "Muscle", "equipment": "Equipment", "difficulty": "Difficulty", "movement": "Movement",
+    "noResults": "No exercises found",
+    "primaryMuscles": "Primary muscles", "secondaryMuscles": "Secondary muscles",
+    "instructions": "Instructions", "mistakes": "Common mistakes", "tips": "Tips", "breathing": "Breathing",
+    "alternatives": "Alternatives", "history": "Your history", "noHistory": "No history yet.",
+    "addToWorkout": "Add to workout", "replace": "Replace"
+  },
+  "programs": {
+    "title": "Programs", "active": "Active", "archived": "Archived",
+    "create": "Create program", "aiGenerate": "Generate with AI",
+    "empty": "No programs yet. Create one!",
+    "editDay": "Edit day", "addDay": "Add day",
+    "exercisesCount": "{n} exercises", "estimatedDuration": "Est. duration"
+  },
+  "progress": {
+    "title": "Progress", "measurements": "Measurements", "photos": "Photos",
+    "addMeasurement": "Add measurement", "addPhoto": "Add photo",
+    "weight": "Weight", "bodyFat": "Body fat", "chest": "Chest", "waist": "Waist",
+    "arms": "Arms", "thighs": "Thighs", "calves": "Calves",
+    "front": "Front", "side": "Side", "back": "Back", "noPhotos": "No photos yet."
+  },
+  "analytics": {
+    "title": "Analytics", "totalWorkouts": "Total workouts", "avgDuration": "Avg duration",
+    "streak": "Streak", "volumeByMuscle": "Volume by muscle", "volumeOverTime": "Volume over time",
+    "strengthProgress": "Strength", "prs": "Personal Records", "noData": "Complete workouts to see analytics.",
+    "last4w": "Last 4 weeks", "last12w": "Last 12 weeks", "allTime": "All time"
+  },
+  "coach": {
+    "title": "AI Coach", "placeholder": "Ask me anything about your training...",
+    "thinking": "Analyzing your data...", "send": "Send",
+    "suggestions": ["How am I doing?", "Should I increase the weight?", "Give me a workout for tomorrow.", "Am I training my legs enough?"]
+  },
+  "profile": {
+    "title": "Profile", "edit": "Edit", "settings": "Settings",
+    "language": "Language", "units": "Units", "theme": "Theme",
+    "defaultRest": "Default rest timer", "autoStart": "Auto-start timer",
+    "deleteAccount": "Delete account", "exportData": "Export data", "signOut": "Sign out",
+    "metric": "Metric (kg, cm)", "imperial": "Imperial (lbs, in)",
+    "dark": "Dark", "light": "Light", "system": "System"
+  },
+  "common": {
+    "save": "Save", "cancel": "Cancel", "delete": "Delete", "edit": "Edit",
+    "add": "Add", "done": "Done", "next": "Next", "back": "Back",
+    "loading": "Loading...", "error": "Error", "confirm": "Confirm",
+    "kg": "kg", "lbs": "lbs", "cm": "cm", "reps": "reps", "sets": "sets",
+    "min": "min", "sec": "sec", "today": "Today", "yesterday": "Yesterday",
+    "week": "week", "month": "month", "noData": "No data"
+  }
+}

@@ -1,9 +1,10 @@
 'use client'
 import { useState, useEffect } from 'react'
-import { Plus, Trash2 } from 'lucide-react'
+import { Plus, Trash2, RefreshCcw } from 'lucide-react'
 import { useWorkout, type ActiveExercise } from '@/stores/workout'
 import { t, type Locale } from '@/i18n'
 import { SetRow } from './SetRow'
+import { AddExerciseSheet } from './AddExerciseSheet'
 
 interface Props {
   exercise: ActiveExercise
@@ -12,9 +13,10 @@ interface Props {
 }
 
 export function ExerciseCard({ exercise, lang, units }: Props) {
-  const { removeExercise, addSet, updateSet, completeSet, removeSet } = useWorkout()
+  const { removeExercise, replaceExercise, addSet, updateSet, completeSet, removeSet } = useWorkout()
   const weightLabel = units === 'imperial' ? 'lbs' : 'kg'
   const [prWeightKg, setPrWeightKg] = useState(0)
+  const [showReplace, setShowReplace] = useState(false)
 
   useEffect(() => {
     fetch(`/api/prs?exerciseId=${exercise.exerciseId}`)
@@ -41,13 +43,29 @@ export function ExerciseCard({ exercise, lang, units }: Props) {
         <h3 className="text-t1 font-semibold flex-1 mr-2 text-base leading-snug">
           {exercise.exerciseName}
         </h3>
-        <button
-          onClick={() => removeExercise(exercise.id)}
-          className="w-8 h-8 flex items-center justify-center text-t3 hover:text-danger transition-colors flex-shrink-0"
-          aria-label="Remove exercise"
-        >
-          <Trash2 size={15} />
-        </button>
+        <div className="flex items-center gap-1 flex-shrink-0">
+          <button
+            onClick={() => setShowReplace(true)}
+            className="w-8 h-8 flex items-center justify-center text-t3 hover:text-accent transition-colors"
+            aria-label={t(lang, 'exercises.replace')}
+          >
+            <RefreshCcw size={14} />
+          </button>
+          <button
+            onClick={() => removeExercise(exercise.id)}
+            className="w-8 h-8 flex items-center justify-center text-t3 hover:text-danger transition-colors"
+            aria-label="Remove exercise"
+          >
+            <Trash2 size={15} />
+          </button>
+        </div>
+
+        {showReplace && (
+          <AddExerciseSheet
+            onClose={() => setShowReplace(false)}
+            onAdd={(exId, name) => { replaceExercise(exercise.id, exId, name); setShowReplace(false) }}
+          />
+        )}
       </div>
 
       {/* Column headers */}

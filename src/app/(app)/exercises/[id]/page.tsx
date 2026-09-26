@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import { useParams, useRouter } from 'next/navigation'
-import { ArrowLeft, Dumbbell, Target, Lightbulb, AlertTriangle, Plus, Trophy, History } from 'lucide-react'
+import { ArrowLeft, Dumbbell, Target, Lightbulb, AlertTriangle, Plus, Trophy, History, Wind } from 'lucide-react'
 import { useProfile } from '@/stores/profile'
 import { useWorkout } from '@/stores/workout'
 import { t, type Locale } from '@/i18n'
@@ -21,6 +21,7 @@ interface ExerciseDetail {
   instructions: string[]
   mistakes: string[]
   tips: string[]
+  breathing?: string
   alternatives: string[]
   tags: string[]
 }
@@ -220,6 +221,13 @@ export default function ExerciseDetailPage() {
                 </li>
               ))}
             </ul>
+          </Section>
+        )}
+
+        {/* Breathing */}
+        {exercise.breathing && (
+          <Section title={t(lang, 'exercises.breathing')} icon={<Wind size={16} className="text-success" />}>
+            <p className="text-t2 text-sm leading-relaxed">{exercise.breathing}</p>
           </Section>
         )}
 

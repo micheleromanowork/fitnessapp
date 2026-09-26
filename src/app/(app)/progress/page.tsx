@@ -1,8 +1,10 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
-import { Flame, TrendingUp, Dumbbell, Clock, Plus, X, ChevronRight, Trophy } from 'lucide-react'
+import { useRouter } from 'next/navigation'
+import { Flame, TrendingUp, Dumbbell, Clock, Plus, X, ChevronRight, Trophy, RotateCcw } from 'lucide-react'
 import { useProfile } from '@/stores/profile'
+import { useWorkout } from '@/stores/workout'
 import { t, type Locale } from '@/i18n'
 import {
   BarChart, Bar, LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid,
@@ -181,6 +183,8 @@ function HistoryTab({ lang, units }: { lang: Locale; units: string }) {
   const [loading, setLoading] = useState(true)
   const [selected, setSelected] = useState<WorkoutDetail | null>(null)
   const [detailLoading, setDetailLoading] = useState(false)
+  const { startWorkout, addExerciseFromTemplate } = useWorkout()
+  const router = useRouter()
 
   useEffect(() => {
     fetch('/api/workouts')
@@ -197,6 +201,15 @@ function HistoryTab({ lang, units }: { lang: Locale; units: string }) {
     } finally {
       setDetailLoading(false)
     }
+  }
+
+  function repeatWorkout(w: WorkoutDetail) {
+    startWorkout(w.name)
+    for (const ex of [...w.exercises].sort((a, b) => (a.order ?? 0) - (b.order ?? 0))) {
+      const completed = ex.sets.filter(s => s.isCompleted)
+      addExerciseFromTemplate(ex.exerciseId, ex.name ?? ex.exerciseId, completed.length || null, null, null)
+    }
+    router.push('/workout')
   }
 
   if (loading) return <div className="text-center py-12 text-t3 text-sm">{t(lang, 'common.loading')}</div>
@@ -245,18 +258,20 @@ function HistoryTab({ lang, units }: { lang: Locale; units: string }) {
           lang={lang}
           units={units}
           onClose={() => setSelected(null)}
+          onRepeat={repeatWorkout}
         />
       )}
     </>
   )
 }
 
-function WorkoutDetailModal({ workout, loading, lang, units, onClose }: {
+function WorkoutDetailModal({ workout, loading, lang, units, onClose, onRepeat }: {
   workout: WorkoutDetail | null
   loading: boolean
   lang: Locale
   units: string
   onClose: () => void
+  onRepeat: (w: WorkoutDetail) => void
 }) {
   const wUnit = units === 'imperial' ? 'lbs' : 'kg'
   return (
@@ -281,7 +296,16 @@ function WorkoutDetailModal({ workout, loading, lang, units, onClose }: {
                   {workout.totalVolumeKg ? ` · ${Math.round(workout.totalVolumeKg)} ${wUnit}` : ''}
                 </p>
               </div>
-              <button onClick={onClose} className="text-t3 shrink-0"><X size={20} /></button>
+              <div className="flex items-center gap-2 shrink-0">
+                <button
+                  onClick={() => { onClose(); onRepeat(workout) }}
+                  className="btn-secondary h-9 px-3 gap-1.5 text-xs"
+                >
+                  <RotateCcw size={13} />
+                  {lang === 'it' ? 'Ripeti' : 'Repeat'}
+                </button>
+                <button onClick={onClose} className="text-t3"><X size={20} /></button>
+              </div>
             </div>
 
             <div className="space-y-4">

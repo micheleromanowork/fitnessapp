@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { Dumbbell, Zap, TrendingUp, Flame } from 'lucide-react'
+import { Dumbbell, Zap, TrendingUp, Flame, ChevronRight } from 'lucide-react'
 import { useProfile } from '@/stores/profile'
 import { useWorkout } from '@/stores/workout'
 import { t, type Locale } from '@/i18n'
@@ -30,6 +30,12 @@ interface RecentWorkout {
   durationSec: number | null
 }
 
+interface ActiveProgram {
+  id: string
+  name: string
+  nextDayName: string | null
+}
+
 function getGreeting(lang: Locale): string {
   const h = new Date().getHours()
   if (h < 12) return t(lang, 'home.morning')
@@ -51,13 +57,15 @@ export function HomeClient({ user }: { user: User }) {
   const [stats, setStats] = useState<Stats | null>(null)
   const [recentPRs, setRecentPRs] = useState<PR[]>([])
   const [recentWorkouts, setRecentWorkouts] = useState<RecentWorkout[]>([])
+  const [activeProgram, setActiveProgram] = useState<ActiveProgram | null>(null)
 
   useEffect(() => {
     Promise.all([
       fetch('/api/progress').then(r => r.ok ? r.json() : null),
       fetch(`/api/prs?lang=${lang}`).then(r => r.ok ? r.json() : []),
       fetch('/api/workouts').then(r => r.ok ? r.json() : []),
-    ]).then(([progress, prs, wkts]) => {
+      fetch('/api/programs').then(r => r.ok ? r.json() : []),
+    ]).then(([progress, prs, wkts, programs]) => {
       if (progress) setStats({ streak: progress.streak, weeklyVolumeKg: progress.weeklyVolumeKg, totalWorkouts: progress.totalWorkouts })
       // Keep only the 3 most recent unique-exercise PRs
       const seen = new Set<string>()
@@ -71,6 +79,8 @@ export function HomeClient({ user }: { user: User }) {
       }
       setRecentPRs(best)
       setRecentWorkouts((wkts ?? []).slice(0, 3))
+      const prog = (programs ?? []).find((p: { isActive: boolean; id: string; name: string }) => p.isActive)
+      if (prog) setActiveProgram({ id: prog.id, name: prog.name, nextDayName: null })
     }).catch(() => {})
   }, [lang])
 
@@ -147,6 +157,24 @@ export function HomeClient({ user }: { user: User }) {
           unit={lang === 'it' ? 'allenamenti' : 'workouts'}
         />
       </div>
+
+      {/* Active program */}
+      {activeProgram && !active && (
+        <Link href={`/programs/${activeProgram.id}`} className="block card p-4 border-accent/20 bg-accent/5 active:scale-[0.98] transition-transform">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-accent/15 flex items-center justify-center shrink-0">
+              <span className="text-lg">📋</span>
+            </div>
+            <div className="flex-1 min-w-0">
+              <p className="text-[10px] text-accent font-medium uppercase tracking-wider">
+                {lang === 'it' ? 'Programma attivo' : 'Active program'}
+              </p>
+              <p className="text-t1 font-semibold text-sm truncate">{activeProgram.name}</p>
+            </div>
+            <ChevronRight size={16} className="text-t3 shrink-0" />
+          </div>
+        </Link>
+      )}
 
       {/* Recent PRs */}
       {recentPRs.length > 0 && (

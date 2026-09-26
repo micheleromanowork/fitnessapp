@@ -1,4 +1,5 @@
 'use client'
+import { useState } from 'react'
 import { Check } from 'lucide-react'
 import type { ActiveSet, SetType } from '@/stores/workout'
 import { useWorkout } from '@/stores/workout'
@@ -11,6 +12,17 @@ const SET_LABEL: Record<SetType, string> = {
   failure: 'F',
   amrap: 'A',
   rest_pause: 'R',
+}
+
+const ALL_TYPES: SetType[] = ['normal', 'warmup', 'drop_set', 'failure', 'amrap', 'rest_pause']
+
+const TYPE_LABEL: Record<SetType, string> = {
+  normal: 'Normal',
+  warmup: 'Warm-up',
+  drop_set: 'Drop set',
+  failure: 'Failure',
+  amrap: 'AMRAP',
+  rest_pause: 'Rest-pause',
 }
 
 interface Props {
@@ -26,20 +38,26 @@ interface Props {
 
 export function SetRow({ wexId, set, index, lang, units, prWeightKg, onComplete, onRemove }: Props) {
   const { updateSet } = useWorkout()
+  const [showTypePicker, setShowTypePicker] = useState(false)
   const label = set.type === 'normal' ? String(index + 1) : SET_LABEL[set.type]
   const willBePR = !set.isCompleted && prWeightKg > 0 && (set.weightKg ?? 0) > prWeightKg
 
   return (
+    <>
     <div className={`set-row py-1.5 transition-opacity ${set.isCompleted ? 'opacity-50' : ''}`}>
-      {/* Set label / PR indicator */}
-      <div className={`text-center text-sm font-bold rounded-lg py-1 ${
-        set.isPr ? 'text-warning' :
-        set.type === 'warmup' ? 'text-warning' :
-        set.type === 'drop_set' ? 'text-accent' :
-        'text-t3'
-      }`}>
+      {/* Set label / PR indicator — tap to change type */}
+      <button
+        onClick={() => !set.isCompleted && setShowTypePicker(true)}
+        className={`text-center text-sm font-bold rounded-lg py-1 w-full transition-colors ${
+          set.isPr ? 'text-warning' :
+          set.type === 'warmup' ? 'text-warning' :
+          set.type === 'drop_set' ? 'text-accent' :
+          set.type !== 'normal' ? 'text-primary' :
+          'text-t3'
+        }`}
+      >
         {set.isPr ? '🏆' : (label || String(index + 1))}
-      </div>
+      </button>
 
       {/* Weight */}
       <input
@@ -96,5 +114,29 @@ export function SetRow({ wexId, set, index, lang, units, prWeightKg, onComplete,
         <Check size={16} />
       </button>
     </div>
+
+    {showTypePicker && (
+      <div className="fixed inset-0 z-50 flex items-end" onClick={() => setShowTypePicker(false)}>
+        <div className="w-full bg-[#111118] border-t border-white/10 rounded-t-3xl p-5 pb-10" onClick={e => e.stopPropagation()}>
+          <div className="flex justify-center mb-4"><div className="w-10 h-1 bg-white/20 rounded-full" /></div>
+          <p className="text-t3 text-xs font-medium uppercase tracking-wider mb-3">Set type</p>
+          <div className="grid grid-cols-2 gap-2">
+            {ALL_TYPES.map(type => (
+              <button
+                key={type}
+                onClick={() => { updateSet(wexId, set.id, { type }); setShowTypePicker(false) }}
+                className={`p-3 rounded-xl text-sm font-medium text-left transition-colors ${
+                  set.type === type ? 'bg-primary text-white' : 'bg-[#1a1a24] text-t2 hover:bg-[#222230]'
+                }`}
+              >
+                {SET_LABEL[type] && <span className="font-bold mr-2">{SET_LABEL[type]}</span>}
+                {TYPE_LABEL[type]}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+    )}
+    </>
   )
 }

@@ -58,6 +58,7 @@ interface WorkoutStore {
   addExercise(exerciseId: string, name: string): void
   addExerciseFromTemplate(exerciseId: string, name: string, setsTarget: number | null, repsTarget: number | null, restSec: number | null): void
   removeExercise(wexId: string): void
+  replaceExercise(wexId: string, newExerciseId: string, newName: string): void
 
   addSet(wexId: string, type?: SetType): void
   updateSet(wexId: string, setId: string, patch: Partial<ActiveSet>): void
@@ -131,6 +132,13 @@ export const useWorkout = create<WorkoutStore>()(
       removeExercise: (wexId) =>
         set(s => s.active
           ? { active: { ...s.active, exercises: s.active.exercises.filter(e => e.id !== wexId) } }
+          : s),
+
+      replaceExercise: (wexId, newExerciseId, newName) =>
+        set(s => s.active
+          ? { active: { ...s.active, exercises: s.active.exercises.map(e =>
+              e.id !== wexId ? e : { ...e, exerciseId: newExerciseId, exerciseName: newName }
+            )}}
           : s),
 
       addSet: (wexId, type = 'normal') =>

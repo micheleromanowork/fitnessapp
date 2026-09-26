@@ -1,4 +1,5 @@
 'use client'
+import { useState, useEffect } from 'react'
 import { Plus, Trash2 } from 'lucide-react'
 import { useWorkout, type ActiveExercise } from '@/stores/workout'
 import { t, type Locale } from '@/i18n'
@@ -11,8 +12,27 @@ interface Props {
 }
 
 export function ExerciseCard({ exercise, lang, units }: Props) {
-  const { removeExercise, addSet } = useWorkout()
+  const { removeExercise, addSet, updateSet, completeSet, removeSet } = useWorkout()
   const weightLabel = units === 'imperial' ? 'lbs' : 'kg'
+  const [prWeightKg, setPrWeightKg] = useState(0)
+
+  useEffect(() => {
+    fetch(`/api/prs?exerciseId=${exercise.exerciseId}`)
+      .then(r => r.ok ? r.json() : [])
+      .then((prs: { type: string; weightKg: number | null; value: number }[]) => {
+        const w = prs.find(p => p.type === 'weight')
+        if (w) setPrWeightKg(w.weightKg ?? w.value)
+      })
+      .catch(() => {})
+  }, [exercise.exerciseId])
+
+  function handleCompleteSet(setId: string) {
+    const s = exercise.sets.find(s => s.id === setId)
+    if (s && prWeightKg > 0 && (s.weightKg ?? 0) > prWeightKg) {
+      updateSet(exercise.id, setId, { isPr: true })
+    }
+    completeSet(exercise.id, setId)
+  }
 
   return (
     <div className="card overflow-hidden">
@@ -57,6 +77,9 @@ export function ExerciseCard({ exercise, lang, units }: Props) {
             index={i}
             lang={lang}
             units={units}
+            prWeightKg={prWeightKg}
+            onComplete={() => handleCompleteSet(set.id)}
+            onRemove={() => removeSet(exercise.id, set.id)}
           />
         ))}
       </div>

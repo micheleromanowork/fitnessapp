@@ -15,6 +15,7 @@ interface TemplateEx {
   setsTarget: number | null
   repsMin: number | null
   repsMax: number | null
+  restSec: number | null
   nameEn: string | null
   nameIt: string | null
 }
@@ -39,7 +40,7 @@ export default function ProgramDetailPage({ params }: { params: Promise<{ id: st
   const { id } = use(params)
   const lang = useProfile(s => s.language)
   const router = useRouter()
-  const { startWorkout, addExercise } = useWorkout()
+  const { startWorkout, addExerciseFromTemplate } = useWorkout()
   const [program, setProgram] = useState<ProgramDetail | null>(null)
   const [loading, setLoading] = useState(true)
   const [addExToDay, setAddExToDay] = useState<string | null>(null) // dayId
@@ -74,11 +75,10 @@ export default function ProgramDetailPage({ params }: { params: Promise<{ id: st
   }
 
   function handleStartDay(day: ProgramDay) {
-    const workoutName = day.name
-    startWorkout(workoutName, id, day.id)
+    startWorkout(day.name, id, day.id)
     for (const ex of day.exercises) {
       const name = lang === 'it' ? ex.nameIt ?? ex.nameEn ?? '' : ex.nameEn ?? ex.nameIt ?? ''
-      addExercise(ex.exerciseId, name)
+      addExerciseFromTemplate(ex.exerciseId, name, ex.setsTarget, ex.repsMin, ex.restSec)
     }
     router.push('/workout')
   }

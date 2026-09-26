@@ -1,19 +1,64 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import { signOut } from 'next-auth/react'
 import { useProfile } from '@/stores/profile'
-import { t } from '@/i18n'
-import { LogOut, Globe, Scale } from 'lucide-react'
+import { t, type Locale } from '@/i18n'
+import { LogOut, Globe, Scale, Timer, Zap, Dumbbell, Flame, Trophy } from 'lucide-react'
 
 type User = { id?: string | null; name?: string | null; email?: string | null; image?: string | null }
 
+interface Stats {
+  totalWorkouts: number
+  streak: number
+  weeklyVolumeKg: number
+}
+
+interface ToggleProps {
+  checked: boolean
+  onChange: (v: boolean) => void
+}
+
+function Toggle({ checked, onChange }: ToggleProps) {
+  return (
+    <button
+      onClick={() => onChange(!checked)}
+      className={`relative w-11 h-6 rounded-full transition-colors ${checked ? 'bg-primary' : 'bg-white/20'}`}
+    >
+      <span className={`absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white shadow transition-transform ${checked ? 'translate-x-5' : ''}`} />
+    </button>
+  )
+}
+
 export function ProfileClient({ user }: { user: User }) {
-  const lang = useProfile(s => s.language)
+  const lang = useProfile(s => s.language) as Locale
   const units = useProfile(s => s.units)
+  const defaultRestSec = useProfile(s => s.defaultRestSec)
+  const autoStartTimer = useProfile(s => s.autoStartTimer)
   const setProfile = useProfile(s => s.set)
 
+  const [stats, setStats] = useState<Stats | null>(null)
+
+  useEffect(() => {
+    fetch('/api/progress')
+      .then(r => r.ok ? r.json() : null)
+      .then(d => { if (d) setStats({ totalWorkouts: d.totalWorkouts, streak: d.streak, weeklyVolumeKg: d.weeklyVolumeKg }) })
+      .catch(() => {})
+  }, [])
+
+  function handleSetting(patch: Parameters<typeof setProfile>[0]) {
+    setProfile(patch)
+    fetch('/api/profile', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(patch),
+    }).catch(() => {})
+  }
+
+  const restOptions = [60, 90, 120, 180, 240]
+
   return (
-    <div className="min-h-screen px-4 py-6 space-y-6">
+    <div className="min-h-screen px-4 py-6 space-y-5 pb-28">
       <h1 className="text-2xl font-bold text-t1">{t(lang, 'nav.profile')}</h1>
 
       {/* User card */}
@@ -28,6 +73,31 @@ export function ProfileClient({ user }: { user: User }) {
         </div>
       </div>
 
+      {/* Stats row */}
+      {stats && (
+        <div className="grid grid-cols-3 gap-3">
+          <div className="card p-3 space-y-1 text-center">
+            <Dumbbell size={18} className="text-primary mx-auto" />
+            <p className="text-xl font-bold text-t1">{stats.totalWorkouts}</p>
+            <p className="text-t3 text-[11px]">{lang === 'it' ? 'Allenamenti' : 'Workouts'}</p>
+          </div>
+          <div className="card p-3 space-y-1 text-center">
+            <Flame size={18} className="text-warning mx-auto" />
+            <p className="text-xl font-bold text-t1">{stats.streak}</p>
+            <p className="text-t3 text-[11px]">{lang === 'it' ? 'Streak (giorni)' : 'Streak (days)'}</p>
+          </div>
+          <div className="card p-3 space-y-1 text-center">
+            <Trophy size={18} className="text-accent mx-auto" />
+            <p className="text-xl font-bold text-t1">
+              {stats.weeklyVolumeKg >= 1000
+                ? `${(stats.weeklyVolumeKg / 1000).toFixed(1)}t`
+                : `${Math.round(stats.weeklyVolumeKg)}`}
+            </p>
+            <p className="text-t3 text-[11px]">{lang === 'it' ? 'Vol. sett. (kg)' : 'Weekly vol.'}</p>
+          </div>
+        </div>
+      )}
+
       {/* Settings */}
       <div className="card divide-y divide-white/[0.06]">
         {/* Language */}
@@ -38,7 +108,7 @@ export function ProfileClient({ user }: { user: User }) {
           </div>
           <select
             value={lang}
-            onChange={e => setProfile({ language: e.target.value as 'it' | 'en' })}
+            onChange={e => handleSetting({ language: e.target.value as 'it' | 'en' })}
             className="bg-transparent text-t1 text-sm focus:outline-none"
           >
             <option value="it">Italiano</option>
@@ -54,12 +124,43 @@ export function ProfileClient({ user }: { user: User }) {
           </div>
           <select
             value={units}
-            onChange={e => setProfile({ units: e.target.value as 'metric' | 'imperial' })}
+            onChange={e => handleSetting({ units: e.target.value as 'metric' | 'imperial' })}
             className="bg-transparent text-t1 text-sm focus:outline-none"
           >
             <option value="metric">kg / cm</option>
             <option value="imperial">lbs / in</option>
           </select>
+        </div>
+
+        {/* Default rest timer */}
+        <div className="p-4 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <Timer size={18} className="text-t3" />
+            <span className="text-t2 text-sm">{t(lang, 'profile.defaultRest')}</span>
+          </div>
+          <select
+            value={defaultRestSec}
+            onChange={e => handleSetting({ defaultRestSec: Number(e.target.value) })}
+            className="bg-transparent text-t1 text-sm focus:outline-none"
+          >
+            {restOptions.map(s => (
+              <option key={s} value={s}>
+                {s < 60 ? `${s}s` : s === 60 ? '1 min' : s === 90 ? '1:30' : s === 120 ? '2 min' : s === 180 ? '3 min' : '4 min'}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        {/* Auto-start timer */}
+        <div className="p-4 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <Zap size={18} className="text-t3" />
+            <span className="text-t2 text-sm">{t(lang, 'profile.autoStart')}</span>
+          </div>
+          <Toggle
+            checked={autoStartTimer}
+            onChange={v => handleSetting({ autoStartTimer: v })}
+          />
         </div>
       </div>
 

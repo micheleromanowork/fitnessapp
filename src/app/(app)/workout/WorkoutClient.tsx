@@ -21,11 +21,15 @@ function fmtElapsed(ms: number): string {
 export function WorkoutClient() {
   const lang = useProfile(s => s.language)
   const units = useProfile(s => s.units)
-  const { active, startWorkout, finishWorkout, discardWorkout, timerRunning, tickTimer } = useWorkout()
+  const defaultRestSec = useProfile(s => s.defaultRestSec)
+  const autoStartTimer = useProfile(s => s.autoStartTimer)
+  const { active, startWorkout, finishWorkout, discardWorkout, timerRunning, tickTimer, syncFromProfile } = useWorkout()
 
   const [elapsed, setElapsed] = useState(0)
   const [showAddExercise, setShowAddExercise] = useState(false)
   const [finishedWorkout, setFinishedWorkout] = useState<ActiveWorkout | null>(null)
+
+  useEffect(() => { syncFromProfile(defaultRestSec, autoStartTimer) }, [defaultRestSec, autoStartTimer, syncFromProfile])
 
   // Elapsed display ticker
   useEffect(() => {

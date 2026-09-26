@@ -56,7 +56,7 @@ export default function ProgressPage() {
   const units = useProfile(s => s.units)
   const [stats, setStats] = useState<Stats | null>(null)
   const [loading, setLoading] = useState(true)
-  const [tab, setTab] = useState<'stats' | 'body' | 'history' | 'prs'>('stats')
+  const [tab, setTab] = useState<'stats' | 'history' | 'prs' | 'body' | 'calendar'>('stats')
   const [showAddMeasure, setShowAddMeasure] = useState(false)
 
   const load = useCallback(async () => {
@@ -84,7 +84,7 @@ export default function ProgressPage() {
 
       {/* Tab switcher */}
       <div className="flex gap-1.5 mb-5 overflow-x-auto scrollbar-none">
-        {(['stats', 'history', 'prs', 'body'] as const).map(tab_ => (
+        {(['stats', 'history', 'prs', 'body', 'calendar'] as const).map(tab_ => (
           <button
             key={tab_}
             onClick={() => setTab(tab_)}
@@ -95,6 +95,7 @@ export default function ProgressPage() {
             {tab_ === 'stats' ? t(lang, 'analytics.title')
               : tab_ === 'history' ? (lang === 'it' ? 'Storico' : 'History')
               : tab_ === 'prs' ? 'Records'
+              : tab_ === 'calendar' ? (lang === 'it' ? 'Calendario' : 'Calendar')
               : t(lang, 'progress.measurements')}
           </button>
         ))}
@@ -164,6 +165,8 @@ export default function ProgressPage() {
       {!loading && tab === 'history' && <HistoryTab lang={lang} units={units} />}
 
       {!loading && tab === 'prs' && <PRsTab lang={lang} />}
+
+      {!loading && tab === 'calendar' && <CalendarTab lang={lang} />}
 
       {!loading && tab === 'body' && (
         <BodyTab lang={lang} units={units} stats={stats} onAddMeasure={() => setShowAddMeasure(true)} />
@@ -669,6 +672,128 @@ function BodyTab({ lang, units, stats, onAddMeasure }: {
           ))}
         </div>
       )}
+    </div>
+  )
+}
+
+// ── Calendar Heatmap ──────────────────────────────────────────────────────────
+function CalendarTab({ lang }: { lang: Locale }) {
+  const [dates, setDates] = useState<Set<string>>(new Set())
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    fetch('/api/workouts')
+      .then(r => r.ok ? r.json() : [])
+      .then((wkts: { startedAt: string }[]) => {
+        const s = new Set(wkts.map(w => new Date(w.startedAt).toISOString().slice(0, 10)))
+        setDates(s)
+        setLoading(false)
+      })
+      .catch(() => setLoading(false))
+  }, [])
+
+  if (loading) return <div className="text-center py-12 text-t3 text-sm">{t(lang, 'common.loading')}</div>
+
+  // Build 16-week grid (today back to 112 days ago)
+  const today = new Date()
+  today.setHours(0, 0, 0, 0)
+  const startDay = new Date(today)
+  startDay.setDate(startDay.getDate() - 111) // 16 weeks
+  // Align to Monday
+  const dow = startDay.getDay()
+  startDay.setDate(startDay.getDate() - ((dow + 6) % 7))
+
+  const weeks: Date[][] = []
+  const cur = new Date(startDay)
+  while (cur <= today) {
+    const week: Date[] = []
+    for (let d = 0; d < 7; d++) {
+      week.push(new Date(cur))
+      cur.setDate(cur.getDate() + 1)
+    }
+    weeks.push(week)
+  }
+
+  const months: { label: string; col: number }[] = []
+  weeks.forEach((week, i) => {
+    const first = week[0]
+    if (first.getDate() <= 7) {
+      months.push({
+        label: first.toLocaleDateString(lang === 'it' ? 'it-IT' : 'en-US', { month: 'short' }),
+        col: i,
+      })
+    }
+  })
+
+  const total = dates.size
+
+  return (
+    <div className="space-y-4">
+      <div className="card p-4">
+        <div className="flex items-center justify-between mb-3">
+          <p className="text-t2 text-sm font-semibold">{lang === 'it' ? 'Attività (16 settimane)' : 'Activity (16 weeks)'}</p>
+          <p className="text-t3 text-xs">{total} {lang === 'it' ? 'allenamenti' : 'workouts'}</p>
+        </div>
+
+        <div className="overflow-x-auto">
+          <div style={{ minWidth: weeks.length * 14 + 20 }}>
+            {/* Month labels */}
+            <div className="flex mb-1" style={{ paddingLeft: 20 }}>
+              {months.map(m => (
+                <div
+                  key={`${m.label}-${m.col}`}
+                  className="text-t3 text-[10px]"
+                  style={{ position: 'relative', left: m.col * 14, minWidth: 0 }}
+                >
+                  {m.label}
+                </div>
+              ))}
+            </div>
+
+            <div className="flex gap-0.5">
+              {/* Day labels */}
+              <div className="flex flex-col gap-0.5 mr-1">
+                {['M', '', 'W', '', 'F', '', ''].map((d, i) => (
+                  <div key={i} className="w-3 h-3 text-[9px] text-t3 flex items-center justify-center">{d}</div>
+                ))}
+              </div>
+
+              {weeks.map((week, wi) => (
+                <div key={wi} className="flex flex-col gap-0.5">
+                  {week.map((day, di) => {
+                    const iso = day.toISOString().slice(0, 10)
+                    const isFuture = day > today
+                    const hasWorkout = dates.has(iso)
+                    return (
+                      <div
+                        key={di}
+                        className="w-3 h-3 rounded-[2px]"
+                        style={{
+                          background: isFuture
+                            ? 'transparent'
+                            : hasWorkout
+                            ? 'var(--primary)'
+                            : 'rgba(255,255,255,0.06)',
+                          opacity: isFuture ? 0 : 1,
+                        }}
+                        title={iso}
+                      />
+                    )
+                  })}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-2 mt-3 justify-end">
+          <span className="text-t3 text-[10px]">{lang === 'it' ? 'Meno' : 'Less'}</span>
+          {[false, true].map(active => (
+            <div key={String(active)} className="w-3 h-3 rounded-[2px]" style={{ background: active ? 'var(--primary)' : 'rgba(255,255,255,0.06)' }} />
+          ))}
+          <span className="text-t3 text-[10px]">{lang === 'it' ? 'Più' : 'More'}</span>
+        </div>
+      </div>
     </div>
   )
 }

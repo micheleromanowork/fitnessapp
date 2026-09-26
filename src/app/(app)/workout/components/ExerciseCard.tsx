@@ -1,6 +1,6 @@
 'use client'
 import { useState, useEffect } from 'react'
-import { Plus, Trash2, RefreshCcw } from 'lucide-react'
+import { Plus, Trash2, RefreshCcw, Timer } from 'lucide-react'
 import { useWorkout, type ActiveExercise } from '@/stores/workout'
 import { t, type Locale } from '@/i18n'
 import { SetRow } from './SetRow'
@@ -13,10 +13,12 @@ interface Props {
 }
 
 export function ExerciseCard({ exercise, lang, units }: Props) {
-  const { removeExercise, replaceExercise, addSet, updateSet, completeSet, removeSet } = useWorkout()
+  const { removeExercise, replaceExercise, setExerciseRest, addSet, updateSet, completeSet, removeSet } = useWorkout()
   const weightLabel = units === 'imperial' ? 'lbs' : 'kg'
   const [prWeightKg, setPrWeightKg] = useState(0)
   const [showReplace, setShowReplace] = useState(false)
+  const [showRestPicker, setShowRestPicker] = useState(false)
+  const REST_OPTIONS = [30, 60, 90, 120, 180, 240]
 
   useEffect(() => {
     fetch(`/api/prs?exerciseId=${exercise.exerciseId}`)
@@ -45,6 +47,13 @@ export function ExerciseCard({ exercise, lang, units }: Props) {
         </h3>
         <div className="flex items-center gap-1 flex-shrink-0">
           <button
+            onClick={() => setShowRestPicker(v => !v)}
+            className={`w-8 h-8 flex items-center justify-center transition-colors ${exercise.restSec ? 'text-accent' : 'text-t3 hover:text-accent'}`}
+            aria-label="Rest timer"
+          >
+            <Timer size={14} />
+          </button>
+          <button
             onClick={() => setShowReplace(true)}
             className="w-8 h-8 flex items-center justify-center text-t3 hover:text-accent transition-colors"
             aria-label={t(lang, 'exercises.replace')}
@@ -67,6 +76,24 @@ export function ExerciseCard({ exercise, lang, units }: Props) {
           />
         )}
       </div>
+
+      {/* Rest time picker */}
+      {showRestPicker && (
+        <div className="px-4 pb-2 flex items-center gap-2 flex-wrap">
+          <span className="text-t3 text-xs">{lang === 'it' ? 'Riposo:' : 'Rest:'}</span>
+          {REST_OPTIONS.map(s => (
+            <button
+              key={s}
+              onClick={() => { setExerciseRest(exercise.id, s); setShowRestPicker(false) }}
+              className={`h-7 px-2.5 rounded-lg text-xs font-medium transition-colors ${
+                exercise.restSec === s ? 'bg-accent text-white' : 'bg-[#1a1a24] text-t2 hover:bg-[#222230]'
+              }`}
+            >
+              {s < 60 ? `${s}s` : s === 60 ? '1m' : s === 90 ? '1:30' : `${s / 60}m`}
+            </button>
+          ))}
+        </div>
+      )}
 
       {/* Column headers */}
       <div className="set-row px-4 pb-1">

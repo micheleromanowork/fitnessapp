@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { auth } from '@/lib/auth/config'
 import db from '@/lib/db/client'
-import { profiles, workouts, personalRecords, exercises, bodyMeasurements } from '@/lib/db/schema'
+import { profiles, workouts, personalRecords, exercises, bodyMeasurements, aiConversations, aiMessages } from '@/lib/db/schema'
 import { eq, desc, and } from 'drizzle-orm'
+import { generateId } from '@/lib/utils'
 
 export const runtime = 'nodejs'
 
@@ -11,7 +12,7 @@ export async function POST(req: NextRequest) {
   if (!session?.user?.id) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   const uid = session.user.id
 
-  const { messages, lang = 'en' } = await req.json()
+  const { messages, lang = 'en', conversationId, userMessage } = await req.json()
 
   const groqKey = process.env.GROQ_API_KEY
   if (!groqKey) {
@@ -75,6 +76,22 @@ Dai consigli pratici, motivanti e basati sui dati reali dell'utente.`
 Profile: goal=${profile?.goal ?? 'not set'}, level=${profile?.level ?? 'intermediate'}, frequency=${profile?.weeklyFrequency ?? 3} days/week.
 Last ${recentWorkouts.length} workouts: avg volume ${avgVol}kg, avg duration ${avgDur}min.${prLines ? `\nPersonal records: ${prLines}.` : ''}${bodyLine ? `\nBody stats: ${bodyLine}.` : ''}
 Give practical, motivating advice grounded in the user's real data.`
+
+  // Persist user message
+  if (conversationId && userMessage) {
+    const conv = db.select().from(aiConversations)
+      .where(and(eq(aiConversations.id, conversationId), eq(aiConversations.userId, uid)))
+      .get()
+    if (conv) {
+      db.insert(aiMessages).values({
+        id: generateId(), conversationId, role: 'user', content: userMessage,
+      }).run()
+      db.update(aiConversations)
+        .set({ updatedAt: new Date() })
+        .where(eq(aiConversations.id, conversationId))
+        .run()
+    }
+  }
 
   try {
     const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {

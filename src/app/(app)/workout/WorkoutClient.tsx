@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Plus, Dumbbell } from 'lucide-react'
+import { Plus, Dumbbell, StickyNote, Calculator } from 'lucide-react'
 import { useWorkout, type ActiveWorkout } from '@/stores/workout'
 import { useProfile } from '@/stores/profile'
 import { t } from '@/i18n'
@@ -9,6 +9,7 @@ import { RestTimerOverlay } from './components/RestTimerOverlay'
 import { ExerciseCard } from './components/ExerciseCard'
 import { AddExerciseSheet } from './components/AddExerciseSheet'
 import { WorkoutSummaryModal } from './components/WorkoutSummaryModal'
+import { PlateCalculator } from './components/PlateCalculator'
 
 function fmtElapsed(ms: number): string {
   const s = Math.floor(ms / 1000)
@@ -23,10 +24,12 @@ export function WorkoutClient() {
   const units = useProfile(s => s.units)
   const defaultRestSec = useProfile(s => s.defaultRestSec)
   const autoStartTimer = useProfile(s => s.autoStartTimer)
-  const { active, startWorkout, finishWorkout, discardWorkout, timerRunning, tickTimer, syncFromProfile } = useWorkout()
+  const { active, startWorkout, finishWorkout, discardWorkout, updateNotes, timerRunning, tickTimer, syncFromProfile } = useWorkout()
 
   const [elapsed, setElapsed] = useState(0)
   const [showAddExercise, setShowAddExercise] = useState(false)
+  const [showNotes, setShowNotes] = useState(false)
+  const [showPlates, setShowPlates] = useState(false)
   const [finishedWorkout, setFinishedWorkout] = useState<ActiveWorkout | null>(null)
 
   useEffect(() => { syncFromProfile(defaultRestSec, autoStartTimer) }, [defaultRestSec, autoStartTimer, syncFromProfile])
@@ -90,6 +93,20 @@ export function WorkoutClient() {
             </div>
             <div className="flex gap-2 flex-shrink-0">
               <button
+                onClick={() => setShowPlates(true)}
+                className="btn-ghost h-9 px-3 text-sm"
+                aria-label="Plate calculator"
+              >
+                <Calculator size={16} />
+              </button>
+              <button
+                onClick={() => setShowNotes(v => !v)}
+                className={`btn-ghost h-9 px-3 text-sm ${active.notes ? 'text-accent' : ''}`}
+                aria-label="Notes"
+              >
+                <StickyNote size={16} />
+              </button>
+              <button
                 onClick={handleDiscard}
                 className="btn-ghost h-9 px-3 text-sm text-danger"
               >
@@ -104,6 +121,19 @@ export function WorkoutClient() {
             </div>
           </div>
         </div>
+
+        {/* Workout notes */}
+        {showNotes && (
+          <div className="px-4 pt-3 pb-1">
+            <textarea
+              autoFocus
+              className="input text-sm resize-none h-20"
+              placeholder={lang === 'it' ? 'Note allenamento…' : 'Workout notes…'}
+              value={active.notes ?? ''}
+              onChange={e => updateNotes(e.target.value)}
+            />
+          </div>
+        )}
 
         {/* Exercise list */}
         <div className="px-4 py-4 space-y-4">
@@ -132,6 +162,10 @@ export function WorkoutClient() {
 
       {showAddExercise && (
         <AddExerciseSheet onClose={() => setShowAddExercise(false)} />
+      )}
+
+      {showPlates && (
+        <PlateCalculator onClose={() => setShowPlates(false)} lang={lang} units={units} />
       )}
 
       {finishedWorkout && (

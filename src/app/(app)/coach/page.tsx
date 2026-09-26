@@ -1,7 +1,7 @@
 'use client'
 
-import { useState, useRef, useEffect } from 'react'
-import { Send, Bot, User, Sparkles } from 'lucide-react'
+import { useState, useRef, useEffect, useCallback } from 'react'
+import { Send, Bot, User, Sparkles, Plus, ChevronLeft, Trash2 } from 'lucide-react'
 import { useProfile } from '@/stores/profile'
 import { t } from '@/i18n'
 
@@ -11,24 +11,82 @@ interface Message {
   content: string
 }
 
+interface Conversation {
+  id: string
+  title: string | null
+  updatedAt: number | null
+}
+
 export default function CoachPage() {
   const lang = useProfile(s => s.language)
+  const [conversations, setConversations] = useState<Conversation[]>([])
+  const [activeConvId, setActiveConvId] = useState<string | null>(null)
   const [messages, setMessages] = useState<Message[]>([])
   const [input, setInput] = useState('')
   const [streaming, setStreaming] = useState(false)
+  const [showList, setShowList] = useState(false)
   const bottomRef = useRef<HTMLDivElement>(null)
 
   const suggestions = t(lang, 'coach.suggestions')
   const suggList: string[] = Array.isArray(suggestions) ? suggestions : []
 
+  const loadConversations = useCallback(async () => {
+    const res = await fetch('/api/ai/conversations').catch(() => null)
+    if (res?.ok) setConversations(await res.json())
+  }, [])
+
+  useEffect(() => { loadConversations() }, [loadConversations])
+
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [messages])
+
+  async function openConversation(id: string) {
+    setActiveConvId(id)
+    setShowList(false)
+    const res = await fetch(`/api/ai/conversations/${id}`).catch(() => null)
+    if (res?.ok) {
+      const msgs: { id: string; role: string; content: string }[] = await res.json()
+      setMessages(msgs.map(m => ({ id: m.id, role: m.role as 'user' | 'assistant', content: m.content })))
+    }
+  }
+
+  async function newConversation() {
+    const res = await fetch('/api/ai/conversations', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({}) })
+    if (res.ok) {
+      const { id } = await res.json()
+      setActiveConvId(id)
+      setMessages([])
+      setShowList(false)
+      loadConversations()
+    }
+  }
+
+  async function deleteConversation(id: string) {
+    await fetch(`/api/ai/conversations/${id}`, { method: 'DELETE' }).catch(() => {})
+    if (id === activeConvId) { setActiveConvId(null); setMessages([]) }
+    setConversations(prev => prev.filter(c => c.id !== id))
+  }
 
   async function handleSend(text?: string) {
     const msg = text ?? input.trim()
     if (!msg || streaming) return
     setInput('')
+
+    let convId = activeConvId
+    if (!convId) {
+      const res = await fetch('/api/ai/conversations', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title: msg.slice(0, 60) }),
+      }).catch(() => null)
+      if (res?.ok) {
+        const data = await res.json()
+        convId = data.id
+        setActiveConvId(convId)
+        loadConversations()
+      }
+    }
 
     const userMsg: Message = { id: Date.now().toString(), role: 'user', content: msg }
     setMessages(prev => [...prev, userMsg])
@@ -37,12 +95,16 @@ export default function CoachPage() {
     const assistantId = (Date.now() + 1).toString()
     setMessages(prev => [...prev, { id: assistantId, role: 'assistant', content: '' }])
 
+    let assistantContent = ''
+
     try {
       const res = await fetch('/api/ai/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           lang,
+          conversationId: convId,
+          userMessage: msg,
           messages: [...messages, userMsg].map(m => ({ role: m.role, content: m.content })),
         }),
       })
@@ -50,7 +112,6 @@ export default function CoachPage() {
       const ct = res.headers.get('content-type') ?? ''
 
       if (ct.includes('text/event-stream') && res.body) {
-        // SSE streaming
         const reader = res.body.getReader()
         const decoder = new TextDecoder()
         let buf = ''
@@ -67,6 +128,7 @@ export default function CoachPage() {
               const json = JSON.parse(line.slice(6))
               const delta = json.choices?.[0]?.delta?.content ?? ''
               if (delta) {
+                assistantContent += delta
                 setMessages(prev => prev.map(m =>
                   m.id === assistantId ? { ...m, content: m.content + delta } : m
                 ))
@@ -75,18 +137,74 @@ export default function CoachPage() {
           }
         }
       } else {
-        // JSON fallback
         const data = await res.json()
+        assistantContent = data.content ?? ''
         setMessages(prev => prev.map(m =>
-          m.id === assistantId ? { ...m, content: data.content ?? '' } : m
+          m.id === assistantId ? { ...m, content: assistantContent } : m
         ))
       }
+
+      // Persist assistant reply
+      if (convId && assistantContent) {
+        fetch('/api/ai/conversations', {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ conversationId: convId, role: 'assistant', content: assistantContent }),
+        }).catch(() => {})
+        loadConversations()
+      }
     } catch {
+      const errMsg = '⚠️ ' + (lang === 'it' ? 'Errore di connessione.' : 'Connection error.')
+      assistantContent = errMsg
       setMessages(prev => prev.map(m =>
-        m.id === assistantId ? { ...m, content: '⚠️ ' + (lang === 'it' ? 'Errore di connessione.' : 'Connection error.') } : m
+        m.id === assistantId ? { ...m, content: errMsg } : m
       ))
     }
     setStreaming(false)
+  }
+
+  // Conversation list panel
+  if (showList) {
+    return (
+      <div className="flex flex-col h-[100dvh] pb-[calc(64px+env(safe-area-inset-bottom,0px))]">
+        <div className="flex-shrink-0 px-4 pt-6 pb-3 border-b border-white/[0.06] flex items-center gap-3">
+          <button onClick={() => setShowList(false)} className="text-t3">
+            <ChevronLeft size={20} />
+          </button>
+          <h1 className="text-t1 font-bold flex-1">{lang === 'it' ? 'Conversazioni' : 'Conversations'}</h1>
+          <button onClick={newConversation} className="btn-ghost h-9 px-3 gap-1.5 text-sm">
+            <Plus size={16} />
+            {lang === 'it' ? 'Nuova' : 'New'}
+          </button>
+        </div>
+        <div className="flex-1 overflow-y-auto px-4 py-3 space-y-2">
+          {conversations.length === 0 ? (
+            <p className="text-t3 text-sm text-center py-10">{lang === 'it' ? 'Nessuna conversazione' : 'No conversations'}</p>
+          ) : (
+            conversations.map(c => (
+              <div
+                key={c.id}
+                className={`card-2 px-4 py-3 flex items-center gap-3 cursor-pointer ${activeConvId === c.id ? 'border border-primary/40' : ''}`}
+                onClick={() => openConversation(c.id)}
+              >
+                <div className="flex-1 min-w-0">
+                  <p className="text-t1 text-sm font-medium truncate">{c.title ?? (lang === 'it' ? 'Conversazione' : 'Conversation')}</p>
+                  {c.updatedAt && (
+                    <p className="text-t3 text-xs mt-0.5">{new Date(c.updatedAt).toLocaleDateString(lang === 'it' ? 'it-IT' : 'en-US')}</p>
+                  )}
+                </div>
+                <button
+                  onClick={e => { e.stopPropagation(); deleteConversation(c.id) }}
+                  className="text-t3 hover:text-danger transition-colors p-1"
+                >
+                  <Trash2 size={15} />
+                </button>
+              </div>
+            ))
+          )}
+        </div>
+      </div>
+    )
   }
 
   return (
@@ -97,9 +215,21 @@ export default function CoachPage() {
           <div className="w-9 h-9 rounded-2xl bg-primary/20 flex items-center justify-center">
             <Sparkles size={18} className="text-primary" />
           </div>
-          <div>
+          <div className="flex-1">
             <h1 className="text-t1 font-bold">{t(lang, 'nav.coach')}</h1>
             <p className="text-t3 text-xs">{lang === 'it' ? 'Powered by Groq · LLaMA 3' : 'Powered by Groq · LLaMA 3'}</p>
+          </div>
+          <div className="flex gap-1">
+            <button onClick={newConversation} className="btn-ghost h-9 px-3" aria-label="New chat">
+              <Plus size={16} />
+            </button>
+            <button
+              onClick={() => setShowList(true)}
+              className="btn-ghost h-9 px-3 text-xs"
+            >
+              {conversations.length > 0 ? conversations.length : ''}
+              <Bot size={16} className="ml-1" />
+            </button>
           </div>
         </div>
       </div>
@@ -119,7 +249,6 @@ export default function CoachPage() {
               </div>
             </div>
 
-            {/* Suggestions */}
             <div className="flex flex-col gap-2 ml-11">
               {suggList.map((s, i) => (
                 <button

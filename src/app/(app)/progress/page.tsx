@@ -17,6 +17,8 @@ interface Stats {
   volumeByWeek: VolWeek[]
   latestMeasurement: Record<string, number | null> | null
 }
+interface MuscleVol { muscle: string; volumeKg: number }
+interface StrengthPoint { date: string; e1rm: number }
 
 interface WorkoutRow {
   id: string
@@ -151,6 +153,9 @@ export default function ProgressPage() {
               </ResponsiveContainer>
             </div>
           )}
+
+          <MuscleVolumeChart lang={lang} />
+          <StrengthProgressChart lang={lang} />
         </div>
       )}
 
@@ -302,6 +307,113 @@ function WorkoutDetailModal({ workout, loading, lang, units, onClose }: {
           </>
         )}
       </div>
+    </div>
+  )
+}
+
+// ── Muscle Volume Chart ───────────────────────────────────────────────────────
+function MuscleVolumeChart({ lang }: { lang: Locale }) {
+  const [data, setData] = useState<MuscleVol[]>([])
+
+  useEffect(() => {
+    fetch('/api/analytics/muscle-volume')
+      .then(r => r.ok ? r.json() : [])
+      .then(setData)
+      .catch(() => {})
+  }, [])
+
+  if (!data.length) return null
+
+  return (
+    <div className="card p-4 space-y-3">
+      <p className="text-t2 text-sm font-semibold">{t(lang, 'analytics.volumeByMuscle')} (4w)</p>
+      <ResponsiveContainer width="100%" height={Math.max(100, data.length * 28)}>
+        <BarChart data={data} layout="vertical" margin={{ top: 0, right: 8, left: 8, bottom: 0 }}>
+          <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" horizontal={false} />
+          <XAxis type="number" tick={{ fill: '#64748b', fontSize: 10 }} axisLine={false} tickLine={false} />
+          <YAxis dataKey="muscle" type="category" tick={{ fill: '#94a3b8', fontSize: 11 }} axisLine={false} tickLine={false} width={80}
+            tickFormatter={v => v.replace(/-/g, ' ')} />
+          <Tooltip
+            contentStyle={{ background: '#1a1a24', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 12, fontSize: 12 }}
+            labelStyle={{ color: '#94a3b8' }}
+            itemStyle={{ color: '#f59e0b' }}
+            formatter={(v: number) => [`${v} kg`, '']}
+          />
+          <Bar dataKey="volumeKg" fill="var(--warning)" radius={[0, 4, 4, 0]} />
+        </BarChart>
+      </ResponsiveContainer>
+    </div>
+  )
+}
+
+// ── Strength Progress Chart ───────────────────────────────────────────────────
+interface ExerciseOption { id: string; name: string }
+
+function StrengthProgressChart({ lang }: { lang: Locale }) {
+  const [exercises, setExercises] = useState<ExerciseOption[]>([])
+  const [selectedId, setSelectedId] = useState<string>('')
+  const [chartData, setChartData] = useState<StrengthPoint[]>([])
+
+  useEffect(() => {
+    fetch(`/api/prs?lang=${lang}`)
+      .then(r => r.ok ? r.json() : [])
+      .then((rows: { exerciseId: string; exerciseName: string | null }[]) => {
+        const seen = new Set<string>()
+        const opts: ExerciseOption[] = []
+        for (const r of rows) {
+          if (!seen.has(r.exerciseId)) {
+            seen.add(r.exerciseId)
+            opts.push({ id: r.exerciseId, name: r.exerciseName ?? r.exerciseId })
+          }
+        }
+        setExercises(opts)
+        if (opts.length) setSelectedId(opts[0].id)
+      })
+      .catch(() => {})
+  }, [lang])
+
+  useEffect(() => {
+    if (!selectedId) return
+    fetch(`/api/exercises/${selectedId}/strength-chart`)
+      .then(r => r.ok ? r.json() : [])
+      .then(setChartData)
+      .catch(() => {})
+  }, [selectedId])
+
+  if (!exercises.length) return null
+
+  return (
+    <div className="card p-4 space-y-3">
+      <div className="flex items-center justify-between gap-2">
+        <p className="text-t2 text-sm font-semibold">{t(lang, 'analytics.strengthProgress')}</p>
+        <select
+          value={selectedId}
+          onChange={e => setSelectedId(e.target.value)}
+          className="bg-[#1a1a24] text-t2 text-xs rounded-lg px-2 py-1 focus:outline-none max-w-[160px] truncate"
+        >
+          {exercises.map(ex => (
+            <option key={ex.id} value={ex.id}>{ex.name}</option>
+          ))}
+        </select>
+      </div>
+      {chartData.length < 2 ? (
+        <p className="text-t3 text-sm text-center py-4">{t(lang, 'analytics.noData')}</p>
+      ) : (
+        <ResponsiveContainer width="100%" height={140}>
+          <LineChart data={chartData} margin={{ top: 4, right: 8, left: -20, bottom: 0 }}>
+            <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" vertical={false} />
+            <XAxis dataKey="date" tick={{ fill: '#64748b', fontSize: 10 }} axisLine={false} tickLine={false} />
+            <YAxis tick={{ fill: '#64748b', fontSize: 10 }} axisLine={false} tickLine={false} domain={['auto', 'auto']} />
+            <Tooltip
+              contentStyle={{ background: '#1a1a24', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 12, fontSize: 12 }}
+              labelStyle={{ color: '#94a3b8' }}
+              itemStyle={{ color: '#6366f1' }}
+              formatter={(v: number) => [`${v} kg`, 'Est. 1RM']}
+            />
+            <Line type="monotone" dataKey="e1rm" stroke="var(--primary)" strokeWidth={2} dot={{ r: 3, fill: 'var(--primary)' }} activeDot={{ r: 5 }} />
+          </LineChart>
+        </ResponsiveContainer>
+      )}
     </div>
   )
 }

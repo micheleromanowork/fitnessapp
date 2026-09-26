@@ -194,13 +194,8 @@ export function HomeClient({ user }: { user: User }) {
         </div>
       )}
 
-      {/* AI Insight placeholder */}
-      {recentWorkouts.length === 0 && (
-        <div className="card p-4 space-y-2">
-          <p className="text-xs text-t3 font-medium uppercase tracking-wider">{t(lang, 'home.aiInsight')}</p>
-          <p className="text-t2 text-sm">{t(lang, 'home.noInsights')}</p>
-        </div>
-      )}
+      {/* AI Insight */}
+      <AIInsightCard lang={lang} />
 
       {/* Program quick nav */}
       <div className="grid grid-cols-2 gap-3">
@@ -229,5 +224,28 @@ function NavCard({ href, icon, label }: { href: string; icon: string; label: str
       <span className="text-2xl">{icon}</span>
       <span className="text-t1 font-medium text-sm">{label}</span>
     </Link>
+  )
+}
+
+function AIInsightCard({ lang }: { lang: Locale }) {
+  const [insight, setInsight] = useState<{ content: string; type: string } | null>(null)
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    fetch(`/api/insights?lang=${lang}`)
+      .then(r => r.ok ? r.json() : null)
+      .then(d => { if (d?.content) setInsight(d); setLoading(false) })
+      .catch(() => setLoading(false))
+  }, [lang])
+
+  if (loading || !insight) return null
+
+  const emoji = insight.type === 'warning' ? '⚠️' : insight.type === 'suggestion' ? '💡' : '✨'
+
+  return (
+    <div className="card p-4 space-y-2 bg-gradient-to-br from-primary/5 to-accent/5 border-primary/20">
+      <p className="text-xs text-t3 font-medium uppercase tracking-wider">{emoji} {t(lang, 'home.aiInsight')}</p>
+      <p className="text-t2 text-sm leading-relaxed">{insight.content}</p>
+    </div>
   )
 }

@@ -18,6 +18,22 @@
   --t3:       #64748b;
 }
 
+:root[data-theme="light"] {
+  --bg:       #f8f9fb;
+  --surface:  #ffffff;
+  --s2:       #f1f5f9;
+  --s3:       #e2e8f0;
+  --border:   rgba(0,0,0,0.08);
+  --primary:  #6366f1;
+  --accent:   #0891b2;
+  --success:  #059669;
+  --warning:  #d97706;
+  --danger:   #dc2626;
+  --t1:       #0f172a;
+  --t2:       #475569;
+  --t3:       #94a3b8;
+}
+
 * { -webkit-tap-highlight-color: transparent; box-sizing: border-box; }
 
 html { height: 100dvh; }

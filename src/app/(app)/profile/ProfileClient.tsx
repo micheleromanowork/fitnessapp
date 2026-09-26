@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { signOut } from 'next-auth/react'
 import { useProfile } from '@/stores/profile'
 import { t, type Locale } from '@/i18n'
-import { LogOut, Globe, Scale, Timer, Zap, Dumbbell, Flame, Trophy } from 'lucide-react'
+import { LogOut, Globe, Scale, Timer, Zap, Dumbbell, Flame, Trophy, Download, Sun } from 'lucide-react'
 
 type User = { id?: string | null; name?: string | null; email?: string | null; image?: string | null }
 
@@ -33,6 +33,7 @@ function Toggle({ checked, onChange }: ToggleProps) {
 export function ProfileClient({ user }: { user: User }) {
   const lang = useProfile(s => s.language) as Locale
   const units = useProfile(s => s.units)
+  const theme = useProfile(s => s.theme)
   const defaultRestSec = useProfile(s => s.defaultRestSec)
   const autoStartTimer = useProfile(s => s.autoStartTimer)
   const setProfile = useProfile(s => s.set)
@@ -162,7 +163,34 @@ export function ProfileClient({ user }: { user: User }) {
             onChange={v => handleSetting({ autoStartTimer: v })}
           />
         </div>
+
+        {/* Theme */}
+        <div className="p-4 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <Sun size={18} className="text-t3" />
+            <span className="text-t2 text-sm">{t(lang, 'profile.theme')}</span>
+          </div>
+          <select
+            value={theme}
+            onChange={e => handleSetting({ theme: e.target.value as 'dark' | 'light' | 'system' })}
+            className="bg-transparent text-t1 text-sm focus:outline-none"
+          >
+            <option value="dark">{t(lang, 'profile.dark')}</option>
+            <option value="light">{t(lang, 'profile.light')}</option>
+            <option value="system">{t(lang, 'profile.system')}</option>
+          </select>
+        </div>
       </div>
+
+      {/* Export data */}
+      <a
+        href="/api/profile/export"
+        download
+        className="btn-ghost w-full gap-2 border border-white/10"
+      >
+        <Download size={18} />
+        {t(lang, 'profile.exportData')}
+      </a>
 
       {/* Sign out */}
       <button

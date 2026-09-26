@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { SessionProvider } from 'next-auth/react'
 import { PwaInit } from '@/components/PwaInit'
+import { ThemeProvider } from '@/components/ThemeProvider'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -28,6 +29,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="it" className="dark">
       <body>
         <SessionProvider>
+          <ThemeProvider />
           {children}
           <PwaInit />
         </SessionProvider>

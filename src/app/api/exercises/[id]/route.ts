@@ -7,8 +7,9 @@ export const runtime = 'nodejs'
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
+  const params = await context.params
   const lang = (req.nextUrl.searchParams.get('lang') ?? 'en') as 'en' | 'it'
 
   try {

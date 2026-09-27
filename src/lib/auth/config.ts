@@ -1,32 +1,36 @@
 import NextAuth from 'next-auth'
-import Google from 'next-auth/providers/google'
-import Apple from 'next-auth/providers/apple'
-import { DrizzleAdapter } from '@auth/drizzle-adapter'
+import Credentials from 'next-auth/providers/credentials'
 import db from '@/lib/db/client'
-import { accounts, sessions, users, verificationTokens } from '@/lib/db/schema'
+import { users } from '@/lib/db/schema'
+import { eq } from 'drizzle-orm'
+import { generateId } from '@/lib/utils'
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  adapter: DrizzleAdapter(db, {
-    usersTable: users,
-    accountsTable: accounts as any,
-    sessionsTable: sessions,
-    verificationTokensTable: verificationTokens,
-  }),
   providers: [
-    Google({
-      clientId: process.env.GOOGLE_CLIENT_ID!,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+    Credentials({
+      credentials: { email: { type: 'email' } },
+      async authorize(credentials) {
+        const email = credentials?.email as string
+        if (!email) return null
+        let [user] = await db.select().from(users).where(eq(users.email, email)).limit(1)
+        if (!user) {
+          const id = generateId()
+          await db.insert(users).values({ id, email, name: email.split('@')[0] })
+          ;[user] = await db.select().from(users).where(eq(users.id, id)).limit(1)
+        }
+        return { id: user.id, email: user.email, name: user.name, image: user.image }
+      },
     }),
-    ...(process.env.APPLE_CLIENT_ID
-      ? [Apple({ clientId: process.env.APPLE_CLIENT_ID!, clientSecret: process.env.APPLE_CLIENT_SECRET! })]
-      : []),
   ],
   pages: { signIn: '/login', error: '/login' },
-  session: { strategy: 'database' },
+  session: { strategy: 'jwt' },
   callbacks: {
-    session({ session, user }) {
-      if (session.user) session.user.id = user.id
+    jwt({ token, user }) {
+      if (user) token.id = user.id
+      return token
+    },
+    session({ session, token }) {
+      if (session.user) session.user.id = token.id as string
       return session
     },
   },

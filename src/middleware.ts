@@ -13,8 +13,9 @@ export function middleware(req: NextRequest) {
 
   const isAuthPage = path.startsWith('/login') || path.startsWith('/onboarding')
 
-  // NextAuth v5 stores session token in these cookies
   const sessionToken =
+    req.cookies.get('authjs.session-token')?.value ??
+    req.cookies.get('__Secure-authjs.session-token')?.value ??
     req.cookies.get('next-auth.session-token')?.value ??
     req.cookies.get('__Secure-next-auth.session-token')?.value
 

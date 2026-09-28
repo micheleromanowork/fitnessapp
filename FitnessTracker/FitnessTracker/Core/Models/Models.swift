@@ -232,6 +232,8 @@ class AppSettings {
     var theme: String
     var weightUnit: String
     var databaseVersion: Int
+    var onboardingCompleted: Bool
+    var fitnessGoal: String
 
     init() {
         self.id = UUID()
@@ -241,5 +243,7 @@ class AppSettings {
         self.theme = "system"
         self.weightUnit = "kg"
         self.databaseVersion = 1
+        self.onboardingCompleted = false
+        self.fitnessGoal = ""
     }
 }

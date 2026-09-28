@@ -1,0 +1,1723 @@
+[
+  {
+    "id": "pushup",
+    "slug": "pushup",
+    "nameIt": "Piegamento sulle Braccia",
+    "nameEn": "Push-up",
+    "descriptionIt": "Esercizio a corpo libero fondamentale per pettorali, tricipiti e deltoidi anteriori. Non richiede attrezzatura.",
+    "primaryMuscles": ["chest"],
+    "secondaryMuscles": ["triceps", "front_delts"],
+    "equipmentId": "bodyweight",
+    "difficulty": "beginner",
+    "movementType": "push",
+    "instructionsIt": [
+      "Posizionati a terra con le mani alla larghezza delle spalle",
+      "Mantieni il corpo in linea retta dalla testa ai piedi",
+      "Abbassa il petto fino a sfiorare il pavimento",
+      "Spingi verso l'alto fino all'estensione quasi completa"
+    ],
+    "mistakesIt": [
+      "Inarcare i fianchi verso l'alto o abbassarli",
+      "Portare i gomiti a 90° invece che a 45°",
+      "Non completare l'escursione di movimento"
+    ],
+    "tipsIt": [
+      "Contrai addominali e glutei per stabilizzare il corpo",
+      "Prova varianti: mani strette per più tricipite, mani larghe per più petto"
+    ],
+    "breathingIt": "Inspira nella discesa, espira nella spinta.",
+    "alternatives": ["barbell-bench-press", "dumbbell-bench-press"],
+    "tags": ["bodyweight", "chest", "triceps", "beginner"]
+  },
+  {
+    "id": "pullup",
+    "slug": "pullup",
+    "nameIt": "Trazioni alla Sbarra",
+    "nameEn": "Pull-up",
+    "descriptionIt": "Esercizio a corpo libero per dorsali e bicipiti. Considerato uno dei migliori per la forza della parte superiore del corpo.",
+    "primaryMuscles": ["lats"],
+    "secondaryMuscles": ["biceps", "rear_delts"],
+    "equipmentId": "bodyweight",
+    "difficulty": "intermediate",
+    "movementType": "pull",
+    "instructionsIt": [
+      "Afferra la sbarra con presa prona a larghezza spalle",
+      "Parti con le braccia tese e le spalle leggermente retratte",
+      "Tira verso l'alto fino a portare il mento sopra la sbarra",
+      "Abbassa lentamente controllando la discesa"
+    ],
+    "mistakesIt": [
+      "Usare il momentum del corpo oscillando",
+      "Non completare l'estensione in basso",
+      "Non retrarre le scapole all'inizio"
+    ],
+    "tipsIt": [
+      "Chin-up (presa supina) è più facile e attiva più bicipite",
+      "Usa bande elastiche per assistenza se sei alle prime armi"
+    ],
+    "breathingIt": "Espira nella tirata verso l'alto, inspira nella discesa.",
+    "alternatives": ["panatta-lat-machine", "panatta-low-row"],
+    "tags": ["bodyweight", "back", "lats", "advanced"]
+  },
+  {
+    "id": "dip",
+    "slug": "dip",
+    "nameIt": "Dip alle Parallele",
+    "nameEn": "Parallel Bar Dip",
+    "descriptionIt": "Esercizio composto per petto inferiore e tricipiti. Busto inclinato = più petto; busto verticale = più tricipiti.",
+    "primaryMuscles": ["chest"],
+    "secondaryMuscles": ["triceps", "front_delts"],
+    "equipmentId": "bodyweight",
+    "difficulty": "intermediate",
+    "movementType": "push",
+    "instructionsIt": [
+      "Salta sulle parallele con braccia tese",
+      "Inclina leggermente il busto in avanti per enfatizzare il petto",
+      "Abbassa fino a quando le braccia sono a 90°",
+      "Spingi verso l'alto senza bloccare i gomiti"
+    ],
+    "mistakesIt": [
+      "Abbassarsi troppo causando stress alla spalla",
+      "Dondolare il corpo"
+    ],
+    "tipsIt": [
+      "Aggiungi peso con una cintura appesa per progressione",
+      "Busto verticale per isolare i tricipiti"
+    ],
+    "breathingIt": "Inspira nella discesa, espira nella spinta.",
+    "alternatives": ["panatta-chest-press", "barbell-close-grip-bench"],
+    "tags": ["bodyweight", "chest", "triceps"]
+  },
+  {
+    "id": "bodyweight-squat",
+    "slug": "bodyweight-squat",
+    "nameIt": "Squat a Corpo Libero",
+    "nameEn": "Bodyweight Squat",
+    "descriptionIt": "Movimento fondamentale per gambe e glutei. Ottimo per imparare la tecnica prima di aggiungere carico.",
+    "primaryMuscles": ["quadriceps"],
+    "secondaryMuscles": ["glutes", "hamstrings"],
+    "equipmentId": "bodyweight",
+    "difficulty": "beginner",
+    "movementType": "push",
+    "instructionsIt": [
+      "Piedi alla larghezza delle spalle, punte leggermente verso l'esterno",
+      "Abbassa i fianchi tenendo il petto alto e le ginocchia in linea con i piedi",
+      "Scendi fino al parallelo o oltre se la mobilità lo permette",
+      "Spingi con i talloni per risalire"
+    ],
+    "mistakesIt": [
+      "Ginocchia in valgo (verso l'interno)",
+      "Talloni che si sollevano",
+      "Busto che si incurva in avanti"
+    ],
+    "tipsIt": [
+      "Allarga le punte dei piedi per migliorare la profondità",
+      "Guarda un punto fisso davanti a te"
+    ],
+    "breathingIt": "Inspira nella discesa, espira nella salita.",
+    "alternatives": ["barbell-squat", "panatta-leg-press-45"],
+    "tags": ["bodyweight", "legs", "beginner"]
+  },
+  {
+    "id": "lunge",
+    "slug": "lunge",
+    "nameIt": "Affondi",
+    "nameEn": "Lunge",
+    "descriptionIt": "Esercizio unilaterale per quadricipiti e glutei. Migliora l'equilibrio e corregge asimmetrie.",
+    "primaryMuscles": ["quadriceps"],
+    "secondaryMuscles": ["glutes", "hamstrings"],
+    "equipmentId": "bodyweight",
+    "difficulty": "beginner",
+    "movementType": "push",
+    "instructionsIt": [
+      "Fai un passo lungo in avanti con una gamba",
+      "Abbassa il ginocchio posteriore verso il pavimento senza toccarlo",
+      "Il ginocchio anteriore non deve superare la punta del piede",
+      "Torna in piedi spingendo con il tallone anteriore"
+    ],
+    "mistakesIt": [
+      "Ginocchio anteriore che supera il piede",
+      "Busto che si inclina in avanti"
+    ],
+    "tipsIt": [
+      "Aggiungi manubri per incrementare l'intensità",
+      "Affondi alternati o camminati per varietà"
+    ],
+    "breathingIt": "Inspira nella discesa, espira nella risalita.",
+    "alternatives": ["dumbbell-bulgarian-split-squat", "panatta-leg-press-45"],
+    "tags": ["bodyweight", "legs", "unilateral"]
+  },
+  {
+    "id": "plank",
+    "slug": "plank",
+    "nameIt": "Plank",
+    "nameEn": "Plank",
+    "descriptionIt": "Isometria per il core. Rinforza tutta la muscolatura stabilizzatrice del tronco.",
+    "primaryMuscles": ["abs"],
+    "secondaryMuscles": ["obliques", "erector_spinae"],
+    "equipmentId": "bodyweight",
+    "difficulty": "beginner",
+    "movementType": "isometric",
+    "instructionsIt": [
+      "Appoggiati sugli avambracci e sulle punte dei piedi",
+      "Mantieni il corpo in linea retta",
+      "Contrai addominali e glutei",
+      "Tieni la posizione per il tempo stabilito"
+    ],
+    "mistakesIt": [
+      "Alzare i fianchi troppo in alto",
+      "Abbassare i fianchi verso il pavimento",
+      "Non respirare regolarmente"
+    ],
+    "tipsIt": [
+      "Inizia con 20-30 secondi e aumenta progressivamente",
+      "Il plank laterale isola meglio gli obliqui"
+    ],
+    "breathingIt": "Respira regolarmente durante tutto il mantenimento.",
+    "alternatives": ["panatta-abdominal-machine", "cable-crunch"],
+    "tags": ["bodyweight", "core", "isometric", "beginner"]
+  },
+  {
+    "id": "side-plank",
+    "slug": "side-plank",
+    "nameIt": "Plank Laterale",
+    "nameEn": "Side Plank",
+    "descriptionIt": "Variante laterale del plank per gli obliqui e il gluteo medio.",
+    "primaryMuscles": ["obliques"],
+    "secondaryMuscles": ["glutes", "abs"],
+    "equipmentId": "bodyweight",
+    "difficulty": "beginner",
+    "movementType": "isometric",
+    "instructionsIt": [
+      "Sdraiati su un fianco con l'avambraccio a terra",
+      "Solleva i fianchi formando una linea retta",
+      "Tieni il core attivo e non lasciare cadere i fianchi"
+    ],
+    "mistakesIt": [
+      "Lasciar cedere i fianchi verso il basso",
+      "Ruotare il busto"
+    ],
+    "tipsIt": [
+      "Aggiungi una rotazione del braccio libero per aumentare l'intensità"
+    ],
+    "breathingIt": "Respira regolarmente durante il mantenimento.",
+    "alternatives": ["plank", "panatta-rotary-torso"],
+    "tags": ["bodyweight", "core", "obliques", "beginner"]
+  },
+  {
+    "id": "mountain-climber",
+    "slug": "mountain-climber",
+    "nameIt": "Mountain Climber",
+    "nameEn": "Mountain Climber",
+    "descriptionIt": "Esercizio dinamico per core e cardio. Combina stabilità del tronco con movimento delle gambe.",
+    "primaryMuscles": ["abs"],
+    "secondaryMuscles": ["obliques", "hip_flexors"],
+    "equipmentId": "bodyweight",
+    "difficulty": "beginner",
+    "movementType": "dynamic",
+    "instructionsIt": [
+      "Posizione di push-up con braccia tese",
+      "Porta alternativamente un ginocchio verso il petto",
+      "Mantieni i fianchi stabili e il core contratto",
+      "Aumenta la velocità per effetto cardio"
+    ],
+    "mistakesIt": [
+      "Sollevare i fianchi durante il movimento",
+      "Perdere la stabilità delle braccia"
+    ],
+    "tipsIt": [
+      "Rallenta per enfatizzare il lavoro del core",
+      "Usa per riscaldamento o finisher"
+    ],
+    "breathingIt": "Respira continuamente.",
+    "alternatives": ["plank", "burpee"],
+    "tags": ["bodyweight", "core", "cardio", "beginner"]
+  },
+  {
+    "id": "glute-bridge",
+    "slug": "glute-bridge",
+    "nameIt": "Ponte per Glutei",
+    "nameEn": "Glute Bridge",
+    "descriptionIt": "Esercizio di base per attivare i glutei. Ottimo come riscaldamento o per principianti.",
+    "primaryMuscles": ["glutes"],
+    "secondaryMuscles": ["hamstrings", "abs"],
+    "equipmentId": "bodyweight",
+    "difficulty": "beginner",
+    "movementType": "push",
+    "instructionsIt": [
+      "Sdraiati sulla schiena con le ginocchia flesse e i piedi piatti",
+      "Spingi i fianchi verso il soffitto contraendo i glutei",
+      "Mantieni la contrazione per 1-2 secondi",
+      "Abbassa lentamente senza toccare il pavimento"
+    ],
+    "mistakesIt": [
+      "Non contrarre abbastanza i glutei in cima",
+      "Inarcare eccessivamente la schiena bassa"
+    ],
+    "tipsIt": [
+      "Progressione verso hip thrust con bilanciere",
+      "Versione monopodalica per aumentare l'intensità"
+    ],
+    "breathingIt": "Espira nella spinta, inspira nel ritorno.",
+    "alternatives": ["barbell-hip-thrust", "panatta-glute-isolator"],
+    "tags": ["bodyweight", "glutes", "beginner"]
+  },
+  {
+    "id": "leg-raise",
+    "slug": "leg-raise",
+    "nameIt": "Leg Raise (Alzate Gambe)",
+    "nameEn": "Lying Leg Raise",
+    "descriptionIt": "Esercizio per il retto addominale inferiore e i flessori dell'anca.",
+    "primaryMuscles": ["abs"],
+    "secondaryMuscles": ["hip_flexors"],
+    "equipmentId": "bodyweight",
+    "difficulty": "beginner",
+    "movementType": "flexion",
+    "instructionsIt": [
+      "Sdraiati sulla schiena con le mani sotto i glutei",
+      "Tieni le gambe tese o leggermente flesse",
+      "Alzale fino a 90° contraendo gli addominali",
+      "Abbassa lentamente senza toccare il pavimento"
+    ],
+    "mistakesIt": [
+      "Inarcare la schiena bassa durante la discesa",
+      "Usare il momentum al posto del controllo"
+    ],
+    "tipsIt": [
+      "Se è troppo difficile, fletti le ginocchia",
+      "Varia con torsioni del bacino per gli obliqui"
+    ],
+    "breathingIt": "Espira nell'alzata, inspira nella discesa.",
+    "alternatives": ["plank", "panatta-abdominal-machine"],
+    "tags": ["bodyweight", "abs", "core"]
+  },
+  {
+    "id": "pike-pushup",
+    "slug": "pike-pushup",
+    "nameIt": "Pike Push-up",
+    "nameEn": "Pike Push-up",
+    "descriptionIt": "Variante del push-up con i fianchi in alto per isolare i deltoidi. Progressione verso le verticali.",
+    "primaryMuscles": ["front_delts"],
+    "secondaryMuscles": ["triceps", "chest"],
+    "equipmentId": "bodyweight",
+    "difficulty": "beginner",
+    "movementType": "push",
+    "instructionsIt": [
+      "Posizione a V rovesciata con fianchi alti",
+      "Testa che guarda verso i piedi",
+      "Abbassa la testa verso il pavimento",
+      "Spingi verso l'alto tornando alla posizione di partenza"
+    ],
+    "mistakesIt": [
+      "Non portare i fianchi abbastanza in alto",
+      "Piegare le ginocchia"
+    ],
+    "tipsIt": [
+      "Progressione: piedi su una sedia per maggiore difficoltà",
+      "Ottimo per chi non ha attrezzatura"
+    ],
+    "breathingIt": "Inspira nella discesa, espira nella spinta.",
+    "alternatives": ["dumbbell-shoulder-press", "barbell-overhead-press"],
+    "tags": ["bodyweight", "shoulders", "beginner"]
+  },
+  {
+    "id": "burpee",
+    "slug": "burpee",
+    "nameIt": "Burpee",
+    "nameEn": "Burpee",
+    "descriptionIt": "Esercizio full-body ad alta intensità. Combina push-up, squat e salto per massimo consumo calorico.",
+    "primaryMuscles": ["quadriceps"],
+    "secondaryMuscles": ["chest", "abs", "glutes"],
+    "equipmentId": "bodyweight",
+    "difficulty": "intermediate",
+    "movementType": "compound",
+    "instructionsIt": [
+      "Da in piedi abbassati in squat e poggia le mani a terra",
+      "Salta indietro in posizione di push-up ed esegui un piegamento",
+      "Salta in avanti verso le mani",
+      "Salta verso l'alto con le braccia sopra la testa"
+    ],
+    "mistakesIt": [
+      "Saltare troppo in avanti alla fine e perdere equilibrio",
+      "Non eseguire il piegamento completo"
+    ],
+    "tipsIt": [
+      "Puoi omettere il push-up per una versione più semplice",
+      "Usa per HIIT o finisher"
+    ],
+    "breathingIt": "Espira nel salto finale.",
+    "alternatives": ["mountain-climber", "jump-squat"],
+    "tags": ["bodyweight", "cardio", "full-body", "hiit"]
+  },
+  {
+    "id": "jump-squat",
+    "slug": "jump-squat",
+    "nameIt": "Squat con Salto",
+    "nameEn": "Jump Squat",
+    "descriptionIt": "Variante esplosiva dello squat per potenza e condizionamento cardiovascolare.",
+    "primaryMuscles": ["quadriceps"],
+    "secondaryMuscles": ["glutes", "calves"],
+    "equipmentId": "bodyweight",
+    "difficulty": "intermediate",
+    "movementType": "push",
+    "instructionsIt": [
+      "Posizione di squat con piedi alla larghezza delle spalle",
+      "Abbassa fino al parallelo",
+      "Esplodi verso l'alto staccando i piedi dal pavimento",
+      "Atterra ammortizzando con le ginocchia flesse"
+    ],
+    "mistakesIt": [
+      "Atterrare con le ginocchia rigide",
+      "Non abbassarsi abbastanza prima del salto"
+    ],
+    "tipsIt": [
+      "Atterraggio morbido per proteggere le articolazioni",
+      "Aumenta l'altezza del salto per progressione"
+    ],
+    "breathingIt": "Espira nel salto, inspira nell'atterraggio.",
+    "alternatives": ["bodyweight-squat", "barbell-squat"],
+    "tags": ["bodyweight", "legs", "cardio", "power"]
+  },
+  {
+    "id": "inverted-row",
+    "slug": "inverted-row",
+    "nameIt": "Rematore Inverso (Australian Pull-up)",
+    "nameEn": "Inverted Row",
+    "descriptionIt": "Rematore a corpo libero con schiena al pavimento. Ottima progressione verso le trazioni.",
+    "primaryMuscles": ["lats"],
+    "secondaryMuscles": ["rhomboids", "biceps", "rear_delts"],
+    "equipmentId": "bodyweight",
+    "difficulty": "beginner",
+    "movementType": "pull",
+    "instructionsIt": [
+      "Sdraiati sotto una sbarra bassa o tavolo",
+      "Afferra con presa prona a larghezza spalle",
+      "Tira il petto verso la sbarra mantenendo il corpo rigido",
+      "Abbassa controllato"
+    ],
+    "mistakesIt": [
+      "Lasciare cedere i fianchi",
+      "Non arrivare a toccare la sbarra con il petto"
+    ],
+    "tipsIt": [
+      "Più le gambe sono tese = più difficile",
+      "Buona alternativa alle trazioni per chi non le riesce ancora"
+    ],
+    "breathingIt": "Espira nella tirata, inspira nel ritorno.",
+    "alternatives": ["pullup", "panatta-low-row"],
+    "tags": ["bodyweight", "back", "beginner"]
+  },
+  {
+    "id": "tricep-dip-bench",
+    "slug": "tricep-dip-bench",
+    "nameIt": "Dip alla Panca",
+    "nameEn": "Bench Tricep Dip",
+    "descriptionIt": "Dip con mani su una panca e piedi a terra. Versione accessibile per l'isolamento dei tricipiti.",
+    "primaryMuscles": ["triceps"],
+    "secondaryMuscles": ["chest", "front_delts"],
+    "equipmentId": "bodyweight",
+    "difficulty": "beginner",
+    "movementType": "push",
+    "instructionsIt": [
+      "Mani sulla panca dietro di te, piedi estesi in avanti",
+      "Abbassa il corpo flettendo i gomiti a 90°",
+      "Mantieni il busto vicino alla panca",
+      "Spingi verso l'alto"
+    ],
+    "mistakesIt": [
+      "Aprire i gomiti verso l'esterno",
+      "Abbassarsi troppo stirando la spalla anteriore"
+    ],
+    "tipsIt": [
+      "Piedi su una seconda panca per aumentare l'intensità",
+      "Aggiungi peso sulle cosce per progressione"
+    ],
+    "breathingIt": "Inspira nella discesa, espira nella spinta.",
+    "alternatives": ["dip", "panatta-tricep-press-machine"],
+    "tags": ["bodyweight", "triceps", "beginner"]
+  },
+  {
+    "id": "barbell-bench-press",
+    "slug": "barbell-bench-press",
+    "nameIt": "Panca Piana con Bilanciere",
+    "nameEn": "Barbell Bench Press",
+    "descriptionIt": "Esercizio fondamentale per pettorali. Uno dei tre movimenti del powerlifting.",
+    "primaryMuscles": ["chest"],
+    "secondaryMuscles": ["triceps", "front_delts"],
+    "equipmentId": "barbell",
+    "difficulty": "intermediate",
+    "movementType": "push",
+    "instructionsIt": [
+      "Sdraiati sulla panca con gli occhi sotto la sbarra",
+      "Presa a larghezza leggermente superiore alle spalle",
+      "Abbassa il bilanciere controllato verso il petto",
+      "Spingi verso l'alto espirando"
+    ],
+    "mistakesIt": [
+      "Rimbalzare il bilanciere sul petto",
+      "Sollevare i glutei dalla panca",
+      "Presa troppo larga o troppo stretta"
+    ],
+    "tipsIt": [
+      "Arco lombare e scapole retratte per stabilità",
+      "Usa sempre uno spotter o la rack quando carichi pesante"
+    ],
+    "breathingIt": "Inspira nella discesa, espira nella spinta.",
+    "alternatives": ["panatta-chest-press", "dumbbell-bench-press"],
+    "tags": ["barbell", "chest", "compound", "powerlifting"]
+  },
+  {
+    "id": "barbell-incline-press",
+    "slug": "barbell-incline-press",
+    "nameIt": "Panca Inclinata con Bilanciere",
+    "nameEn": "Barbell Incline Bench Press",
+    "descriptionIt": "Variante inclinata per il pettorale superiore e i deltoidi anteriori.",
+    "primaryMuscles": ["chest"],
+    "secondaryMuscles": ["front_delts", "triceps"],
+    "equipmentId": "barbell",
+    "difficulty": "intermediate",
+    "movementType": "push",
+    "instructionsIt": [
+      "Imposta la panca a 30-45 gradi",
+      "Presa leggermente più stretta rispetto alla panca piana",
+      "Abbassa il bilanciere verso la clavicola",
+      "Spingi verso l'alto e leggermente indietro"
+    ],
+    "mistakesIt": [
+      "Inclinazione eccessiva (oltre 45°) che sposta troppo il lavoro sulle spalle",
+      "Abbassare il bilanciere troppo in basso verso l'ombelico"
+    ],
+    "tipsIt": [
+      "30° è il miglior angolo per il pettorale superiore",
+      "Testa sempre appoggiata alla panca"
+    ],
+    "breathingIt": "Inspira nella discesa, espira nella spinta.",
+    "alternatives": ["panatta-incline-chest-press", "dumbbell-incline-press"],
+    "tags": ["barbell", "chest", "upper-chest", "compound"]
+  },
+  {
+    "id": "barbell-squat",
+    "slug": "barbell-squat",
+    "nameIt": "Squat con Bilanciere",
+    "nameEn": "Barbell Back Squat",
+    "descriptionIt": "Il re degli esercizi per le gambe. Coinvolge quadricipiti, glutei, femorali e tutta la catena posteriore.",
+    "primaryMuscles": ["quadriceps"],
+    "secondaryMuscles": ["glutes", "hamstrings", "erector_spinae"],
+    "equipmentId": "barbell",
+    "difficulty": "intermediate",
+    "movementType": "push",
+    "instructionsIt": [
+      "Bilanciere sulla parte alta del trapezio (high bar) o sulla parte bassa (low bar)",
+      "Piedi alla larghezza delle spalle, punte verso l'esterno",
+      "Scendi abbassando i fianchi finché le cosce sono parallele al pavimento",
+      "Spingi con i talloni per risalire mantenendo il petto alto"
+    ],
+    "mistakesIt": [
+      "Ginocchia in valgo (verso l'interno) durante la salita",
+      "Talloni che si sollevano",
+      "Busto che si inclina eccessivamente in avanti"
+    ],
+    "tipsIt": [
+      "Usa un box come riferimento per la profondità",
+      "Migliora la mobilità della caviglia per scendere più in profondità"
+    ],
+    "breathingIt": "Inspira e tieni la pressione intra-addominale (Valsalva) nella discesa, espira in cima.",
+    "alternatives": ["panatta-leg-press-45", "bodyweight-squat", "dumbbell-goblet-squat"],
+    "tags": ["barbell", "legs", "compound", "powerlifting"]
+  },
+  {
+    "id": "barbell-deadlift",
+    "slug": "barbell-deadlift",
+    "nameIt": "Stacco da Terra con Bilanciere",
+    "nameEn": "Barbell Deadlift",
+    "descriptionIt": "Il movimento di hinge per eccellenza. Sviluppa forza in tutta la catena posteriore.",
+    "primaryMuscles": ["erector_spinae"],
+    "secondaryMuscles": ["glutes", "hamstrings", "lats", "traps"],
+    "equipmentId": "barbell",
+    "difficulty": "intermediate",
+    "movementType": "hinge",
+    "instructionsIt": [
+      "Bilanciere sopra il metatarso, piedi alla larghezza dei fianchi",
+      "Afferra a larghezza spalle, presa mista o doppia prona",
+      "Abbassa i fianchi, petto alto, schiena piatta",
+      "Spingi il pavimento verso il basso staccando il bilanciere, poi estendi fianchi e ginocchia insieme"
+    ],
+    "mistakesIt": [
+      "Arrotondare la schiena bassa",
+      "Strappare il bilanciere da terra invece di spingere",
+      "Lasciare che il bilanciere si allontani dalle gambe"
+    ],
+    "tipsIt": [
+      "Il bilanciere deve rimaner in contatto con le gambe per tutto il movimento",
+      "Testa in posizione neutra, non guardare in alto"
+    ],
+    "breathingIt": "Inspira prima di staccare, espira dopo aver completato il sollevamento.",
+    "alternatives": ["barbell-romanian-deadlift", "panatta-back-extension"],
+    "tags": ["barbell", "back", "compound", "powerlifting"]
+  },
+  {
+    "id": "barbell-overhead-press",
+    "slug": "barbell-overhead-press",
+    "nameIt": "Lento Avanti con Bilanciere",
+    "nameEn": "Barbell Overhead Press",
+    "descriptionIt": "Spinta verticale con bilanciere. Sviluppa le spalle e il core stabilizzatore.",
+    "primaryMuscles": ["front_delts"],
+    "secondaryMuscles": ["lateral_delts", "triceps", "traps", "abs"],
+    "equipmentId": "barbell",
+    "difficulty": "intermediate",
+    "movementType": "push",
+    "instructionsIt": [
+      "Bilanciere alla clavicola, presa a larghezza spalle",
+      "Spingi verso l'alto passando davanti alla fronte",
+      "Estendi completamente le braccia sopra la testa",
+      "Abbassa controllato tornando alla posizione di partenza"
+    ],
+    "mistakesIt": [
+      "Inarcare eccessivamente la schiena bassa",
+      "Spingere in avanti invece che verticalmente"
+    ],
+    "tipsIt": [
+      "Contrai addominali e glutei per una base stabile",
+      "Eseguibile anche seduto per ridurre la componente del core"
+    ],
+    "breathingIt": "Espira nella spinta verso l'alto, inspira nella discesa.",
+    "alternatives": ["panatta-shoulder-press", "dumbbell-shoulder-press"],
+    "tags": ["barbell", "shoulders", "compound"]
+  },
+  {
+    "id": "barbell-bent-over-row",
+    "slug": "barbell-bent-over-row",
+    "nameIt": "Rematore con Bilanciere",
+    "nameEn": "Barbell Bent-Over Row",
+    "descriptionIt": "Esercizio fondamentale per la schiena. Sviluppa spessore e forza dei dorsali.",
+    "primaryMuscles": ["lats"],
+    "secondaryMuscles": ["rhomboids", "biceps", "rear_delts"],
+    "equipmentId": "barbell",
+    "difficulty": "intermediate",
+    "movementType": "pull",
+    "instructionsIt": [
+      "Inclina il busto a 45-70° con schiena piatta",
+      "Afferra il bilanciere a larghezza spalle",
+      "Tira verso l'ombelico portando i gomiti indietro",
+      "Abbassa controllato"
+    ],
+    "mistakesIt": [
+      "Arrotondare la schiena durante la tirata",
+      "Usare troppo il momento del busto per aiutarsi"
+    ],
+    "tipsIt": [
+      "Presa supina attiva più bicipite, prona più dorsale",
+      "Mantieni la posizione isometrica prima di tirare"
+    ],
+    "breathingIt": "Espira nella tirata, inspira nel ritorno.",
+    "alternatives": ["panatta-low-row", "dumbbell-row"],
+    "tags": ["barbell", "back", "compound"]
+  },
+  {
+    "id": "barbell-romanian-deadlift",
+    "slug": "barbell-romanian-deadlift",
+    "nameIt": "Stacco Rumeno con Bilanciere",
+    "nameEn": "Romanian Deadlift",
+    "descriptionIt": "Stacco con gambe quasi tese. Isola i femorali con un ottimo stretch.",
+    "primaryMuscles": ["hamstrings"],
+    "secondaryMuscles": ["glutes", "erector_spinae"],
+    "equipmentId": "barbell",
+    "difficulty": "intermediate",
+    "movementType": "hinge",
+    "instructionsIt": [
+      "Tieni il bilanciere davanti alle cosce con presa prona",
+      "Abbassa il bilanciere lungo le gambe mantenendo la schiena piatta",
+      "Scendi fino a sentire lo stretch nei femorali (circa a metà stinco)",
+      "Risali estendendo i fianchi, non piegando le ginocchia"
+    ],
+    "mistakesIt": [
+      "Piegare troppo le ginocchia trasformandolo in uno stacco convenzionale",
+      "Arrotondare la schiena"
+    ],
+    "tipsIt": [
+      "Il bilanciere deve rimanere vicino alle gambe",
+      "Focus sul movimento dei fianchi indietro, non sulla discesa del busto"
+    ],
+    "breathingIt": "Inspira nella discesa, espira nella salita.",
+    "alternatives": ["panatta-leg-curl-prone", "dumbbell-romanian-deadlift"],
+    "tags": ["barbell", "legs", "hamstrings", "hinge"]
+  },
+  {
+    "id": "barbell-hip-thrust",
+    "slug": "barbell-hip-thrust",
+    "nameIt": "Hip Thrust con Bilanciere",
+    "nameEn": "Barbell Hip Thrust",
+    "descriptionIt": "Esercizio per eccellenza per i glutei. Massima attivazione del grande gluteo.",
+    "primaryMuscles": ["glutes"],
+    "secondaryMuscles": ["hamstrings", "abs"],
+    "equipmentId": "barbell",
+    "difficulty": "intermediate",
+    "movementType": "push",
+    "instructionsIt": [
+      "Spalle appoggiate a una panca, bilanciere sui fianchi con protezione imbottita",
+      "Piedi piatti a terra alla larghezza dei fianchi",
+      "Spingi i fianchi verso l'alto contraendo i glutei",
+      "Fai una pausa di 1-2 secondi in cima, poi abbassa"
+    ],
+    "mistakesIt": [
+      "Non contrarre i glutei al massimo in cima",
+      "Inarcare eccessivamente la schiena bassa"
+    ],
+    "tipsIt": [
+      "Squeeze intenso del gluteo nella posizione di massima estensione",
+      "Più il peso = più forza dei glutei"
+    ],
+    "breathingIt": "Espira nella spinta, inspira nel ritorno.",
+    "alternatives": ["glute-bridge", "panatta-glute-isolator"],
+    "tags": ["barbell", "glutes", "compound"]
+  },
+  {
+    "id": "barbell-curl",
+    "slug": "barbell-curl",
+    "nameIt": "Curl con Bilanciere",
+    "nameEn": "Barbell Curl",
+    "descriptionIt": "Esercizio fondamentale per i bicipiti. Permette di caricare più peso rispetto ai manubri.",
+    "primaryMuscles": ["biceps"],
+    "secondaryMuscles": ["brachialis", "forearms"],
+    "equipmentId": "barbell",
+    "difficulty": "beginner",
+    "movementType": "pull",
+    "instructionsIt": [
+      "In piedi con il bilanciere in presa supina",
+      "Gomiti fermi ai fianchi",
+      "Curva verso l'alto contraendo i bicipiti",
+      "Abbassa lentamente mantenendo la tensione"
+    ],
+    "mistakesIt": [
+      "Dondolare il busto per aiutarsi",
+      "Spostare i gomiti in avanti"
+    ],
+    "tipsIt": [
+      "Usa la barra EZ per ridurre lo stress sui polsi",
+      "Pausa di 1 secondo in cima per maggiore contrazione"
+    ],
+    "breathingIt": "Espira nella curl, inspira nel ritorno.",
+    "alternatives": ["dumbbell-curl", "panatta-bicep-curl-machine"],
+    "tags": ["barbell", "biceps", "isolation"]
+  },
+  {
+    "id": "barbell-skull-crusher",
+    "slug": "barbell-skull-crusher",
+    "nameIt": "Skull Crusher con Bilanciere",
+    "nameEn": "Skull Crusher",
+    "descriptionIt": "Estensione tricipiti sdraiato. Ottima ampiezza di movimento per il capo lungo.",
+    "primaryMuscles": ["triceps"],
+    "secondaryMuscles": [],
+    "equipmentId": "barbell",
+    "difficulty": "intermediate",
+    "movementType": "push",
+    "instructionsIt": [
+      "Sdraiati sulla panca, bilanciere sopra il petto con braccia tese",
+      "Abbassa il bilanciere verso la fronte piegando solo i gomiti",
+      "Gomiti fermi e puntati verso il soffitto",
+      "Estendi le braccia tornando alla posizione di partenza"
+    ],
+    "mistakesIt": [
+      "Spostare i gomiti durante il movimento",
+      "Abbassare troppo dietro la testa"
+    ],
+    "tipsIt": [
+      "Usa la barra EZ per ridurre lo stress sui polsi",
+      "Abbina al close grip bench per volume massimo tricipiti"
+    ],
+    "breathingIt": "Inspira nella discesa, espira nell'estensione.",
+    "alternatives": ["panatta-tricep-press-machine", "dumbbell-overhead-extension"],
+    "tags": ["barbell", "triceps", "isolation"]
+  },
+  {
+    "id": "barbell-close-grip-bench",
+    "slug": "barbell-close-grip-bench",
+    "nameIt": "Panca Presa Stretta",
+    "nameEn": "Close-Grip Bench Press",
+    "descriptionIt": "Variante della panca piana con presa stretta per isolare i tricipiti.",
+    "primaryMuscles": ["triceps"],
+    "secondaryMuscles": ["chest", "front_delts"],
+    "equipmentId": "barbell",
+    "difficulty": "intermediate",
+    "movementType": "push",
+    "instructionsIt": [
+      "Presa alla larghezza delle spalle o leggermente più stretta",
+      "Abbassa il bilanciere verso il basso del petto",
+      "Gomiti vicini al corpo durante tutto il movimento",
+      "Spingi verso l'alto estendendo completamente"
+    ],
+    "mistakesIt": [
+      "Presa troppo stretta (stress polsi)",
+      "Aprire i gomiti verso l'esterno"
+    ],
+    "tipsIt": [
+      "La presa ideale è alla larghezza delle spalle",
+      "Eccellente complemento allo skull crusher"
+    ],
+    "breathingIt": "Inspira nella discesa, espira nella spinta.",
+    "alternatives": ["dip", "panatta-tricep-press-machine"],
+    "tags": ["barbell", "triceps", "compound"]
+  },
+  {
+    "id": "barbell-front-squat",
+    "slug": "barbell-front-squat",
+    "nameIt": "Front Squat con Bilanciere",
+    "nameEn": "Front Squat",
+    "descriptionIt": "Squat con il bilanciere davanti. Più verticale del back squat, enfatizza i quadricipiti.",
+    "primaryMuscles": ["quadriceps"],
+    "secondaryMuscles": ["glutes", "abs"],
+    "equipmentId": "barbell",
+    "difficulty": "advanced",
+    "movementType": "push",
+    "instructionsIt": [
+      "Bilanciere sulla clavicola con gomiti alti",
+      "Presa a croce (mani incrociate) o presa pulita",
+      "Scendi mantenendo il busto molto verticale",
+      "Spingi verso l'alto con i gomiti sempre alti"
+    ],
+    "mistakesIt": [
+      "Abbassare i gomiti perdendo il bilanciere",
+      "Non avere sufficiente mobilità del polso"
+    ],
+    "tipsIt": [
+      "Richiede molta mobilità: lavora su caviglie e polsi",
+      "Il bilanciere in front squat costringe a un busto più verticale"
+    ],
+    "breathingIt": "Inspira e tieni nella discesa, espira in cima.",
+    "alternatives": ["barbell-squat", "dumbbell-goblet-squat"],
+    "tags": ["barbell", "legs", "compound", "advanced"]
+  },
+  {
+    "id": "barbell-shrug",
+    "slug": "barbell-shrug",
+    "nameIt": "Scrollate Spalle con Bilanciere",
+    "nameEn": "Barbell Shrug",
+    "descriptionIt": "Isolamento del trapezio superiore con bilanciere. Permette carichi elevati.",
+    "primaryMuscles": ["traps"],
+    "secondaryMuscles": [],
+    "equipmentId": "barbell",
+    "difficulty": "beginner",
+    "movementType": "isolation",
+    "instructionsIt": [
+      "In piedi con il bilanciere davanti alle cosce",
+      "Alza le spalle verso le orecchie senza piegare i gomiti",
+      "Mantieni 1-2 secondi in cima",
+      "Abbassa lentamente"
+    ],
+    "mistakesIt": [
+      "Ruotare le spalle durante il movimento",
+      "Flettere le braccia aiutandosi con i bicipiti"
+    ],
+    "tipsIt": [
+      "Usa le straps per non essere limitato dalla presa",
+      "Esegui con bilanciere dietro le gambe per un range maggiore"
+    ],
+    "breathingIt": "Espira nell'alzata, inspira nel ritorno.",
+    "alternatives": ["dumbbell-shrug", "panatta-cable-shrug"],
+    "tags": ["barbell", "traps", "isolation"]
+  },
+  {
+    "id": "barbell-sumo-deadlift",
+    "slug": "barbell-sumo-deadlift",
+    "nameIt": "Sumo Deadlift con Bilanciere",
+    "nameEn": "Sumo Deadlift",
+    "descriptionIt": "Variante dello stacco con piedi larghi. Riduce lo stress lombare e attiva più glutei e adduttori.",
+    "primaryMuscles": ["glutes"],
+    "secondaryMuscles": ["hamstrings", "adductors", "lats"],
+    "equipmentId": "barbell",
+    "difficulty": "intermediate",
+    "movementType": "hinge",
+    "instructionsIt": [
+      "Piedi molto più larghi delle spalle, punte verso l'esterno",
+      "Afferra il bilanciere internamente alle gambe",
+      "Petto alto, schiena piatta, fianchi più bassi rispetto allo stacco convenzionale",
+      "Spingi il pavimento verso il basso estendendo gambe e fianchi"
+    ],
+    "mistakesIt": [
+      "Ginocchia che collassano verso l'interno",
+      "Arrotondare la schiena bassa"
+    ],
+    "tipsIt": [
+      "Ottimo per chi ha torso corto o mobilità della caviglia limitata",
+      "Usa chalk o straps per presa sicura"
+    ],
+    "breathingIt": "Inspira prima, espira dopo aver completato il sollevamento.",
+    "alternatives": ["barbell-deadlift", "barbell-hip-thrust"],
+    "tags": ["barbell", "legs", "compound", "powerlifting"]
+  },
+  {
+    "id": "barbell-good-morning",
+    "slug": "barbell-good-morning",
+    "nameIt": "Good Morning con Bilanciere",
+    "nameEn": "Good Morning",
+    "descriptionIt": "Flessione del busto con bilanciere sulle spalle. Rinforza i femorali e la schiena bassa.",
+    "primaryMuscles": ["hamstrings"],
+    "secondaryMuscles": ["erector_spinae", "glutes"],
+    "equipmentId": "barbell",
+    "difficulty": "intermediate",
+    "movementType": "hinge",
+    "instructionsIt": [
+      "Bilanciere sulla parte alta delle trapezie come nel back squat",
+      "Gambe quasi tese con leggera flessione del ginocchio",
+      "Inclina il busto in avanti mantenendo la schiena piatta",
+      "Risali estendendo i fianchi"
+    ],
+    "mistakesIt": [
+      "Arrotondare la schiena",
+      "Scendere troppo perdendo la tensione nei femorali"
+    ],
+    "tipsIt": [
+      "Inizia con pesi molto leggeri per imparare il movimento",
+      "Ottimo complemento allo stacco da terra"
+    ],
+    "breathingIt": "Inspira nell'inclinazione, espira nella risalita.",
+    "alternatives": ["barbell-romanian-deadlift", "panatta-back-extension"],
+    "tags": ["barbell", "back", "hamstrings", "hinge"]
+  },
+  {
+    "id": "dumbbell-curl",
+    "slug": "dumbbell-curl",
+    "nameIt": "Curl con Manubri",
+    "nameEn": "Dumbbell Curl",
+    "descriptionIt": "Curl alternato o simultaneo con manubri. Maggiore libertà di movimento rispetto al bilanciere.",
+    "primaryMuscles": ["biceps"],
+    "secondaryMuscles": ["brachialis", "forearms"],
+    "equipmentId": "dumbbell",
+    "difficulty": "beginner",
+    "movementType": "pull",
+    "instructionsIt": [
+      "In piedi o seduto con i manubri ai lati",
+      "Ruota il polso in supinazione durante la salita",
+      "Porta il manubrio verso la spalla",
+      "Abbassa lentamente mantenendo la tensione"
+    ],
+    "mistakesIt": [
+      "Dondolare le spalle per aiutarsi",
+      "Non ruotare completamente il polso in supinazione"
+    ],
+    "tipsIt": [
+      "La versione alternata permette di focalizzarsi su ogni braccio",
+      "Inclinati su una panca inclinata per maggiore stretching"
+    ],
+    "breathingIt": "Espira nella curl, inspira nel ritorno.",
+    "alternatives": ["barbell-curl", "panatta-bicep-curl-machine"],
+    "tags": ["dumbbell", "biceps", "isolation"]
+  },
+  {
+    "id": "dumbbell-hammer-curl",
+    "slug": "dumbbell-hammer-curl",
+    "nameIt": "Hammer Curl con Manubri",
+    "nameEn": "Dumbbell Hammer Curl",
+    "descriptionIt": "Curl con presa neutra (a martello). Attiva brachioradiale e brachiale oltre ai bicipiti.",
+    "primaryMuscles": ["biceps"],
+    "secondaryMuscles": ["brachialis", "forearms"],
+    "equipmentId": "dumbbell",
+    "difficulty": "beginner",
+    "movementType": "pull",
+    "instructionsIt": [
+      "Presa neutra con i pollici verso l'alto",
+      "Curl verso le spalle senza ruotare il polso",
+      "Gomiti fermi ai fianchi"
+    ],
+    "mistakesIt": [
+      "Ruotare il polso come nel curl normale",
+      "Dondolare il corpo"
+    ],
+    "tipsIt": [
+      "Eccellente per lo sviluppo degli avambracci",
+      "Può essere eseguito in alternanza o contemporaneamente"
+    ],
+    "breathingIt": "Espira nella curl, inspira nel ritorno.",
+    "alternatives": ["dumbbell-curl", "panatta-cable-curl"],
+    "tags": ["dumbbell", "biceps", "forearms"]
+  },
+  {
+    "id": "dumbbell-concentration-curl",
+    "slug": "dumbbell-concentration-curl",
+    "nameIt": "Curl di Concentrazione",
+    "nameEn": "Concentration Curl",
+    "descriptionIt": "Isolamento puro del bicipite con il gomito appoggiato alla coscia. Ideale per il picco.",
+    "primaryMuscles": ["biceps"],
+    "secondaryMuscles": [],
+    "equipmentId": "dumbbell",
+    "difficulty": "beginner",
+    "movementType": "pull",
+    "instructionsIt": [
+      "Seduto con il gomito appoggiato internamente alla coscia",
+      "Parte con il braccio quasi teso",
+      "Curva verso l'alto contraendo il bicipite al massimo",
+      "Abbassa lentamente"
+    ],
+    "mistakesIt": [
+      "Muovere il gomito dalla coscia",
+      "Non arrivare alla contrazione massima"
+    ],
+    "tipsIt": [
+      "Contrazione isometrica di 2-3 secondi in cima",
+      "Ottimo esercizio finale per i bicipiti"
+    ],
+    "breathingIt": "Espira nella curl, inspira nel ritorno.",
+    "alternatives": ["panatta-preacher-curl", "dumbbell-curl"],
+    "tags": ["dumbbell", "biceps", "isolation"]
+  },
+  {
+    "id": "dumbbell-bench-press",
+    "slug": "dumbbell-bench-press",
+    "nameIt": "Panca Piana con Manubri",
+    "nameEn": "Dumbbell Bench Press",
+    "descriptionIt": "Variante della panca piana con manubri. Maggiore ROM e lavoro stabilizzatore.",
+    "primaryMuscles": ["chest"],
+    "secondaryMuscles": ["triceps", "front_delts"],
+    "equipmentId": "dumbbell",
+    "difficulty": "beginner",
+    "movementType": "push",
+    "instructionsIt": [
+      "Sdraiati sulla panca con un manubrio in ogni mano",
+      "Abbassa i manubri ai lati del petto con i gomiti a 45°",
+      "Spingi verso l'alto avvicinando leggermente i manubri",
+      "Non bloccare i gomiti in cima"
+    ],
+    "mistakesIt": [
+      "Abbassare i manubri troppo a lato causando stress alla spalla",
+      "Non controllare la fase eccentrica"
+    ],
+    "tipsIt": [
+      "Il ROM è maggiore rispetto al bilanciere",
+      "Più sicuro del bilanciere senza spotter"
+    ],
+    "breathingIt": "Inspira nella discesa, espira nella spinta.",
+    "alternatives": ["barbell-bench-press", "panatta-chest-press"],
+    "tags": ["dumbbell", "chest", "compound"]
+  },
+  {
+    "id": "dumbbell-incline-press",
+    "slug": "dumbbell-incline-press",
+    "nameIt": "Panca Inclinata con Manubri",
+    "nameEn": "Dumbbell Incline Press",
+    "descriptionIt": "Spinta inclinata con manubri per il pettorale superiore.",
+    "primaryMuscles": ["chest"],
+    "secondaryMuscles": ["front_delts", "triceps"],
+    "equipmentId": "dumbbell",
+    "difficulty": "beginner",
+    "movementType": "push",
+    "instructionsIt": [
+      "Panca a 30-45 gradi, manubri alla clavicola",
+      "Spingi verso l'alto avvicinando i manubri",
+      "Controlla la discesa"
+    ],
+    "mistakesIt": [
+      "Abbassare i manubri troppo in basso",
+      "Presa non bilanciata"
+    ],
+    "tipsIt": [
+      "30° è l'angolo ottimale per il pettorale clavicolare"
+    ],
+    "breathingIt": "Inspira nella discesa, espira nella spinta.",
+    "alternatives": ["barbell-incline-press", "panatta-incline-chest-press"],
+    "tags": ["dumbbell", "chest", "upper-chest"]
+  },
+  {
+    "id": "dumbbell-fly",
+    "slug": "dumbbell-fly",
+    "nameIt": "Croci con Manubri",
+    "nameEn": "Dumbbell Fly",
+    "descriptionIt": "Isolamento del pettorale con movimento di adduzione. Enfatizza lo stretching e la contrazione.",
+    "primaryMuscles": ["chest"],
+    "secondaryMuscles": ["front_delts"],
+    "equipmentId": "dumbbell",
+    "difficulty": "beginner",
+    "movementType": "isolation",
+    "instructionsIt": [
+      "Sdraiato sulla panca, manubri sopra il petto con gomiti leggermente flessi",
+      "Apri le braccia in fuori abbassando i manubri ai lati",
+      "Mantieni il leggero angolo del gomito durante tutto il movimento",
+      "Riporta i manubri in alto come ad abbracciare qualcuno"
+    ],
+    "mistakesIt": [
+      "Raddrizzare completamente i gomiti (stress alla spalla)",
+      "Abbassare troppo causando eccessivo stretch"
+    ],
+    "tipsIt": [
+      "Non è una spinta, è un arco",
+      "Usa pesi più leggeri rispetto alla panca"
+    ],
+    "breathingIt": "Inspira nell'apertura, espira nella chiusura.",
+    "alternatives": ["panatta-pec-deck", "panatta-cable-fly-high"],
+    "tags": ["dumbbell", "chest", "isolation"]
+  },
+  {
+    "id": "dumbbell-lateral-raise",
+    "slug": "dumbbell-lateral-raise",
+    "nameIt": "Alzate Laterali con Manubri",
+    "nameEn": "Dumbbell Lateral Raise",
+    "descriptionIt": "Isolamento del deltoide laterale. Fondamentale per spalle larghe e definite.",
+    "primaryMuscles": ["lateral_delts"],
+    "secondaryMuscles": ["traps"],
+    "equipmentId": "dumbbell",
+    "difficulty": "beginner",
+    "movementType": "isolation",
+    "instructionsIt": [
+      "In piedi con i manubri ai lati",
+      "Alza le braccia lateralmente fino all'altezza delle spalle",
+      "Gomiti leggermente flessi, pollice leggermente più basso del mignolo",
+      "Abbassa lentamente"
+    ],
+    "mistakesIt": [
+      "Alzare le spalle per compensare",
+      "Usare troppo peso con slancio"
+    ],
+    "tipsIt": [
+      "Eccentrica lenta (3-4 secondi) per massimo stimolo",
+      "Leggerissima inclinazione in avanti per isolare meglio il deltoide medio"
+    ],
+    "breathingIt": "Espira nell'alzata, inspira nel ritorno.",
+    "alternatives": ["panatta-lateral-raise-machine", "panatta-cable-lateral-raise"],
+    "tags": ["dumbbell", "shoulders", "isolation"]
+  },
+  {
+    "id": "dumbbell-front-raise",
+    "slug": "dumbbell-front-raise",
+    "nameIt": "Alzate Frontali con Manubri",
+    "nameEn": "Dumbbell Front Raise",
+    "descriptionIt": "Isolamento del deltoide anteriore. Complementare alle alzate laterali.",
+    "primaryMuscles": ["front_delts"],
+    "secondaryMuscles": [],
+    "equipmentId": "dumbbell",
+    "difficulty": "beginner",
+    "movementType": "isolation",
+    "instructionsIt": [
+      "In piedi con i manubri davanti alle cosce, presa prona",
+      "Alza un manubrio (o entrambi) fino all'altezza degli occhi",
+      "Abbassa lentamente controllando"
+    ],
+    "mistakesIt": [
+      "Dondolare il busto per aiutarsi",
+      "Salire troppo in alto (stress alla spalla)"
+    ],
+    "tipsIt": [
+      "Versione alternata per più controllo",
+      "Non è necessario superare il parallelo con il pavimento"
+    ],
+    "breathingIt": "Espira nell'alzata, inspira nel ritorno.",
+    "alternatives": ["barbell-overhead-press", "panatta-shoulder-press"],
+    "tags": ["dumbbell", "shoulders", "isolation"]
+  },
+  {
+    "id": "dumbbell-arnold-press",
+    "slug": "dumbbell-arnold-press",
+    "nameIt": "Arnold Press",
+    "nameEn": "Arnold Press",
+    "descriptionIt": "Spinta per le spalle con rotazione del polso. Attiva tutti e tre i capi del deltoide.",
+    "primaryMuscles": ["front_delts"],
+    "secondaryMuscles": ["lateral_delts", "triceps"],
+    "equipmentId": "dumbbell",
+    "difficulty": "intermediate",
+    "movementType": "push",
+    "instructionsIt": [
+      "Seduto con i manubri di fronte al viso, palmi verso di te",
+      "Spingi verso l'alto ruotando i polsi verso l'esterno",
+      "Arriva con i palmi in avanti in cima",
+      "Inverti il movimento nella discesa"
+    ],
+    "mistakesIt": [
+      "Eseguire la rotazione troppo velocemente",
+      "Non controllare la fase eccentrica"
+    ],
+    "tipsIt": [
+      "Ideato da Arnold Schwarzenegger",
+      "Più volume sulle spalle di una normal shoulder press"
+    ],
+    "breathingIt": "Espira nella spinta, inspira nel ritorno.",
+    "alternatives": ["dumbbell-shoulder-press", "barbell-overhead-press"],
+    "tags": ["dumbbell", "shoulders", "compound"]
+  },
+  {
+    "id": "dumbbell-shoulder-press",
+    "slug": "dumbbell-shoulder-press",
+    "nameIt": "Shoulder Press con Manubri",
+    "nameEn": "Dumbbell Shoulder Press",
+    "descriptionIt": "Spinta verticale con manubri per le spalle. Più libertà di movimento rispetto al bilanciere.",
+    "primaryMuscles": ["front_delts"],
+    "secondaryMuscles": ["lateral_delts", "triceps"],
+    "equipmentId": "dumbbell",
+    "difficulty": "beginner",
+    "movementType": "push",
+    "instructionsIt": [
+      "Seduto o in piedi con i manubri all'altezza delle orecchie",
+      "Spingi verso l'alto fino all'estensione quasi completa",
+      "Abbassa fino a che i gomiti siano a 90°"
+    ],
+    "mistakesIt": [
+      "Abbassare troppo causando stress alla spalla",
+      "Inarcare la schiena"
+    ],
+    "tipsIt": [
+      "Seduto per ridurre il lavoro del core",
+      "In piedi per maggiore attivazione totale"
+    ],
+    "breathingIt": "Espira nella spinta, inspira nel ritorno.",
+    "alternatives": ["barbell-overhead-press", "panatta-shoulder-press"],
+    "tags": ["dumbbell", "shoulders", "compound"]
+  },
+  {
+    "id": "dumbbell-row",
+    "slug": "dumbbell-row",
+    "nameIt": "Rematore con Manubrio",
+    "nameEn": "Dumbbell Row",
+    "descriptionIt": "Rematore unilaterale con manubrio. Ottimo range di movimento e possibilità di caricare pesante.",
+    "primaryMuscles": ["lats"],
+    "secondaryMuscles": ["rhomboids", "biceps", "rear_delts"],
+    "equipmentId": "dumbbell",
+    "difficulty": "beginner",
+    "movementType": "pull",
+    "instructionsIt": [
+      "Un ginocchio e una mano appoggiate sulla panca",
+      "Schiena parallela al pavimento",
+      "Tira il manubrio verso il fianco portando il gomito verso il soffitto",
+      "Schiaccia la scapola a fine movimento"
+    ],
+    "mistakesIt": [
+      "Ruotare il busto per aumentare il ROM",
+      "Tirare con il bicipite invece del dorsale"
+    ],
+    "tipsIt": [
+      "Pensa di 'mettere il gomito in tasca'",
+      "Mantieni la testa in posizione neutra"
+    ],
+    "breathingIt": "Espira nella tirata, inspira nel ritorno.",
+    "alternatives": ["barbell-bent-over-row", "panatta-low-row"],
+    "tags": ["dumbbell", "back", "unilateral"]
+  },
+  {
+    "id": "dumbbell-romanian-deadlift",
+    "slug": "dumbbell-romanian-deadlift",
+    "nameIt": "Stacco Rumeno con Manubri",
+    "nameEn": "Dumbbell Romanian Deadlift",
+    "descriptionIt": "Variante del Romanian Deadlift con manubri. Più accessibile per i principianti.",
+    "primaryMuscles": ["hamstrings"],
+    "secondaryMuscles": ["glutes", "erector_spinae"],
+    "equipmentId": "dumbbell",
+    "difficulty": "beginner",
+    "movementType": "hinge",
+    "instructionsIt": [
+      "In piedi con i manubri davanti alle cosce",
+      "Abbassa i manubri lungo le gambe con schiena piatta",
+      "Senti lo stretch nei femorali, poi risali estendendo i fianchi"
+    ],
+    "mistakesIt": [
+      "Piegare troppo le ginocchia",
+      "Arrotondare la schiena"
+    ],
+    "tipsIt": [
+      "Ottima versione per i principianti prima di passare al bilanciere"
+    ],
+    "breathingIt": "Inspira nella discesa, espira nella risalita.",
+    "alternatives": ["barbell-romanian-deadlift", "panatta-leg-curl-prone"],
+    "tags": ["dumbbell", "legs", "hamstrings", "hinge"]
+  },
+  {
+    "id": "dumbbell-goblet-squat",
+    "slug": "dumbbell-goblet-squat",
+    "nameIt": "Goblet Squat con Manubrio",
+    "nameEn": "Goblet Squat",
+    "descriptionIt": "Squat con manubrio tenuto al petto. Ottimo per imparare la meccanica dello squat.",
+    "primaryMuscles": ["quadriceps"],
+    "secondaryMuscles": ["glutes", "hamstrings", "abs"],
+    "equipmentId": "dumbbell",
+    "difficulty": "beginner",
+    "movementType": "push",
+    "instructionsIt": [
+      "Tieni il manubrio verticalmente al petto con entrambe le mani",
+      "Piedi alla larghezza delle spalle, punte verso l'esterno",
+      "Scendi in squat profondo mantenendo il petto alto",
+      "Risali spingendo con i talloni"
+    ],
+    "mistakesIt": [
+      "Lasciare cadere i gomiti durante la discesa",
+      "Non scendere abbastanza in profondità"
+    ],
+    "tipsIt": [
+      "Il contrappeso aiuta a stare più verticali rispetto al back squat",
+      "Ottimo per migliorare la mobilità dell'anca"
+    ],
+    "breathingIt": "Inspira nella discesa, espira nella risalita.",
+    "alternatives": ["barbell-squat", "bodyweight-squat"],
+    "tags": ["dumbbell", "legs", "beginner", "compound"]
+  },
+  {
+    "id": "dumbbell-bulgarian-split-squat",
+    "slug": "dumbbell-bulgarian-split-squat",
+    "nameIt": "Squat Bulgaro con Manubri",
+    "nameEn": "Bulgarian Split Squat",
+    "descriptionIt": "Esercizio unilaterale per quadricipiti e glutei con piede posteriore sollevato.",
+    "primaryMuscles": ["quadriceps"],
+    "secondaryMuscles": ["glutes", "hamstrings"],
+    "equipmentId": "dumbbell",
+    "difficulty": "intermediate",
+    "movementType": "push",
+    "instructionsIt": [
+      "Piede posteriore su una panca, piede anteriore avanzato",
+      "Tieni i manubri ai lati",
+      "Abbassa il ginocchio posteriore verso il pavimento",
+      "Spingi con il tallone anteriore per risalire"
+    ],
+    "mistakesIt": [
+      "Piede anteriore troppo vicino alla panca",
+      "Ginocchio anteriore che supera la punta del piede"
+    ],
+    "tipsIt": [
+      "Ottimo per correggere asimmetrie di forza tra le gambe",
+      "Più il piede anteriore è avanzato = più glutei; vicino = più quadricipiti"
+    ],
+    "breathingIt": "Inspira nella discesa, espira nella risalita.",
+    "alternatives": ["lunge", "barbell-squat"],
+    "tags": ["dumbbell", "legs", "unilateral", "compound"]
+  },
+  {
+    "id": "dumbbell-tricep-kickback",
+    "slug": "dumbbell-tricep-kickback",
+    "nameIt": "Kickback Tricipiti con Manubrio",
+    "nameEn": "Dumbbell Tricep Kickback",
+    "descriptionIt": "Isolamento del tricipite in posizione inclinata.",
+    "primaryMuscles": ["triceps"],
+    "secondaryMuscles": [],
+    "equipmentId": "dumbbell",
+    "difficulty": "beginner",
+    "movementType": "push",
+    "instructionsIt": [
+      "Inclinati con busto quasi parallelo al pavimento",
+      "Gomito fermo vicino al fianco a 90°",
+      "Estendi il braccio verso l'indietro",
+      "Abbassa controllato"
+    ],
+    "mistakesIt": [
+      "Muovere il gomito durante l'estensione",
+      "Non completare l'estensione"
+    ],
+    "tipsIt": [
+      "Contrazione isometrica di 2s in cima",
+      "Controlla sia la fase concentrica che eccentrica"
+    ],
+    "breathingIt": "Espira nell'estensione, inspira nel ritorno.",
+    "alternatives": ["panatta-tricep-pushdown-cable", "dip"],
+    "tags": ["dumbbell", "triceps", "isolation"]
+  },
+  {
+    "id": "dumbbell-overhead-extension",
+    "slug": "dumbbell-overhead-extension",
+    "nameIt": "Estensione Tricipiti Overhead con Manubrio",
+    "nameEn": "Dumbbell Overhead Tricep Extension",
+    "descriptionIt": "Estensione del tricipite con il braccio sopra la testa. Massimo stretch del capo lungo.",
+    "primaryMuscles": ["triceps"],
+    "secondaryMuscles": [],
+    "equipmentId": "dumbbell",
+    "difficulty": "beginner",
+    "movementType": "push",
+    "instructionsIt": [
+      "Siediti con un manubrio tenuto con entrambe le mani sopra la testa",
+      "Abbassa il manubrio dietro la testa piegando i gomiti",
+      "Estendi le braccia verso l'alto"
+    ],
+    "mistakesIt": [
+      "Aprire i gomiti verso l'esterno",
+      "Muovere le braccia invece dei soli avambracci"
+    ],
+    "tipsIt": [
+      "Capo lungo massimamente attivato con braccia sopra la testa",
+      "Versione monolaterale per più focalizzazione"
+    ],
+    "breathingIt": "Espira nell'estensione, inspira nel ritorno.",
+    "alternatives": ["barbell-skull-crusher", "panatta-tricep-press-machine"],
+    "tags": ["dumbbell", "triceps", "isolation"]
+  },
+  {
+    "id": "dumbbell-pullover",
+    "slug": "dumbbell-pullover",
+    "nameIt": "Pull Over con Manubrio",
+    "nameEn": "Dumbbell Pullover",
+    "descriptionIt": "Esercizio unico che lavora dorsali e petto. Eccellente per l'espansione della gabbia toracica.",
+    "primaryMuscles": ["lats"],
+    "secondaryMuscles": ["chest", "triceps", "serratus"],
+    "equipmentId": "dumbbell",
+    "difficulty": "intermediate",
+    "movementType": "pull",
+    "instructionsIt": [
+      "Sdraiati trasversalmente su una panca con le spalle appoggiate",
+      "Tieni un manubrio con entrambe le mani sopra il petto",
+      "Abbassa il manubrio dietro la testa mantenendo i gomiti leggermente flessi",
+      "Riporta verso l'alto sfruttando i dorsali"
+    ],
+    "mistakesIt": [
+      "Piegare troppo i gomiti trasformandolo in un'estensione",
+      "Non allungarsi abbastanza nella fase di stretching"
+    ],
+    "tipsIt": [
+      "Ottimo a fine allenamento dorsali o petto",
+      "Focus sull'allungamento dei dorsali nella fase eccentrica"
+    ],
+    "breathingIt": "Inspira nell'abbassamento, espira nel ritorno.",
+    "alternatives": ["panatta-pullover"],
+    "tags": ["dumbbell", "back", "chest", "compound"]
+  },
+  {
+    "id": "dumbbell-shrug",
+    "slug": "dumbbell-shrug",
+    "nameIt": "Scrollate Spalle con Manubri",
+    "nameEn": "Dumbbell Shrug",
+    "descriptionIt": "Isolamento del trapezio superiore con manubri. Buon ROM e nessuna limitazione della presa.",
+    "primaryMuscles": ["traps"],
+    "secondaryMuscles": [],
+    "equipmentId": "dumbbell",
+    "difficulty": "beginner",
+    "movementType": "isolation",
+    "instructionsIt": [
+      "In piedi con i manubri ai lati",
+      "Alza le spalle verso le orecchie",
+      "Mantieni 1-2 secondi",
+      "Abbassa lentamente"
+    ],
+    "mistakesIt": [
+      "Ruotare le spalle",
+      "Piegare i gomiti aiutandosi"
+    ],
+    "tipsIt": [
+      "Movimento puro verticale",
+      "Pausa isometrica per massima contrazione"
+    ],
+    "breathingIt": "Espira nell'alzata, inspira nel ritorno.",
+    "alternatives": ["barbell-shrug", "panatta-cable-shrug"],
+    "tags": ["dumbbell", "traps", "isolation"]
+  },
+  {
+    "id": "dumbbell-step-up",
+    "slug": "dumbbell-step-up",
+    "nameIt": "Step Up con Manubri",
+    "nameEn": "Dumbbell Step-Up",
+    "descriptionIt": "Esercizio funzionale per quadricipiti e glutei. Simula il gesto del salire le scale.",
+    "primaryMuscles": ["quadriceps"],
+    "secondaryMuscles": ["glutes", "hamstrings"],
+    "equipmentId": "dumbbell",
+    "difficulty": "beginner",
+    "movementType": "push",
+    "instructionsIt": [
+      "Con i manubri ai lati, posizionati di fronte a una panca o step",
+      "Sali con un piede spingendo con il tallone",
+      "Porta l'altro piede al livello del primo",
+      "Scendi controllato con lo stesso piede"
+    ],
+    "mistakesIt": [
+      "Spingere con il piede posteriore invece del piede sullo step",
+      "Non estendere completamente la gamba al top"
+    ],
+    "tipsIt": [
+      "Step più alto = più glutei",
+      "Alterna il piede guida ogni serie"
+    ],
+    "breathingIt": "Espira nella salita, inspira nella discesa.",
+    "alternatives": ["lunge", "dumbbell-bulgarian-split-squat"],
+    "tags": ["dumbbell", "legs", "functional", "unilateral"]
+  },
+  {
+    "id": "dumbbell-farmer-carry",
+    "slug": "dumbbell-farmer-carry",
+    "nameIt": "Farmer's Carry con Manubri",
+    "nameEn": "Farmer's Carry",
+    "descriptionIt": "Cammina portando manubri pesanti. Sviluppa la presa, il core e la resistenza muscolare.",
+    "primaryMuscles": ["forearms"],
+    "secondaryMuscles": ["traps", "abs", "quadriceps"],
+    "equipmentId": "dumbbell",
+    "difficulty": "beginner",
+    "movementType": "compound",
+    "instructionsIt": [
+      "Prendi i manubri più pesanti che riesci a portare in presa senza perdere forma",
+      "Stai eretto con le spalle indietro e il core attivo",
+      "Cammina per la distanza o il tempo stabilito"
+    ],
+    "mistakesIt": [
+      "Inclinare il busto di lato",
+      "Abbassare le spalle"
+    ],
+    "tipsIt": [
+      "Ottimo finisher per la presa e il core",
+      "Usa kettlebell per variante"
+    ],
+    "breathingIt": "Respira regolarmente durante la camminata.",
+    "alternatives": ["barbell-shrug"],
+    "tags": ["dumbbell", "functional", "grip", "compound"]
+  },
+  {
+    "id": "cable-lat-pulldown",
+    "slug": "cable-lat-pulldown",
+    "nameIt": "Lat Machine (Tirata Alta)",
+    "nameEn": "Cable Lat Pulldown",
+    "descriptionIt": "Tirata verticale al cavo. Sviluppa ampiezza dei dorsali.",
+    "primaryMuscles": ["lats"],
+    "secondaryMuscles": ["biceps", "rear_delts"],
+    "equipmentId": "cable",
+    "difficulty": "beginner",
+    "movementType": "pull",
+    "instructionsIt": [
+      "Presa prona a larghezza spalle o più larga",
+      "Tira verso il petto portando i gomiti verso i fianchi",
+      "Mantieni il petto in fuori e un leggero arco lombare",
+      "Ritorna lentamente estendendo completamente"
+    ],
+    "mistakesIt": [
+      "Tirare dietro la testa",
+      "Non completare l'estensione in cima"
+    ],
+    "tipsIt": [
+      "Pensa di portare i gomiti nelle tasche dei pantaloni",
+      "Scapole retratte e depresse durante tutto il pull"
+    ],
+    "breathingIt": "Espira nella tirata, inspira nel ritorno.",
+    "alternatives": ["pullup", "panatta-lat-machine"],
+    "tags": ["cable", "back", "lats"]
+  },
+  {
+    "id": "cable-seated-row",
+    "slug": "cable-seated-row",
+    "nameIt": "Rematore Seduto ai Cavi",
+    "nameEn": "Cable Seated Row",
+    "descriptionIt": "Rematore orizzontale ai cavi. Sviluppa spessore e definizione della schiena.",
+    "primaryMuscles": ["lats"],
+    "secondaryMuscles": ["rhomboids", "biceps", "rear_delts"],
+    "equipmentId": "cable",
+    "difficulty": "beginner",
+    "movementType": "pull",
+    "instructionsIt": [
+      "Seduto con piedi sulle pedane e schiena dritta",
+      "Tira verso l'ombelico portando i gomiti indietro",
+      "Schiaccia le scapole a fine movimento",
+      "Ritorna allungandosi completamente"
+    ],
+    "mistakesIt": [
+      "Curvare la schiena in avanti",
+      "Usare il busto come rimbalzo"
+    ],
+    "tipsIt": [
+      "Presa stretta neutrale per più dorsali",
+      "Presa larga per più romboidei e trapezio"
+    ],
+    "breathingIt": "Espira nella tirata, inspira nel ritorno.",
+    "alternatives": ["barbell-bent-over-row", "panatta-low-row"],
+    "tags": ["cable", "back", "compound"]
+  },
+  {
+    "id": "cable-tricep-pushdown",
+    "slug": "cable-tricep-pushdown",
+    "nameIt": "Tricep Pushdown ai Cavi",
+    "nameEn": "Cable Tricep Pushdown",
+    "descriptionIt": "Estensione tricipiti con cavo alto. Tensione costante per tutto il ROM.",
+    "primaryMuscles": ["triceps"],
+    "secondaryMuscles": [],
+    "equipmentId": "cable",
+    "difficulty": "beginner",
+    "movementType": "push",
+    "instructionsIt": [
+      "Stai davanti al cavo alto con gomiti ai fianchi",
+      "Estendi verso il basso contraendo il tricipite",
+      "Mantieni la contrazione in basso",
+      "Risali controllato fino a 90°"
+    ],
+    "mistakesIt": [
+      "Muovere i gomiti in avanti",
+      "Non estendere completamente"
+    ],
+    "tipsIt": [
+      "Barra dritta per presa prona, corda per supinazione finale"
+    ],
+    "breathingIt": "Espira nell'estensione, inspira nel ritorno.",
+    "alternatives": ["barbell-skull-crusher", "dip"],
+    "tags": ["cable", "triceps", "isolation"]
+  },
+  {
+    "id": "cable-bicep-curl",
+    "slug": "cable-bicep-curl",
+    "nameIt": "Curl Bicipiti ai Cavi",
+    "nameEn": "Cable Bicep Curl",
+    "descriptionIt": "Curl con cavo basso. La tensione costante del cavo ottimizza il lavoro in tutto il ROM.",
+    "primaryMuscles": ["biceps"],
+    "secondaryMuscles": ["brachialis", "forearms"],
+    "equipmentId": "cable",
+    "difficulty": "beginner",
+    "movementType": "pull",
+    "instructionsIt": [
+      "Cavo basso con barra dritta o corda",
+      "Gomiti fermi ai fianchi",
+      "Curva verso l'alto",
+      "Abbassa lentamente mantenendo tensione"
+    ],
+    "mistakesIt": [
+      "Muovere i gomiti in avanti"
+    ],
+    "tipsIt": [
+      "Usa la corda per supinare il polso in cima"
+    ],
+    "breathingIt": "Espira nella curl, inspira nel ritorno.",
+    "alternatives": ["barbell-curl", "dumbbell-curl"],
+    "tags": ["cable", "biceps", "isolation"]
+  },
+  {
+    "id": "cable-face-pull",
+    "slug": "cable-face-pull",
+    "nameIt": "Face Pull ai Cavi",
+    "nameEn": "Cable Face Pull",
+    "descriptionIt": "Tirata verso il viso con corda al cavo alto. Fondamentale per la salute delle spalle.",
+    "primaryMuscles": ["rear_delts"],
+    "secondaryMuscles": ["traps", "rhomboids"],
+    "equipmentId": "cable",
+    "difficulty": "beginner",
+    "movementType": "pull",
+    "instructionsIt": [
+      "Cavo all'altezza del viso con corda",
+      "Tira verso il viso aprendo le mani alla fine",
+      "Gomiti alti e aperti a lato della testa"
+    ],
+    "mistakesIt": [
+      "Tenere i gomiti bassi trasformandolo in un rematore"
+    ],
+    "tipsIt": [
+      "Esegui a ogni sessione spalle come preventivo"
+    ],
+    "breathingIt": "Espira nella tirata, inspira nel ritorno.",
+    "alternatives": ["panatta-rear-deltoid"],
+    "tags": ["cable", "shoulders", "rear-delts", "health"]
+  },
+  {
+    "id": "cable-straight-arm-pulldown",
+    "slug": "cable-straight-arm-pulldown",
+    "nameIt": "Straight Arm Pulldown",
+    "nameEn": "Straight-Arm Cable Pulldown",
+    "descriptionIt": "Tirata con le braccia tese per isolare i dorsali senza coinvolgere i bicipiti.",
+    "primaryMuscles": ["lats"],
+    "secondaryMuscles": ["serratus"],
+    "equipmentId": "cable",
+    "difficulty": "beginner",
+    "movementType": "pull",
+    "instructionsIt": [
+      "Cavo alto, in piedi inclinato leggermente in avanti",
+      "Tira il cavo verso i fianchi mantenendo le braccia tese",
+      "Senti la contrazione dei dorsali in basso",
+      "Ritorna lentamente allungando i dorsali"
+    ],
+    "mistakesIt": [
+      "Piegare i gomiti",
+      "Usare troppo le spalle"
+    ],
+    "tipsIt": [
+      "Ottimo esercizio di isolamento finale per i dorsali"
+    ],
+    "breathingIt": "Espira nella tirata, inspira nel ritorno.",
+    "alternatives": ["cable-lat-pulldown", "panatta-pullover"],
+    "tags": ["cable", "back", "lats", "isolation"]
+  },
+  {
+    "id": "cable-crunch",
+    "slug": "cable-crunch",
+    "nameIt": "Cable Crunch (Crunch ai Cavi)",
+    "nameEn": "Cable Crunch",
+    "descriptionIt": "Crunch con cavo alto in inginocchiato. Carico progressivo per il retto addominale.",
+    "primaryMuscles": ["abs"],
+    "secondaryMuscles": ["obliques"],
+    "equipmentId": "cable",
+    "difficulty": "intermediate",
+    "movementType": "flexion",
+    "instructionsIt": [
+      "Inginocchiato con la corda alle tempie",
+      "Fletti il busto verso il basso contraendo gli addominali",
+      "Non tirare con le braccia",
+      "Ritorna lentamente"
+    ],
+    "mistakesIt": [
+      "Tirare con le braccia",
+      "Muoversi dai fianchi invece che dalla colonna"
+    ],
+    "tipsIt": [
+      "Focus sull'arrotolamento, non sulla distanza percorsa"
+    ],
+    "breathingIt": "Espira nella flessione, inspira nel ritorno.",
+    "alternatives": ["plank", "leg-raise"],
+    "tags": ["cable", "abs", "core"]
+  },
+  {
+    "id": "cable-woodchop",
+    "slug": "cable-woodchop",
+    "nameIt": "Wood Chop ai Cavi",
+    "nameEn": "Cable Woodchop",
+    "descriptionIt": "Rotazione diagonale del tronco al cavo. Sviluppa gli obliqui e la potenza rotatoria.",
+    "primaryMuscles": ["obliques"],
+    "secondaryMuscles": ["abs", "shoulders"],
+    "equipmentId": "cable",
+    "difficulty": "intermediate",
+    "movementType": "rotation",
+    "instructionsIt": [
+      "Cavo alto, di fianco alla macchina",
+      "Ruota il tronco portando la maniglia in basso verso il ginocchio opposto",
+      "Braccia tese durante la rotazione",
+      "Ritorna controllato"
+    ],
+    "mistakesIt": [
+      "Flettere le braccia durante il movimento"
+    ],
+    "tipsIt": [
+      "Esegui entrambi i lati con lo stesso carico"
+    ],
+    "breathingIt": "Espira nella rotazione, inspira nel ritorno.",
+    "alternatives": ["side-plank", "panatta-rotary-torso"],
+    "tags": ["cable", "core", "obliques", "functional"]
+  },
+  {
+    "id": "cable-fly",
+    "slug": "cable-fly",
+    "nameIt": "Croci ai Cavi",
+    "nameEn": "Cable Crossover Fly",
+    "descriptionIt": "Croci con cavi per isolamento del petto. Tensione costante durante tutto il ROM.",
+    "primaryMuscles": ["chest"],
+    "secondaryMuscles": ["front_delts"],
+    "equipmentId": "cable",
+    "difficulty": "beginner",
+    "movementType": "isolation",
+    "instructionsIt": [
+      "Due cavi alti, un passo in avanti al centro",
+      "Porta le mani verso il basso e al centro",
+      "Mantieni i gomiti leggermente flessi",
+      "Ritorna controllato aprendo il petto"
+    ],
+    "mistakesIt": [
+      "Raddrizzare i gomiti trasformandolo in una spinta"
+    ],
+    "tipsIt": [
+      "Cavi alti = petto inferiore, cavi bassi = petto superiore"
+    ],
+    "breathingIt": "Espira nella chiusura, inspira nell'apertura.",
+    "alternatives": ["dumbbell-fly", "panatta-pec-deck"],
+    "tags": ["cable", "chest", "isolation"]
+  },
+  {
+    "id": "cable-lateral-raise",
+    "slug": "cable-lateral-raise",
+    "nameIt": "Alzate Laterali ai Cavi",
+    "nameEn": "Cable Lateral Raise",
+    "descriptionIt": "Alzate laterali al cavo basso. Tensione costante anche nella posizione di partenza.",
+    "primaryMuscles": ["lateral_delts"],
+    "secondaryMuscles": ["traps"],
+    "equipmentId": "cable",
+    "difficulty": "beginner",
+    "movementType": "isolation",
+    "instructionsIt": [
+      "Cavo basso laterale, prendi la maniglia con la mano opposta",
+      "Alza lateralmente fino all'altezza della spalla",
+      "Abbassa lentamente"
+    ],
+    "mistakesIt": [
+      "Alzare le spalle"
+    ],
+    "tipsIt": [
+      "Superiore al manubrio per tensione costante in tutto il ROM"
+    ],
+    "breathingIt": "Espira nell'alzata, inspira nel ritorno.",
+    "alternatives": ["dumbbell-lateral-raise", "panatta-lateral-raise-machine"],
+    "tags": ["cable", "shoulders", "isolation"]
+  }
+]

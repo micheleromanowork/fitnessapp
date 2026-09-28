@@ -5,5 +5,6 @@ import WidgetKit
 struct FitnessTrackerWidgetBundle: WidgetBundle {
     var body: some Widget {
         RestTimerLiveActivity()
+        FitnessWidget()
     }
 }

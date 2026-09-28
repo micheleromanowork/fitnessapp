@@ -203,6 +203,9 @@ class WorkoutViewModel {
             try WorkoutService.completeWorkout(w, context: ctx)
             HapticService.notification(.success)
             workout = nil
+            if let all = try? ctx.fetch(FetchDescriptor<Workout>()) {
+                WidgetDataService.update(workouts: all)
+            }
         } catch {
             showError("Errore nel completamento")
         }

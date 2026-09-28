@@ -3,6 +3,7 @@ import SwiftData
 
 struct SettingsView: View {
     @Query private var settingsArr: [AppSettings]
+    @Query private var workouts: [Workout]
     @Environment(\.modelContext) private var modelContext
 
     private var settings: AppSettings {
@@ -11,6 +12,10 @@ struct SettingsView: View {
         modelContext.insert(s)
         return s
     }
+
+    @State private var exportURL: URL?
+    @State private var showShare = false
+    @State private var showResetOnboarding = false
 
     var body: some View {
         NavigationStack {
@@ -48,6 +53,22 @@ struct SettingsView: View {
                     }
                 }
 
+                Section("Dati") {
+                    Button {
+                        let csv = ExportService.exportWorkoutsCSV(workouts: workouts)
+                        exportURL = ExportService.writeToTemp(csv)
+                        showShare = exportURL != nil
+                    } label: {
+                        Label("Esporta allenamenti (CSV)", systemImage: "square.and.arrow.up")
+                    }
+
+                    Button(role: .destructive) {
+                        showResetOnboarding = true
+                    } label: {
+                        Label("Rivedi onboarding", systemImage: "arrow.counterclockwise")
+                    }
+                }
+
                 Section("App") {
                     HStack {
                         Text("Versione")
@@ -58,6 +79,30 @@ struct SettingsView: View {
                 }
             }
             .navigationTitle("Impostazioni")
+            .sheet(isPresented: $showShare) {
+                if let url = exportURL {
+                    ShareSheet(items: [url])
+                }
+            }
+            .confirmationDialog("Rivedi onboarding?", isPresented: $showResetOnboarding, titleVisibility: .visible) {
+                Button("Ripristina", role: .destructive) {
+                    settings.onboardingCompleted = false
+                    try? modelContext.save()
+                }
+                Button("Annulla", role: .cancel) {}
+            } message: {
+                Text("Verrai reindirizzato alla schermata iniziale.")
+            }
         }
     }
+}
+
+private struct ShareSheet: UIViewControllerRepresentable {
+    let items: [Any]
+
+    func makeUIViewController(context: Context) -> UIActivityViewController {
+        UIActivityViewController(activityItems: items, applicationActivities: nil)
+    }
+
+    func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {}
 }

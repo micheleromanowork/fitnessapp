@@ -89,7 +89,13 @@ struct ActiveWorkoutView: View {
                 .animation(.appSpring, value: viewModel.isShowingTimer)
             }
         }
-        .onAppear { viewModel.setup(context: modelContext) }
+        .onAppear {
+            viewModel.setup(context: modelContext)
+            viewModel.currentExerciseName = currentExercise?.nameIt
+        }
+        .onChange(of: viewModel.currentExercise?.exerciseId) { _, _ in
+            viewModel.currentExerciseName = currentExercise?.nameIt
+        }
     }
 
     // MARK: - Subviews

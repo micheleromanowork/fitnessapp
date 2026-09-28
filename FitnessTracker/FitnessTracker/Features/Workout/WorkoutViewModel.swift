@@ -15,6 +15,8 @@ class WorkoutViewModel {
     var errorMessage: String?
     var lastPerformance: (weightKg: Double, reps: Int)?
     var personalRecord: (weightKg: Double, reps: Int)?
+    // Impostato dalla View quando conosce il nome italiano dell'esercizio corrente
+    var currentExerciseName: String?
 
     let timer = TimerService()
     private var modelContext: ModelContext?
@@ -55,6 +57,11 @@ class WorkoutViewModel {
 
     func setup(context: ModelContext) {
         self.modelContext = context
+        // Quando il timer scade naturalmente, chiudi la Live Activity
+        timer.onExpire = { [weak self] in
+            self?.isShowingTimer = false
+            LiveActivityService.shared.end()
+        }
     }
 
     // MARK: - Avvia workout
@@ -171,11 +178,21 @@ class WorkoutViewModel {
     func startTimer(seconds: Int) {
         timer.start(seconds: seconds)
         isShowingTimer = true
+
+        // Avvia Live Activity sul Dynamic Island (iPhone 14 Pro+ / iOS 16.1+)
+        let exerciseName = currentExerciseName ?? currentExercise?.exerciseId ?? "Esercizio"
+        let workoutName = workout?.name ?? "Allenamento"
+        LiveActivityService.shared.start(
+            exerciseName: exerciseName,
+            workoutName: workoutName,
+            totalSeconds: seconds
+        )
     }
 
     func skipTimer() {
         timer.skip()
         isShowingTimer = false
+        LiveActivityService.shared.end()
     }
 
     // MARK: - Completa / cancella workout

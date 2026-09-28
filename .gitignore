@@ -7,3 +7,16 @@ node_modules/
 .DS_Store
 dist/
 .vercel/
+
+# Xcode
+*.xcuserstate
+xcuserdata/
+DerivedData/
+*.ipa
+*.xcarchive
+.swiftpm/
+
+# iOS signing (mai nel repo)
+*.p12
+*.mobileprovision
+*.p8

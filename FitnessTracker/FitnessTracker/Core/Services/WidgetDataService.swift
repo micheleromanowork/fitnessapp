@@ -23,18 +23,19 @@ struct WidgetDataService {
 
     private static func currentStreak(from workouts: [Workout]) -> Int {
         let cal = Calendar.current
-        var streak = 0
-        var checkDate = cal.startOfDay(for: Date())
+        let today = cal.startOfDay(for: Date())
+        let uniqueDays = Array(Set(workouts.map { cal.startOfDay(for: $0.startedAt) })).sorted(by: >)
 
-        for w in workouts {
-            let day = cal.startOfDay(for: w.startedAt)
-            if day == checkDate || (streak == 0 && cal.isDateInYesterday(day)) {
-                if day != checkDate { checkDate = day }
-                streak += 1
-                checkDate = cal.date(byAdding: .day, value: -1, to: checkDate) ?? checkDate
-            } else if day < checkDate {
-                break
-            }
+        guard let first = uniqueDays.first else { return 0 }
+        let yesterday = cal.date(byAdding: .day, value: -1, to: today)!
+        guard first == today || first == yesterday else { return 0 }
+
+        var streak = 0
+        var expected = first
+        for day in uniqueDays {
+            guard day == expected else { break }
+            streak += 1
+            expected = cal.date(byAdding: .day, value: -1, to: expected) ?? expected
         }
         return streak
     }

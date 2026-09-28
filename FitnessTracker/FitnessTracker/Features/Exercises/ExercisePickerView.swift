@@ -96,6 +96,14 @@ private struct ExercisePickerRow: View {
     let exercise: Exercise
     let onTap: () -> Void
 
+    private static let equipmentNames: [String: String] = [
+        "barbell":    "Bilanciere",
+        "dumbbell":   "Manubri",
+        "cable":      "Cavi",
+        "panatta":    "Panatta",
+        "bodyweight": "Corpo libero",
+    ]
+
     var body: some View {
         Button(action: onTap) {
             VStack(alignment: .leading, spacing: Spacing.xs) {
@@ -112,7 +120,7 @@ private struct ExercisePickerRow: View {
                     if !exercise.equipmentId.isEmpty && exercise.equipmentId != "bodyweight" {
                         Text("·")
                             .foregroundStyle(.appTextTertiary)
-                        Text(exercise.equipmentId.capitalized)
+                        Text(Self.equipmentNames[exercise.equipmentId] ?? exercise.equipmentId.capitalized)
                             .font(.caption)
                             .foregroundStyle(.appTextTertiary)
                     }

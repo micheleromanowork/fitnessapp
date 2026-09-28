@@ -18,6 +18,7 @@ struct FitnessTrackerApp: App {
             )
             Task { @MainActor in
                 ExerciseService.seedIfNeeded(context: container.mainContext)
+                ExerciseService.seedPanattaIfNeeded(context: container.mainContext)
             }
         } catch {
             fatalError("Impossibile creare ModelContainer: \(error)")

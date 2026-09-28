@@ -1,0 +1,1843 @@
+[
+  {
+    "id": "panatta-chest-press",
+    "slug": "panatta-chest-press",
+    "nameIt": "Chest Press Orizzontale",
+    "nameEn": "Panatta Horizontal Chest Press",
+    "descriptionIt": "Spinta orizzontale con macchina Panatta. Il percorso guidato permette di isolare i pettorali in sicurezza.",
+    "primaryMuscles": ["chest"],
+    "secondaryMuscles": ["triceps", "front_delts"],
+    "equipmentId": "panatta",
+    "difficulty": "beginner",
+    "movementType": "push",
+    "instructionsIt": [
+      "Regola il sedile in modo che le maniglie siano all'altezza dei capezzoli",
+      "Siediti con la schiena ben appoggiata allo schienale",
+      "Afferra le maniglie con una presa neutra o prona",
+      "Spingi in avanti fino all'estensione quasi completa, senza bloccare i gomiti",
+      "Ritorna lentamente alla posizione di partenza senza far cedere il peso"
+    ],
+    "mistakesIt": [
+      "Inarcare eccessivamente la schiena staccandola dallo schienale",
+      "Bloccare i gomiti a fine movimento",
+      "Sollevare le spalle durante la spinta",
+      "Usare la forza d'inerzia invece del controllo muscolare"
+    ],
+    "tipsIt": [
+      "Mantieni i piedi piatti a terra per stabilità",
+      "Schiaccia i pettorali nella posizione di contrazione",
+      "Usa una fase eccentrica di 2-3 secondi per massimizzare il lavoro"
+    ],
+    "breathingIt": "Espira durante la spinta, inspira durante il ritorno.",
+    "alternatives": ["barbell-bench-press", "dumbbell-bench-press"],
+    "tags": ["machine", "chest", "panatta", "push"]
+  },
+  {
+    "id": "panatta-incline-chest-press",
+    "slug": "panatta-incline-chest-press",
+    "nameIt": "Chest Press Inclinata",
+    "nameEn": "Panatta Incline Chest Press",
+    "descriptionIt": "Variante inclinata della chest press Panatta, che enfatizza la porzione superiore del pettorale.",
+    "primaryMuscles": ["chest"],
+    "secondaryMuscles": ["front_delts", "triceps"],
+    "equipmentId": "panatta",
+    "difficulty": "beginner",
+    "movementType": "push",
+    "instructionsIt": [
+      "Regola la panca a un'inclinazione di circa 30-45 gradi",
+      "Posiziona le maniglie all'altezza della clavicola",
+      "Mantieni le scapole retratte e il petto in fuori",
+      "Spingi verso l'alto e in avanti seguendo il percorso della macchina",
+      "Controlla il ritorno evitando di far cedere bruscamente"
+    ],
+    "mistakesIt": [
+      "Inclinare troppo la panca, trasformando il movimento in un lento con bilanciere",
+      "Proiettare il collo in avanti durante la spinta",
+      "Range di movimento incompleto nella fase di allungamento"
+    ],
+    "tipsIt": [
+      "A 30° si sollecita maggiormente la parte superiore del petto",
+      "Concentrati sulla contrazione del pettorale clavicolare a fine spinta"
+    ],
+    "breathingIt": "Espira nella spinta, inspira nel ritorno.",
+    "alternatives": ["incline-barbell-press", "incline-dumbbell-press"],
+    "tags": ["machine", "chest", "upper-chest", "panatta", "push"]
+  },
+  {
+    "id": "panatta-pec-deck",
+    "slug": "panatta-pec-deck",
+    "nameIt": "Pec Deck (Croci con Macchina)",
+    "nameEn": "Panatta Pec Deck",
+    "descriptionIt": "Esercizio di isolamento per i pettorali. Il percorso convergente della macchina Panatta imita il movimento delle croci.",
+    "primaryMuscles": ["chest"],
+    "secondaryMuscles": ["front_delts"],
+    "equipmentId": "panatta",
+    "difficulty": "beginner",
+    "movementType": "isolation",
+    "instructionsIt": [
+      "Siediti con la schiena ben appoggiata e gli avambracci sui cuscinetti",
+      "Parti con i gomiti alla stessa altezza delle spalle",
+      "Porta i cuscinetti verso il centro davanti al petto",
+      "Mantieni la contrazione per 1-2 secondi",
+      "Ritorna lentamente controllando l'allungamento"
+    ],
+    "mistakesIt": [
+      "Far rimbalzare i pesi in apertura",
+      "Piegare i polsi durante il movimento",
+      "Spingere con le braccia invece di spingere con il petto"
+    ],
+    "tipsIt": [
+      "Immagina di abbracciare un grande albero",
+      "L'apertura massima non deve causare dolore alla spalla",
+      "Mantieni le spalle basse e lontane dalle orecchie"
+    ],
+    "breathingIt": "Espira nella chiusura, inspira nell'apertura.",
+    "alternatives": ["cable-fly", "dumbbell-fly"],
+    "tags": ["machine", "chest", "isolation", "panatta"]
+  },
+  {
+    "id": "panatta-decline-chest-press",
+    "slug": "panatta-decline-chest-press",
+    "nameIt": "Chest Press Declinata",
+    "nameEn": "Panatta Decline Chest Press",
+    "descriptionIt": "Spinta declinata che isola la porzione inferiore del pettorale. Ottima come esercizio complementare.",
+    "primaryMuscles": ["chest"],
+    "secondaryMuscles": ["triceps"],
+    "equipmentId": "panatta",
+    "difficulty": "intermediate",
+    "movementType": "push",
+    "instructionsIt": [
+      "Regola la macchina in modalità declinata",
+      "Blocca i piedi nei supporti per la sicurezza",
+      "Parti con le maniglie all'altezza del basso petto",
+      "Spingi verso il basso e in avanti",
+      "Controlla lentamente il ritorno"
+    ],
+    "mistakesIt": [
+      "Non bloccare i piedi rischiando di scivolare",
+      "Flettere eccessivamente la schiena"
+    ],
+    "tipsIt": [
+      "Utile per completare lo sviluppo del pettorale",
+      "Angolo ottimale: 15-30 gradi di declinazione"
+    ],
+    "breathingIt": "Espira nella spinta, inspira nel ritorno.",
+    "alternatives": ["decline-barbell-press", "dips"],
+    "tags": ["machine", "chest", "lower-chest", "panatta", "push"]
+  },
+  {
+    "id": "panatta-shoulder-press",
+    "slug": "panatta-shoulder-press",
+    "nameIt": "Shoulder Press con Macchina",
+    "nameEn": "Panatta Shoulder Press",
+    "descriptionIt": "Sviluppo delle spalle con macchina guidata. Sicura e controllata, ideale per chi ha problemi articolari.",
+    "primaryMuscles": ["front_delts"],
+    "secondaryMuscles": ["lateral_delts", "triceps", "traps"],
+    "equipmentId": "panatta",
+    "difficulty": "beginner",
+    "movementType": "push",
+    "instructionsIt": [
+      "Regola il sedile in modo che le maniglie siano all'altezza delle spalle",
+      "Afferra con presa prona, polsi in linea con i gomiti",
+      "Spingi verso l'alto senza bloccare i gomiti a fine estensione",
+      "Abbassa lentamente fino a riportare le braccia a 90°",
+      "Mantieni il core attivo durante tutto il movimento"
+    ],
+    "mistakesIt": [
+      "Spingere con il collo in avanti",
+      "Inarcare la schiena perdendo il contatto con lo schienale",
+      "Bloccare i gomiti in cima"
+    ],
+    "tipsIt": [
+      "Mantieni il petto in fuori e le spalle retratte",
+      "Non portare le braccia sotto i 90° se hai problemi alla spalla"
+    ],
+    "breathingIt": "Espira nella spinta verso l'alto, inspira nel ritorno.",
+    "alternatives": ["barbell-overhead-press", "dumbbell-shoulder-press"],
+    "tags": ["machine", "shoulders", "panatta", "push"]
+  },
+  {
+    "id": "panatta-lateral-raise-machine",
+    "slug": "panatta-lateral-raise-machine",
+    "nameIt": "Alzate Laterali con Macchina",
+    "nameEn": "Panatta Lateral Raise Machine",
+    "descriptionIt": "Isolamento del deltoide laterale con macchina. Percorso costante che mantiene tensione per tutto il ROM.",
+    "primaryMuscles": ["lateral_delts"],
+    "secondaryMuscles": ["front_delts", "traps"],
+    "equipmentId": "panatta",
+    "difficulty": "beginner",
+    "movementType": "isolation",
+    "instructionsIt": [
+      "Regola i supporti laterali all'altezza dei gomiti",
+      "Siediti con il busto eretto e le braccia lungo i fianchi",
+      "Porta le braccia lateralmente fino all'altezza delle spalle",
+      "Mantieni i gomiti leggermente flessi durante tutto il movimento",
+      "Abbassa lentamente controllando la discesa"
+    ],
+    "mistakesIt": [
+      "Alzare le spalle per compensare il carico eccessivo",
+      "Usare slancio del busto",
+      "Salire oltre il parallelo con il pavimento"
+    ],
+    "tipsIt": [
+      "Il pollice deve essere leggermente abbassato (come a versare acqua)",
+      "Concentrati sul deltoide laterale, non sulle trapezie"
+    ],
+    "breathingIt": "Espira nell'alzata, inspira nel ritorno.",
+    "alternatives": ["dumbbell-lateral-raise"],
+    "tags": ["machine", "shoulders", "isolation", "panatta"]
+  },
+  {
+    "id": "panatta-rear-deltoid",
+    "slug": "panatta-rear-deltoid",
+    "nameIt": "Deltoide Posteriore con Macchina",
+    "nameEn": "Panatta Rear Deltoid Machine",
+    "descriptionIt": "Isolamento del deltoide posteriore con macchina Panatta. Fondamentale per l'equilibrio muscolare della spalla.",
+    "primaryMuscles": ["rear_delts"],
+    "secondaryMuscles": ["rhomboids", "traps"],
+    "equipmentId": "panatta",
+    "difficulty": "beginner",
+    "movementType": "pull",
+    "instructionsIt": [
+      "Posizionati con il petto sul supporto anteriore della macchina",
+      "Afferra le maniglie con i gomiti leggermente flessi",
+      "Porta le braccia indietro aprendo il petto",
+      "Mantieni i gomiti alla stessa altezza delle spalle",
+      "Ritorna lentamente alla posizione iniziale"
+    ],
+    "mistakesIt": [
+      "Ruotare il busto per aumentare il ROM",
+      "Usare le trapezie invece del deltoide posteriore",
+      "Caricare troppo compromettendo la tecnica"
+    ],
+    "tipsIt": [
+      "Immagina di fare un reverse fly",
+      "Testa appoggiata al supporto per evitare tensione al collo"
+    ],
+    "breathingIt": "Espira nell'apertura, inspira nel ritorno.",
+    "alternatives": ["dumbbell-rear-fly", "cable-face-pull"],
+    "tags": ["machine", "shoulders", "rear-delts", "panatta", "pull"]
+  },
+  {
+    "id": "panatta-lat-machine",
+    "slug": "panatta-lat-machine",
+    "nameIt": "Lat Machine (Tirata alla Sbarra)",
+    "nameEn": "Panatta Lat Pulldown",
+    "descriptionIt": "Classico esercizio per i dorsali con macchina Panatta. Sviluppa ampiezza e spessore del gran dorsale.",
+    "primaryMuscles": ["lats"],
+    "secondaryMuscles": ["biceps", "rear_delts", "rhomboids"],
+    "equipmentId": "panatta",
+    "difficulty": "beginner",
+    "movementType": "pull",
+    "instructionsIt": [
+      "Imposta il blocca-gambe all'altezza delle cosce e siediti",
+      "Afferra la barra con presa prona, larghezza spalle o leggermente più larga",
+      "Parti con le braccia tese e lati dorsali allungati",
+      "Tira verso il basso verso il petto, portando i gomiti verso i fianchi",
+      "Mantieni un lieve arco lombare e il petto in fuori",
+      "Ritorna lentamente fino all'estensione completa"
+    ],
+    "mistakesIt": [
+      "Tirare dietro la testa (rischio cervicale)",
+      "Usare la forza dei bicipiti invece dei dorsali",
+      "Non completare l'estensione in cima"
+    ],
+    "tipsIt": [
+      "Pensa di 'portare i gomiti nelle tasche dei pantaloni'",
+      "La presa in supinazione attiva maggiormente i bicipiti",
+      "Scapole retratte e depresse durante tutto il pull"
+    ],
+    "breathingIt": "Espira nella tirata verso il basso, inspira nel ritorno.",
+    "alternatives": ["pull-up", "seated-cable-row"],
+    "tags": ["machine", "back", "lats", "panatta", "pull"]
+  },
+  {
+    "id": "panatta-low-row",
+    "slug": "panatta-low-row",
+    "nameIt": "Low Row (Rematore Basso Seduto)",
+    "nameEn": "Panatta Low Row",
+    "descriptionIt": "Rematore seduto con cavi bassi. Sviluppa lo spessore della schiena e migliora la postura.",
+    "primaryMuscles": ["lats"],
+    "secondaryMuscles": ["rhomboids", "traps", "biceps"],
+    "equipmentId": "panatta",
+    "difficulty": "beginner",
+    "movementType": "pull",
+    "instructionsIt": [
+      "Siediti con i piedi sulle pedane e le ginocchia leggermente flesse",
+      "Afferra la maniglia con presa neutra (mani parallele)",
+      "Parti con le braccia tese e la schiena dritta",
+      "Tira la maniglia verso l'ombelico portando i gomiti indietro",
+      "Mantieni la contrazione e schiaccia le scapole per 1s",
+      "Ritorna lentamente controllando l'allungamento"
+    ],
+    "mistakesIt": [
+      "Curvare la schiena durante la trazione",
+      "Usare il rimbalzo delle gambe per aiutarsi",
+      "Non completare la retrazione scapolare"
+    ],
+    "tipsIt": [
+      "Mantieni il busto leggermente inclinato in avanti (10-15°)",
+      "Focus sullo schiacciamento delle scapole a fine movimento"
+    ],
+    "breathingIt": "Espira nella tirata, inspira nel ritorno.",
+    "alternatives": ["seated-cable-row", "bent-over-barbell-row"],
+    "tags": ["machine", "back", "panatta", "pull", "row"]
+  },
+  {
+    "id": "panatta-vertical-traction",
+    "slug": "panatta-vertical-traction",
+    "nameIt": "Trazione Verticale con Presa Stretta",
+    "nameEn": "Panatta Close-Grip Pulldown",
+    "descriptionIt": "Variante della lat machine con presa stretta neutra. Enfatizza la parte bassa dei dorsali.",
+    "primaryMuscles": ["lats"],
+    "secondaryMuscles": ["biceps", "lower_traps"],
+    "equipmentId": "panatta",
+    "difficulty": "beginner",
+    "movementType": "pull",
+    "instructionsIt": [
+      "Attacca la barra a V o la maniglia neutra alla lat machine",
+      "Tira verso il petto mantenendo il petto in fuori",
+      "Porta i gomiti verso i fianchi finendo la traiettoria",
+      "Allungati completamente in cima senza perdere la postura"
+    ],
+    "mistakesIt": [
+      "Non completare l'estensione in cima",
+      "Spingere il mento in avanti"
+    ],
+    "tipsIt": [
+      "La presa stretta riduce il lavoro dei bicipiti rispetto alla presa larga",
+      "Ottimo complemento alla lat machine a presa larga"
+    ],
+    "breathingIt": "Espira nella tirata, inspira nel ritorno.",
+    "alternatives": ["panatta-lat-machine", "pull-up"],
+    "tags": ["machine", "back", "lats", "panatta", "pull"]
+  },
+  {
+    "id": "panatta-high-row",
+    "slug": "panatta-high-row",
+    "nameIt": "High Row con Macchina",
+    "nameEn": "Panatta High Row",
+    "descriptionIt": "Rematore alto che lavora trapezio, romboidi e deltoide posteriore. Ottimo per la postura.",
+    "primaryMuscles": ["traps"],
+    "secondaryMuscles": ["rhomboids", "rear_delts", "biceps"],
+    "equipmentId": "panatta",
+    "difficulty": "intermediate",
+    "movementType": "pull",
+    "instructionsIt": [
+      "Posizionati con il petto contro il supporto imbottito",
+      "Afferra le maniglie con le braccia quasi tese in alto",
+      "Tira verso il basso e indietro portando i gomiti vicino ai fianchi",
+      "Schiaccia le scapole a fine movimento",
+      "Ritorna controllando l'allungamento"
+    ],
+    "mistakesIt": [
+      "Lasciare che le spalle si alzino durante la trazione",
+      "Non sfruttare la retrazione scapolare"
+    ],
+    "tipsIt": [
+      "Pensa di mettere le scapole 'in tasca'",
+      "Combina bene con le alzate laterali per le spalle complete"
+    ],
+    "breathingIt": "Espira nella tirata, inspira nel ritorno.",
+    "alternatives": ["panatta-low-row", "cable-face-pull"],
+    "tags": ["machine", "back", "traps", "panatta", "pull"]
+  },
+  {
+    "id": "panatta-back-extension",
+    "slug": "panatta-back-extension",
+    "nameIt": "Estensione Dorsale con Macchina",
+    "nameEn": "Panatta Back Extension",
+    "descriptionIt": "Rinforzo della catena posteriore con macchina guidata. Fondamentale per la salute della colonna.",
+    "primaryMuscles": ["erector_spinae"],
+    "secondaryMuscles": ["glutes", "hamstrings"],
+    "equipmentId": "panatta",
+    "difficulty": "beginner",
+    "movementType": "extension",
+    "instructionsIt": [
+      "Posizionati nella macchina con i fianchi al bordo del supporto",
+      "Blocca i piedi nelle pedane e appoggia il pad all'altezza del sacro",
+      "Parti con il busto perpendicolare al pavimento",
+      "Estendi la schiena fino a essere in linea con le gambe",
+      "Mantieni per 1 secondo e ritorna controllato"
+    ],
+    "mistakesIt": [
+      "Iperestendere la schiena oltre la posizione neutra",
+      "Usare il collo per completare il movimento",
+      "Scendere troppo in basso flettendo la schiena eccessivamente"
+    ],
+    "tipsIt": [
+      "Mantieni la testa in posizione neutra (non guardare in alto)",
+      "Per incrementare l'intensità, tieni un disco al petto"
+    ],
+    "breathingIt": "Inspira nella discesa, espira nell'estensione.",
+    "alternatives": ["deadlift", "romanian-deadlift"],
+    "tags": ["machine", "back", "lower-back", "panatta"]
+  },
+  {
+    "id": "panatta-pullover",
+    "slug": "panatta-pullover",
+    "nameIt": "Pull Over con Macchina",
+    "nameEn": "Panatta Machine Pullover",
+    "descriptionIt": "Esercizio unico per allungamento e contrazione dei dorsali. La macchina Panatta mantiene tensione costante.",
+    "primaryMuscles": ["lats"],
+    "secondaryMuscles": ["chest", "triceps", "serratus"],
+    "equipmentId": "panatta",
+    "difficulty": "intermediate",
+    "movementType": "pull",
+    "instructionsIt": [
+      "Siediti reclinato nella macchina con la testa allo schienale",
+      "Appoggia i gomiti sui cuscinetti con le braccia alzate",
+      "Porta le braccia verso il basso e in avanti",
+      "Arriva fino all'altezza dei fianchi mantenendo i gomiti flessi",
+      "Ritorna lentamente sentendo lo stretching dei dorsali"
+    ],
+    "mistakesIt": [
+      "Usare le braccia invece dei dorsali",
+      "Non completare lo stretching in cima"
+    ],
+    "tipsIt": [
+      "Ottimo per sviluppare ampiezza e 'profondità' dei dorsali",
+      "Ideale come esercizio finale per i dorsali"
+    ],
+    "breathingIt": "Espira portando le braccia in basso, inspira nel ritorno.",
+    "alternatives": ["dumbbell-pullover", "cable-pullover"],
+    "tags": ["machine", "back", "lats", "panatta"]
+  },
+  {
+    "id": "panatta-bicep-curl-machine",
+    "slug": "panatta-bicep-curl-machine",
+    "nameIt": "Bicep Curl con Macchina",
+    "nameEn": "Panatta Bicep Curl Machine",
+    "descriptionIt": "Isolamento dei bicipiti con percorso guidato. Mantiene tensione costante durante tutto il ROM.",
+    "primaryMuscles": ["biceps"],
+    "secondaryMuscles": ["brachialis", "forearms"],
+    "equipmentId": "panatta",
+    "difficulty": "beginner",
+    "movementType": "pull",
+    "instructionsIt": [
+      "Regola il sedile in modo che i gomiti siano allineati con l'asse di rotazione della macchina",
+      "Afferra le maniglie con presa supina (palmi verso l'alto)",
+      "Parti con le braccia quasi distese",
+      "Curva verso l'alto controllando la fase concentrica",
+      "Abbassa lentamente senza distendere completamente per mantenere tensione"
+    ],
+    "mistakesIt": [
+      "Distendere completamente i gomiti perdendo tensione",
+      "Oscillare il busto per aiutarsi",
+      "Caricare troppo compromettendo il ROM"
+    ],
+    "tipsIt": [
+      "Velocità controllata: 2s su, 3s giù",
+      "Tieni i gomiti fermi durante tutto il movimento"
+    ],
+    "breathingIt": "Espira nella curl verso l'alto, inspira nel ritorno.",
+    "alternatives": ["barbell-curl", "dumbbell-curl"],
+    "tags": ["machine", "biceps", "isolation", "panatta"]
+  },
+  {
+    "id": "panatta-preacher-curl",
+    "slug": "panatta-preacher-curl",
+    "nameIt": "Preacher Curl con Macchina",
+    "nameEn": "Panatta Preacher Curl Machine",
+    "descriptionIt": "Curl al leggio con supporto imbottito. Elimina ogni compenso del busto per un isolamento puro.",
+    "primaryMuscles": ["biceps"],
+    "secondaryMuscles": ["brachialis"],
+    "equipmentId": "panatta",
+    "difficulty": "beginner",
+    "movementType": "pull",
+    "instructionsIt": [
+      "Appoggia gli avambracci sul cuscinetto inclinato",
+      "Afferra le maniglie con presa supina",
+      "Estendi quasi completamente le braccia in basso",
+      "Curva verso l'alto fino alla contrazione massima",
+      "Scendi lentamente controllando il peso"
+    ],
+    "mistakesIt": [
+      "Aprire i gomiti verso i lati",
+      "Non arrivare all'estensione completa in basso"
+    ],
+    "tipsIt": [
+      "Particolarmente efficace per il picco del bicipite",
+      "Combina con curl al cavo per volume ottimale"
+    ],
+    "breathingIt": "Espira nella curl, inspira nel ritorno.",
+    "alternatives": ["ez-bar-preacher-curl", "dumbbell-preacher-curl"],
+    "tags": ["machine", "biceps", "isolation", "panatta", "preacher"]
+  },
+  {
+    "id": "panatta-tricep-press-machine",
+    "slug": "panatta-tricep-press-machine",
+    "nameIt": "Tricep Press con Macchina",
+    "nameEn": "Panatta Tricep Press Machine",
+    "descriptionIt": "Estensione tricipiti con macchina guidata. Percorso sicuro per lavorare ad alta intensità senza stress articolare.",
+    "primaryMuscles": ["triceps"],
+    "secondaryMuscles": [],
+    "equipmentId": "panatta",
+    "difficulty": "beginner",
+    "movementType": "push",
+    "instructionsIt": [
+      "Siediti con la schiena allo schienale e le braccia alzate",
+      "Afferra le maniglie sopra la testa con presa prona",
+      "Estendi le braccia verso il basso contraendo i tricipiti",
+      "Mantieni i gomiti vicini alla testa durante tutto il movimento",
+      "Ritorna controllato senza abbandonare il peso"
+    ],
+    "mistakesIt": [
+      "Aprire i gomiti durante l'estensione",
+      "Inclinare il busto in avanti",
+      "Non completare l'estensione"
+    ],
+    "tipsIt": [
+      "Il capo lungo del tricipite è massimamente allungato con le braccia sopra la testa",
+      "Ideale come primo esercizio per i tricipiti"
+    ],
+    "breathingIt": "Espira nell'estensione, inspira nel ritorno.",
+    "alternatives": ["skull-crusher", "overhead-dumbbell-extension"],
+    "tags": ["machine", "triceps", "panatta", "push"]
+  },
+  {
+    "id": "panatta-tricep-pushdown-cable",
+    "slug": "panatta-tricep-pushdown-cable",
+    "nameIt": "Tricep Pushdown ai Cavi",
+    "nameEn": "Panatta Cable Tricep Pushdown",
+    "descriptionIt": "Estensione verso il basso ai cavi. Esercizio fondamentale per la definizione e il volume dei tricipiti.",
+    "primaryMuscles": ["triceps"],
+    "secondaryMuscles": [],
+    "equipmentId": "panatta",
+    "difficulty": "beginner",
+    "movementType": "push",
+    "instructionsIt": [
+      "Imposta il cavo in posizione alta",
+      "Afferra la barra dritta o la corda con presa prona",
+      "Mantieni i gomiti vicino ai fianchi durante tutto il movimento",
+      "Estendi completamente le braccia verso il basso",
+      "Ritorna controllato fino a circa 90° di flessione"
+    ],
+    "mistakesIt": [
+      "Spostare i gomiti in avanti durante la spinta",
+      "Usare il peso del corpo per aiutarsi",
+      "Non estendere completamente"
+    ],
+    "tipsIt": [
+      "Usa la corda per maggiore rotazione e contrazione",
+      "La barra EZ riduce lo stress sui polsi"
+    ],
+    "breathingIt": "Espira nell'estensione verso il basso, inspira nel ritorno.",
+    "alternatives": ["dips", "close-grip-bench-press"],
+    "tags": ["cable", "triceps", "panatta"]
+  },
+  {
+    "id": "panatta-overhead-tricep-cable",
+    "slug": "panatta-overhead-tricep-cable",
+    "nameIt": "Estensione Tricipite Overhead ai Cavi",
+    "nameEn": "Panatta Overhead Cable Tricep Extension",
+    "descriptionIt": "Estensione overhead con cavo basso. Massimo stretching del capo lungo del tricipite.",
+    "primaryMuscles": ["triceps"],
+    "secondaryMuscles": [],
+    "equipmentId": "panatta",
+    "difficulty": "intermediate",
+    "movementType": "push",
+    "instructionsIt": [
+      "Imposta il cavo in posizione bassa",
+      "Di schiena alla macchina, afferra la corda con entrambe le mani",
+      "Porta le braccia sopra la testa con i gomiti flessi a 90°",
+      "Estendi verso l'alto/avanti i gomiti rimanendo fermi",
+      "Ritorna controllando lo stretching"
+    ],
+    "mistakesIt": [
+      "Aprire i gomiti verso i lati",
+      "Inclinare tutto il busto invece di isolare il tricipite"
+    ],
+    "tipsIt": [
+      "Posizione di partenza con ottimo stretch = maggiore attivazione muscolare",
+      "Perfetto da accoppiare con il pushdown"
+    ],
+    "breathingIt": "Espira nell'estensione, inspira nel ritorno.",
+    "alternatives": ["dumbbell-overhead-extension"],
+    "tags": ["cable", "triceps", "panatta", "overhead"]
+  },
+  {
+    "id": "panatta-leg-press-45",
+    "slug": "panatta-leg-press-45",
+    "nameIt": "Leg Press 45°",
+    "nameEn": "Panatta 45° Leg Press",
+    "descriptionIt": "Squat guidato su piano inclinato. Permette di caricare alto in sicurezza isolando quadricipiti e glutei.",
+    "primaryMuscles": ["quadriceps"],
+    "secondaryMuscles": ["glutes", "hamstrings"],
+    "equipmentId": "panatta",
+    "difficulty": "beginner",
+    "movementType": "push",
+    "instructionsIt": [
+      "Posizionati sul sedile con la schiena allo schienale",
+      "Posiziona i piedi sulla piastra a larghezza spalle",
+      "Sblocca i fermi di sicurezza",
+      "Abbassa la piastra flettendo le ginocchia a 90° o oltre",
+      "Spingi con i talloni estendendo le gambe senza bloccare i gomiti"
+    ],
+    "mistakesIt": [
+      "Non bloccare le ginocchia a fine estensione",
+      "Sollevare il sedere dal sedile durante la discesa",
+      "Mettere i piedi troppo in basso (sovraccarico rotula)"
+    ],
+    "tipsIt": [
+      "Piedi alti = più glutei e ischiocrurali; piedi bassi = più quadricipiti",
+      "Usa sempre i fermi di sicurezza quando cambii il peso"
+    ],
+    "breathingIt": "Inspira nella discesa, espira nella spinta.",
+    "alternatives": ["barbell-squat", "goblet-squat"],
+    "tags": ["machine", "legs", "quadriceps", "panatta", "push"]
+  },
+  {
+    "id": "panatta-leg-press-horizontal",
+    "slug": "panatta-leg-press-horizontal",
+    "nameIt": "Leg Press Orizzontale",
+    "nameEn": "Panatta Horizontal Leg Press",
+    "descriptionIt": "Variante orizzontale del leg press. Riduce lo stress sulla colonna rispetto alla versione a 45°.",
+    "primaryMuscles": ["quadriceps"],
+    "secondaryMuscles": ["glutes", "hamstrings"],
+    "equipmentId": "panatta",
+    "difficulty": "beginner",
+    "movementType": "push",
+    "instructionsIt": [
+      "Siediti sulla macchina con la schiena dritta",
+      "Posiziona i piedi sulla piastra verticale",
+      "Spingi la piastra in avanti estendendo le gambe",
+      "Riporta controllato fino al parallelismo delle cosce",
+      "Mantieni i piedi sempre piatti sulla piastra"
+    ],
+    "mistakesIt": [
+      "Sollevare i talloni dalla piastra",
+      "Bloccare le ginocchia in estensione"
+    ],
+    "tipsIt": [
+      "Ottimo per chi ha problemi alla schiena",
+      "La posizione orizzontale riduce la compressione vertebrale"
+    ],
+    "breathingIt": "Inspira nel cedimento, espira nella spinta.",
+    "alternatives": ["panatta-leg-press-45", "barbell-squat"],
+    "tags": ["machine", "legs", "quadriceps", "panatta"]
+  },
+  {
+    "id": "panatta-leg-extension",
+    "slug": "panatta-leg-extension",
+    "nameIt": "Leg Extension",
+    "nameEn": "Panatta Leg Extension",
+    "descriptionIt": "Isolamento dei quadricipiti con macchina. Ottimo per finire l'allenamento gambe o riscaldare i ginocchi.",
+    "primaryMuscles": ["quadriceps"],
+    "secondaryMuscles": [],
+    "equipmentId": "panatta",
+    "difficulty": "beginner",
+    "movementType": "extension",
+    "instructionsIt": [
+      "Regola il supporto tibiale appena sopra le caviglie",
+      "Siediti con le ginocchia all'altezza del fulcro della macchina",
+      "Estendi le gambe verso l'alto fino alla posizione quasi orizzontale",
+      "Mantieni la contrazione per 1 secondo",
+      "Abbassa lentamente controllando la discesa"
+    ],
+    "mistakesIt": [
+      "Usare troppo peso che causa sollevamento dei glutei",
+      "Abbassare bruscamente il peso",
+      "Bloccare le ginocchia in piena estensione"
+    ],
+    "tipsIt": [
+      "I piedi ruotati leggermente verso l'interno attivano il vasto mediale",
+      "Contrazione isometrica in cima per maggiore attivazione"
+    ],
+    "breathingIt": "Espira nell'estensione, inspira nella flessione.",
+    "alternatives": ["barbell-squat", "panatta-leg-press-45"],
+    "tags": ["machine", "legs", "quadriceps", "isolation", "panatta"]
+  },
+  {
+    "id": "panatta-leg-curl-prone",
+    "slug": "panatta-leg-curl-prone",
+    "nameIt": "Leg Curl Prono (Sdraiato)",
+    "nameEn": "Panatta Prone Leg Curl",
+    "descriptionIt": "Flessione del ginocchio in posizione prona. Esercizio fondamentale per gli ischiocrurali.",
+    "primaryMuscles": ["hamstrings"],
+    "secondaryMuscles": ["calves"],
+    "equipmentId": "panatta",
+    "difficulty": "beginner",
+    "movementType": "curl",
+    "instructionsIt": [
+      "Sdraiati a pancia in giù sul piano imbottito",
+      "Posiziona il rullo poco sopra le caviglie",
+      "Fletti le ginocchia portando i talloni verso i glutei",
+      "Mantieni la contrazione per 1 secondo",
+      "Abbassa lentamente senza toccare il fermo di partenza"
+    ],
+    "mistakesIt": [
+      "Alzare i fianchi dalla macchina",
+      "Abbassare bruscamente il peso",
+      "Non completare la flessione massima"
+    ],
+    "tipsIt": [
+      "Piedi a punta = isola gli ischiocrurali; piedi flesssi = coinvolge di più i polpacci",
+      "La fase eccentrica lenta è fondamentale per prevenire infortuni"
+    ],
+    "breathingIt": "Espira nella flessione, inspira nell'estensione.",
+    "alternatives": ["romanian-deadlift", "stiff-leg-deadlift"],
+    "tags": ["machine", "legs", "hamstrings", "isolation", "panatta"]
+  },
+  {
+    "id": "panatta-leg-curl-seated",
+    "slug": "panatta-leg-curl-seated",
+    "nameIt": "Leg Curl Seduto",
+    "nameEn": "Panatta Seated Leg Curl",
+    "descriptionIt": "Flessione del ginocchio in posizione seduta. Maggiore attivazione degli ischiocrurali rispetto al prono.",
+    "primaryMuscles": ["hamstrings"],
+    "secondaryMuscles": ["calves"],
+    "equipmentId": "panatta",
+    "difficulty": "beginner",
+    "movementType": "curl",
+    "instructionsIt": [
+      "Regola il supporto superiore sulle cosce",
+      "Posiziona il rullo posteriore appena sotto le caviglie",
+      "Fletti le ginocchia portando i piedi verso il basso",
+      "Mantieni la schiena aderente allo schienale",
+      "Ritorna controllato fino alla quasi-estensione"
+    ],
+    "mistakesIt": [
+      "Alzare i glutei dal sedile",
+      "Non sfruttare il supporto superiore della coscia"
+    ],
+    "tipsIt": [
+      "La posizione seduta allunga il bicipite femorale = maggiore attivazione",
+      "Ideale come variante al leg curl prono"
+    ],
+    "breathingIt": "Espira nella flessione, inspira nel ritorno.",
+    "alternatives": ["panatta-leg-curl-prone", "romanian-deadlift"],
+    "tags": ["machine", "legs", "hamstrings", "isolation", "panatta"]
+  },
+  {
+    "id": "panatta-hack-squat",
+    "slug": "panatta-hack-squat",
+    "nameIt": "Hack Squat con Macchina",
+    "nameEn": "Panatta Hack Squat",
+    "descriptionIt": "Squat inclinato con schiena supportata. Massima attivazione dei quadricipiti con minimo stress lombare.",
+    "primaryMuscles": ["quadriceps"],
+    "secondaryMuscles": ["glutes", "hamstrings"],
+    "equipmentId": "panatta",
+    "difficulty": "intermediate",
+    "movementType": "push",
+    "instructionsIt": [
+      "Posizionati con la schiena contro la slitta inclinata",
+      "Piedi alla larghezza delle spalle, punte leggermente verso l'esterno",
+      "Sblocca i fermi e abbassa controllando la flessione delle ginocchia",
+      "Scendi fino a 90° o oltre se la mobilità lo permette",
+      "Spingi con i talloni estendendo senza bloccare le ginocchia"
+    ],
+    "mistakesIt": [
+      "Sollevare i talloni durante la discesa",
+      "Mettere le ginocchia in valgo (verso l'interno)",
+      "Non sbloccare i fermi correttamente"
+    ],
+    "tipsIt": [
+      "Piedi in basso sulla piattaforma = enfasi sui quadricipiti",
+      "Il supporto della schiena permette di caricare alto in sicurezza"
+    ],
+    "breathingIt": "Inspira nella discesa, espira nella salita.",
+    "alternatives": ["barbell-squat", "panatta-leg-press-45"],
+    "tags": ["machine", "legs", "quadriceps", "panatta"]
+  },
+  {
+    "id": "panatta-leg-abductor",
+    "slug": "panatta-leg-abductor",
+    "nameIt": "Abduttore (Apertura Coscia)",
+    "nameEn": "Panatta Hip Abductor",
+    "descriptionIt": "Isolamento degli abduttori dell'anca e del gluteo medio. Fondamentale per la stabilità laterale del ginocchio.",
+    "primaryMuscles": ["glutes"],
+    "secondaryMuscles": ["hip_abductors"],
+    "equipmentId": "panatta",
+    "difficulty": "beginner",
+    "movementType": "isolation",
+    "instructionsIt": [
+      "Siediti con i cuscinetti all'esterno delle cosce",
+      "Schiena ben appoggiata allo schienale",
+      "Apri le gambe spingendo i cuscinetti verso l'esterno",
+      "Mantieni la contrazione per 1 secondo",
+      "Riporta controllato senza usare il rimbalzo"
+    ],
+    "mistakesIt": [
+      "Usare il busto per aiutarsi",
+      "Apertura eccessiva che causa disagio all'anca",
+      "Non completare la chiusura per mantenere tensione"
+    ],
+    "tipsIt": [
+      "Ottimo da abbinare all'adduttore per il bilanciamento muscolare",
+      "Può ridurre il rischio di infortuni al ginocchio"
+    ],
+    "breathingIt": "Espira nell'apertura, inspira nella chiusura.",
+    "alternatives": ["cable-hip-abduction", "side-lying-hip-abduction"],
+    "tags": ["machine", "legs", "glutes", "isolation", "panatta"]
+  },
+  {
+    "id": "panatta-leg-adductor",
+    "slug": "panatta-leg-adductor",
+    "nameIt": "Adduttore (Chiusura Coscia)",
+    "nameEn": "Panatta Hip Adductor",
+    "descriptionIt": "Isolamento degli adduttori dell'anca. Essenziale per la stabilità dell'inguine e la forza complessiva della gamba.",
+    "primaryMuscles": ["adductors"],
+    "secondaryMuscles": [],
+    "equipmentId": "panatta",
+    "difficulty": "beginner",
+    "movementType": "isolation",
+    "instructionsIt": [
+      "Siediti con i cuscinetti all'interno delle cosce",
+      "Parti con le gambe aperte a un angolo comodo",
+      "Chiudi le gambe portando i cuscinetti insieme",
+      "Mantieni la contrazione 1 secondo",
+      "Riapri lentamente senza abbandonare il peso"
+    ],
+    "mistakesIt": [
+      "Aprire eccessivamente causando disagio inguinale",
+      "Usare troppo peso compromettendo il ROM"
+    ],
+    "tipsIt": [
+      "Essenziale per la prevenzione degli infortuni all'inguine",
+      "Abbina sempre all'abduttore per bilanciamento"
+    ],
+    "breathingIt": "Espira nella chiusura, inspira nell'apertura.",
+    "alternatives": ["cable-hip-adduction", "sumo-squat"],
+    "tags": ["machine", "legs", "adductors", "isolation", "panatta"]
+  },
+  {
+    "id": "panatta-standing-calf",
+    "slug": "panatta-standing-calf",
+    "nameIt": "Calf Raise in Piedi con Macchina",
+    "nameEn": "Panatta Standing Calf Raise",
+    "descriptionIt": "Sviluppo del gastrocnemio (polpaccio superficiale) in posizione eretta.",
+    "primaryMuscles": ["calves"],
+    "secondaryMuscles": [],
+    "equipmentId": "panatta",
+    "difficulty": "beginner",
+    "movementType": "push",
+    "instructionsIt": [
+      "Posizionati con le spalle sotto i supporti imbottiti",
+      "Piedi sull'alzata con le punte verso l'esterno o dritte",
+      "Abbassa i talloni sotto il livello dell'alzata per lo stretching",
+      "Spingi verso l'alto sulle punte dei piedi",
+      "Mantieni la contrazione in cima per 1-2 secondi"
+    ],
+    "mistakesIt": [
+      "Non completare lo stretching in basso",
+      "Salire sulle dita invece che sulla pianta",
+      "Usare troppo peso con ROM ridotto"
+    ],
+    "tipsIt": [
+      "I polpacci rispondono bene ad alto volume e pause isometriche",
+      "Punte in fuori = gastrocnemio interno; punte dritte = gastrocnemio completo"
+    ],
+    "breathingIt": "Espira in cima, inspira nel ritorno.",
+    "alternatives": ["seated-calf-raise", "leg-press-calf-raise"],
+    "tags": ["machine", "legs", "calves", "panatta"]
+  },
+  {
+    "id": "panatta-seated-calf",
+    "slug": "panatta-seated-calf",
+    "nameIt": "Calf Raise Seduto con Macchina",
+    "nameEn": "Panatta Seated Calf Raise",
+    "descriptionIt": "Sviluppo del soleo (polpaccio profondo) in posizione seduta. Ginocchia a 90° isolano il soleo.",
+    "primaryMuscles": ["calves"],
+    "secondaryMuscles": [],
+    "equipmentId": "panatta",
+    "difficulty": "beginner",
+    "movementType": "push",
+    "instructionsIt": [
+      "Siediti con i supporti sulle cosce, appena sopra le ginocchia",
+      "Piedi sull'alzata o piatti, ginocchia a 90°",
+      "Abbassa i talloni per lo stretching del soleo",
+      "Spingi verso l'alto sulle punte",
+      "Mantieni la contrazione per 2 secondi"
+    ],
+    "mistakesIt": [
+      "Caricare troppo senza completare il ROM",
+      "Non mantenere la posizione seduta con il busto dritto"
+    ],
+    "tipsIt": [
+      "Il soleo è dominante in posizione seduta (ginocchia flesse)",
+      "Utile da abbinare allo standing calf per completezza"
+    ],
+    "breathingIt": "Espira in cima, inspira nel ritorno.",
+    "alternatives": ["panatta-standing-calf"],
+    "tags": ["machine", "legs", "calves", "panatta", "soleo"]
+  },
+  {
+    "id": "panatta-glute-isolator",
+    "slug": "panatta-glute-isolator",
+    "nameIt": "Isolatore Glutei con Macchina",
+    "nameEn": "Panatta Glute Isolator",
+    "descriptionIt": "Esercizio specifico per i glutei con macchina dedicata. Massima contrazione isolata.",
+    "primaryMuscles": ["glutes"],
+    "secondaryMuscles": ["hamstrings"],
+    "equipmentId": "panatta",
+    "difficulty": "beginner",
+    "movementType": "extension",
+    "instructionsIt": [
+      "Posizionati sulla macchina con il ginocchio sul supporto",
+      "Mantieni la schiena parallela al suolo con core attivo",
+      "Estendi il ginocchio posteriore verso l'alto contraendo il gluteo",
+      "Porta la coscia in linea con il busto o leggermente oltre",
+      "Abbassa controllato senza toccare il supporto"
+    ],
+    "mistakesIt": [
+      "Ruotare il bacino per aumentare il ROM",
+      "Non contrarre il gluteo nel punto massimo",
+      "Usare solo la forza dei lombari"
+    ],
+    "tipsIt": [
+      "Squeeze massimo in cima per 2 secondi",
+      "Abbina a leg press per sviluppo completo dei glutei"
+    ],
+    "breathingIt": "Espira nell'estensione, inspira nel ritorno.",
+    "alternatives": ["hip-thrust", "cable-kickback"],
+    "tags": ["machine", "glutes", "isolation", "panatta"]
+  },
+  {
+    "id": "panatta-hip-extension",
+    "slug": "panatta-hip-extension",
+    "nameIt": "Estensione Anca con Macchina",
+    "nameEn": "Panatta Hip Extension",
+    "descriptionIt": "Rinforzo della catena posteriore con focus su gluteo e bicipite femorale.",
+    "primaryMuscles": ["glutes"],
+    "secondaryMuscles": ["hamstrings", "erector_spinae"],
+    "equipmentId": "panatta",
+    "difficulty": "intermediate",
+    "movementType": "extension",
+    "instructionsIt": [
+      "Posizionati in piedi con il cuscinetto appoggiato al gluteo/coscia",
+      "Estendi l'anca verso il basso/indietro contro la resistenza",
+      "Mantieni il busto eretto con core attivo",
+      "Torna controllato alla posizione di partenza"
+    ],
+    "mistakesIt": [
+      "Inarcare la schiena per aumentare il ROM",
+      "Perdere la stabilità del busto"
+    ],
+    "tipsIt": [
+      "Perfetto per attivare i glutei prima dello squat",
+      "Combina con hip thrust per risultati ottimali"
+    ],
+    "breathingIt": "Espira nell'estensione, inspira nel ritorno.",
+    "alternatives": ["panatta-glute-isolator", "cable-kickback"],
+    "tags": ["machine", "glutes", "panatta"]
+  },
+  {
+    "id": "panatta-abdominal-machine",
+    "slug": "panatta-abdominal-machine",
+    "nameIt": "Crunch con Macchina (Addominali)",
+    "nameEn": "Panatta Abdominal Machine",
+    "descriptionIt": "Crunch guidato con macchina. Isola il retto addominale con tensione costante e resistenza progressiva.",
+    "primaryMuscles": ["abs"],
+    "secondaryMuscles": [],
+    "equipmentId": "panatta",
+    "difficulty": "beginner",
+    "movementType": "flexion",
+    "instructionsIt": [
+      "Siediti con le braccia sui supporti laterali o le mani alle maniglie",
+      "Parti con il busto eretto, schiena dallo schienale",
+      "Fletti il busto verso il basso contraendo gli addominali",
+      "Non tirare con il collo ma spingi con il core",
+      "Ritorna lentamente senza toccare lo schienale per mantenere tensione"
+    ],
+    "mistakesIt": [
+      "Tirare con le braccia invece di usare il core",
+      "Muovere solo la testa invece del busto",
+      "Usare slancio con la schiena"
+    ],
+    "tipsIt": [
+      "Visualizza di voler comprimere lo stomaco",
+      "Respiro espiratorio durante la flessione"
+    ],
+    "breathingIt": "Espira nella contrazione, inspira nel ritorno.",
+    "alternatives": ["crunch", "cable-crunch"],
+    "tags": ["machine", "abs", "core", "panatta"]
+  },
+  {
+    "id": "panatta-rotary-torso",
+    "slug": "panatta-rotary-torso",
+    "nameIt": "Rotazione del Busto (Obliqui)",
+    "nameEn": "Panatta Rotary Torso",
+    "descriptionIt": "Rotazione del tronco con macchina. Isola gli obliqui interni ed esterni preservando la colonna.",
+    "primaryMuscles": ["obliques"],
+    "secondaryMuscles": ["abs"],
+    "equipmentId": "panatta",
+    "difficulty": "beginner",
+    "movementType": "rotation",
+    "instructionsIt": [
+      "Siediti con il bacino bloccato dalla macchina",
+      "Mantieni le gambe immobili durante tutto il movimento",
+      "Ruota il busto lateralmente contro la resistenza",
+      "Controlla il ritorno senza abbandonare il peso",
+      "Esegui entrambi i lati con lo stesso carico"
+    ],
+    "mistakesIt": [
+      "Ruotare le gambe invece del busto",
+      "Usare il collo per aiutarsi",
+      "Carico asimmetrico tra lato destro e sinistro"
+    ],
+    "tipsIt": [
+      "Il bacino deve restare immobile per isolare gli obliqui",
+      "Movimento lento e controllato per massima attivazione"
+    ],
+    "breathingIt": "Espira nella rotazione, inspira nel ritorno.",
+    "alternatives": ["cable-wood-chop", "russian-twist"],
+    "tags": ["machine", "core", "obliques", "panatta"]
+  },
+  {
+    "id": "panatta-cable-curl",
+    "slug": "panatta-cable-curl",
+    "nameIt": "Curl ai Cavi",
+    "nameEn": "Panatta Cable Bicep Curl",
+    "descriptionIt": "Curl bicipiti al cavo basso. La tensione costante del cavo ottimizza il lavoro muscolare.",
+    "primaryMuscles": ["biceps"],
+    "secondaryMuscles": ["brachialis", "forearms"],
+    "equipmentId": "panatta",
+    "difficulty": "beginner",
+    "movementType": "pull",
+    "instructionsIt": [
+      "Imposta il cavo in posizione bassa",
+      "Afferra la barra dritta o la corda con presa supina",
+      "Gomiti fermi ai fianchi",
+      "Fletti verso l'alto contraendo i bicipiti",
+      "Abbassa lentamente fino alla quasi-estensione"
+    ],
+    "mistakesIt": [
+      "Muovere i gomiti in avanti durante la curl",
+      "Non completare l'estensione in basso"
+    ],
+    "tipsIt": [
+      "Con la corda puoi ruotare il polso supinando ancora di più in cima",
+      "Esegui varianti unilaterali per correggere asimmetrie"
+    ],
+    "breathingIt": "Espira nella curl, inspira nel ritorno.",
+    "alternatives": ["barbell-curl", "dumbbell-curl"],
+    "tags": ["cable", "biceps", "panatta"]
+  },
+  {
+    "id": "panatta-cable-fly-high",
+    "slug": "panatta-cable-fly-high",
+    "nameIt": "Crossover dall'Alto",
+    "nameEn": "Panatta High Cable Fly",
+    "descriptionIt": "Croci ai cavi alti. Isola la porzione inferiore del pettorale con tensione costante.",
+    "primaryMuscles": ["chest"],
+    "secondaryMuscles": ["front_delts"],
+    "equipmentId": "panatta",
+    "difficulty": "intermediate",
+    "movementType": "isolation",
+    "instructionsIt": [
+      "Imposta entrambi i cavi in posizione alta",
+      "Un passo in avanti con i cavi dietro di te",
+      "Porta le mani verso il basso e al centro incrociandole leggermente",
+      "Mantieni i gomiti leggermente flessi durante tutto il movimento",
+      "Ritorna controllato aprendo il petto"
+    ],
+    "mistakesIt": [
+      "Raddrizzare i gomiti come in una spinta invece di fare un arco",
+      "Non aprire completamente in fase eccentrica"
+    ],
+    "tipsIt": [
+      "Visualizza di abbracciare qualcuno davanti a te",
+      "Leggerissimo inclinazione in avanti del busto"
+    ],
+    "breathingIt": "Espira nella chiusura, inspira nell'apertura.",
+    "alternatives": ["dumbbell-fly", "panatta-pec-deck"],
+    "tags": ["cable", "chest", "isolation", "panatta"]
+  },
+  {
+    "id": "panatta-cable-fly-low",
+    "slug": "panatta-cable-fly-low",
+    "nameIt": "Crossover dal Basso",
+    "nameEn": "Panatta Low Cable Fly",
+    "descriptionIt": "Croci ai cavi bassi. Isola la porzione superiore del pettorale con eccellente allungamento.",
+    "primaryMuscles": ["chest"],
+    "secondaryMuscles": ["front_delts"],
+    "equipmentId": "panatta",
+    "difficulty": "intermediate",
+    "movementType": "isolation",
+    "instructionsIt": [
+      "Imposta entrambi i cavi in posizione bassa",
+      "Porta le mani verso l'alto e al centro davanti al petto",
+      "Mantieni il leggero arco del gomito",
+      "Fase eccentrica lenta e controllata verso il basso"
+    ],
+    "mistakesIt": [
+      "Aiutarsi con una spinta dal basso verso l'alto usando le gambe",
+      "Lasciare che le braccia si abbassino troppo"
+    ],
+    "tipsIt": [
+      "Ottimo per il pettorale superiore se combinato con il crossover alto"
+    ],
+    "breathingIt": "Espira nella chiusura, inspira nell'apertura.",
+    "alternatives": ["incline-dumbbell-fly", "panatta-pec-deck"],
+    "tags": ["cable", "chest", "upper-chest", "isolation", "panatta"]
+  },
+  {
+    "id": "panatta-face-pull",
+    "slug": "panatta-face-pull",
+    "nameIt": "Face Pull ai Cavi",
+    "nameEn": "Panatta Face Pull",
+    "descriptionIt": "Tirata verso il viso con corda. Fondamentale per la salute delle spalle e la postura.",
+    "primaryMuscles": ["rear_delts"],
+    "secondaryMuscles": ["traps", "rhomboids", "external_rotators"],
+    "equipmentId": "panatta",
+    "difficulty": "beginner",
+    "movementType": "pull",
+    "instructionsIt": [
+      "Imposta il cavo all'altezza del viso con la corda",
+      "Afferra la corda con entrambe le mani",
+      "Tira verso il viso aprendo le mani alla fine",
+      "I gomiti devono essere alti e aperti a lato della testa",
+      "Ritorna controllato mantenendo il controllo"
+    ],
+    "mistakesIt": [
+      "Tenere i gomiti bassi trasformandolo in una row",
+      "Usare troppo peso e perdere il controllo"
+    ],
+    "tipsIt": [
+      "Esercizio preventivo eccellente: eseguilo a ogni sessione spalle",
+      "Mantieni i gomiti più alti delle spalle"
+    ],
+    "breathingIt": "Espira nella tirata, inspira nel ritorno.",
+    "alternatives": ["rear-delt-fly", "band-pull-apart"],
+    "tags": ["cable", "shoulders", "rear-delts", "panatta", "health"]
+  },
+  {
+    "id": "panatta-cable-row-one-arm",
+    "slug": "panatta-cable-row-one-arm",
+    "nameIt": "Rematore al Cavo Monolaterale",
+    "nameEn": "Panatta One-Arm Cable Row",
+    "descriptionIt": "Rematore unilaterale al cavo basso. Permette di correggere asimmetrie e aumentare il ROM.",
+    "primaryMuscles": ["lats"],
+    "secondaryMuscles": ["rhomboids", "biceps", "rear_delts"],
+    "equipmentId": "panatta",
+    "difficulty": "intermediate",
+    "movementType": "pull",
+    "instructionsIt": [
+      "Imposta il cavo in basso con maniglia singola",
+      "In piedi o seduto di fronte alla macchina",
+      "Tira la maniglia verso il fianco ruotando leggermente il busto",
+      "Schiaccia la scapola a fine movimento",
+      "Allunga completamente prima della prossima ripetizione"
+    ],
+    "mistakesIt": [
+      "Ruotare eccessivamente il busto perdendo l'isolamento",
+      "Non completare la retrazione scapolare"
+    ],
+    "tipsIt": [
+      "La rotazione controllata del tronco aumenta il ROM e il lavoro muscolare",
+      "Esegui lo stesso numero di reps per entrambi i lati"
+    ],
+    "breathingIt": "Espira nella tirata, inspira nel ritorno.",
+    "alternatives": ["panatta-low-row", "dumbbell-row"],
+    "tags": ["cable", "back", "panatta", "unilateral"]
+  },
+  {
+    "id": "panatta-lateral-pull-down-one-arm",
+    "slug": "panatta-lateral-pull-down-one-arm",
+    "nameIt": "Lat Machine Monolaterale",
+    "nameEn": "Panatta One-Arm Lat Pulldown",
+    "descriptionIt": "Tirata verticale unilaterale. Corregge scompensi tra il lato destro e sinistro del dorsale.",
+    "primaryMuscles": ["lats"],
+    "secondaryMuscles": ["biceps", "rear_delts"],
+    "equipmentId": "panatta",
+    "difficulty": "intermediate",
+    "movementType": "pull",
+    "instructionsIt": [
+      "Imposta il cavo in alto con maniglia singola",
+      "Siediti lateralmente con un braccio teso verso l'alto",
+      "Tira il cavo verso il fianco portando il gomito verso il basso",
+      "Allungati completamente prima della ripetizione successiva"
+    ],
+    "mistakesIt": [
+      "Ruotare eccessivamente il busto",
+      "Non allungarsi completamente in fase eccentrica"
+    ],
+    "tipsIt": [
+      "Ottimo per finire l'allenamento dorsali",
+      "Concentrati sull'arco del movimento, non sulla velocità"
+    ],
+    "breathingIt": "Espira nella tirata, inspira nell'apertura.",
+    "alternatives": ["panatta-lat-machine"],
+    "tags": ["cable", "back", "lats", "panatta", "unilateral"]
+  },
+  {
+    "id": "panatta-tricep-kickback-cable",
+    "slug": "panatta-tricep-kickback-cable",
+    "nameIt": "Kickback Tricipiti ai Cavi",
+    "nameEn": "Panatta Cable Tricep Kickback",
+    "descriptionIt": "Estensione isolata del tricipite con cavo basso. Il cavo mantiene tensione anche nella posizione finale.",
+    "primaryMuscles": ["triceps"],
+    "secondaryMuscles": [],
+    "equipmentId": "panatta",
+    "difficulty": "beginner",
+    "movementType": "push",
+    "instructionsIt": [
+      "Imposta il cavo in basso con maniglia singola",
+      "Piegati in avanti con il busto quasi parallelo al suolo",
+      "Porta il gomito vicino al fianco piegato a 90°",
+      "Estendi il braccio verso l'indietro fino alla posizione orizzontale",
+      "Ritorna lentamente controllando la flessione"
+    ],
+    "mistakesIt": [
+      "Muovere il gomito durante l'estensione",
+      "Non completare l'estensione per peso eccessivo"
+    ],
+    "tipsIt": [
+      "La tensione costante del cavo supera il manubrio in questo esercizio",
+      "Contrazione isometrica di 2s in posizione di estensione massima"
+    ],
+    "breathingIt": "Espira nell'estensione, inspira nel ritorno.",
+    "alternatives": ["dumbbell-kickback"],
+    "tags": ["cable", "triceps", "isolation", "panatta"]
+  },
+  {
+    "id": "panatta-upright-row-cable",
+    "slug": "panatta-upright-row-cable",
+    "nameIt": "Tirata al Mento ai Cavi",
+    "nameEn": "Panatta Cable Upright Row",
+    "descriptionIt": "Sviluppo del trapezio e deltoide con movimento verticale. Versione ai cavi più sicura per la spalla.",
+    "primaryMuscles": ["traps"],
+    "secondaryMuscles": ["lateral_delts", "front_delts", "biceps"],
+    "equipmentId": "panatta",
+    "difficulty": "intermediate",
+    "movementType": "pull",
+    "instructionsIt": [
+      "Imposta il cavo in basso con barra corta",
+      "In piedi con le braccia quasi tese",
+      "Tira verso il mento aprendo i gomiti verso l'esterno",
+      "I gomiti devono essere più alti delle mani",
+      "Abbassa lentamente"
+    ],
+    "mistakesIt": [
+      "Alzare le mani oltre il mento (rischio per la spalla)",
+      "Tenere i gomiti troppo ravvicinati"
+    ],
+    "tipsIt": [
+      "Presa larga = più deltoide; presa stretta = più trapezio",
+      "Ferma il movimento quando le mani arrivano al petto"
+    ],
+    "breathingIt": "Espira nella tirata verso l'alto, inspira nel ritorno.",
+    "alternatives": ["barbell-upright-row", "dumbbell-lateral-raise"],
+    "tags": ["cable", "shoulders", "traps", "panatta"]
+  },
+  {
+    "id": "panatta-cable-pull-through",
+    "slug": "panatta-cable-pull-through",
+    "nameIt": "Cable Pull Through",
+    "nameEn": "Panatta Cable Pull Through",
+    "descriptionIt": "Estensione dell'anca con cavo basso. Ottimo pattern di cerniera per glutei e ischiocrurali.",
+    "primaryMuscles": ["glutes"],
+    "secondaryMuscles": ["hamstrings", "erector_spinae"],
+    "equipmentId": "panatta",
+    "difficulty": "beginner",
+    "movementType": "hinge",
+    "instructionsIt": [
+      "Di schiena alla macchina con cavo basso, afferra la corda tra le gambe",
+      "Piedi leggermente più larghi delle spalle",
+      "Fletti i fianchi spingendo il sedere indietro (hip hinge)",
+      "Estendi i fianchi in avanti contraendo i glutei",
+      "Torna alla posizione di partenza con controllo"
+    ],
+    "mistakesIt": [
+      "Flettere le ginocchia come in uno squat invece di fare hip hinge",
+      "Arrotondare la schiena bassa"
+    ],
+    "tipsIt": [
+      "Ottimo per imparare il pattern di hip hinge in sicurezza",
+      "Precede bene il Romanian Deadlift come riscaldamento"
+    ],
+    "breathingIt": "Inspira nella flessione, espira nell'estensione.",
+    "alternatives": ["hip-thrust", "romanian-deadlift"],
+    "tags": ["cable", "glutes", "hamstrings", "panatta", "hinge"]
+  },
+  {
+    "id": "panatta-wrist-curl-cable",
+    "slug": "panatta-wrist-curl-cable",
+    "nameIt": "Wrist Curl ai Cavi",
+    "nameEn": "Panatta Cable Wrist Curl",
+    "descriptionIt": "Flessione del polso per lo sviluppo dei flessori dell'avambraccio.",
+    "primaryMuscles": ["forearms"],
+    "secondaryMuscles": [],
+    "equipmentId": "panatta",
+    "difficulty": "beginner",
+    "movementType": "isolation",
+    "instructionsIt": [
+      "Siediti di fronte al cavo basso con gli avambracci sulle cosce",
+      "Afferra la barra con presa supina",
+      "Fletti i polsi verso l'alto contraendo i flessori",
+      "Abbassa lentamente lasciando aprire le dita in fondo"
+    ],
+    "mistakesIt": [
+      "Muovere il gomito durante il movimento",
+      "Caricare troppo riducendo il ROM"
+    ],
+    "tipsIt": [
+      "Avambracci sempre in contatto con le cosce o la panca",
+      "Abbina al reverse wrist curl per sviluppo completo"
+    ],
+    "breathingIt": "Espira nella flessione, inspira nell'estensione.",
+    "alternatives": ["barbell-wrist-curl", "dumbbell-wrist-curl"],
+    "tags": ["cable", "forearms", "isolation", "panatta"]
+  },
+  {
+    "id": "panatta-reverse-wrist-curl-cable",
+    "slug": "panatta-reverse-wrist-curl-cable",
+    "nameIt": "Reverse Wrist Curl ai Cavi",
+    "nameEn": "Panatta Cable Reverse Wrist Curl",
+    "descriptionIt": "Estensione del polso per gli estensori dell'avambraccio. Previene il gomito del tennista.",
+    "primaryMuscles": ["forearms"],
+    "secondaryMuscles": [],
+    "equipmentId": "panatta",
+    "difficulty": "beginner",
+    "movementType": "isolation",
+    "instructionsIt": [
+      "Presa prona sulla barra (palmi verso il basso)",
+      "Avambracci sulle cosce",
+      "Estendi i polsi verso l'alto",
+      "Abbassa lentamente senza perdere la presa"
+    ],
+    "mistakesIt": [
+      "Usare troppo peso causando dolore ai tendini",
+      "Non completare la flessione verso il basso"
+    ],
+    "tipsIt": [
+      "Carico molto inferiore rispetto al wrist curl normale",
+      "Importante per l'equilibrio muscolare dell'avambraccio"
+    ],
+    "breathingIt": "Espira nell'estensione, inspira nel ritorno.",
+    "alternatives": ["panatta-wrist-curl-cable", "reverse-barbell-curl"],
+    "tags": ["cable", "forearms", "isolation", "panatta"]
+  },
+  {
+    "id": "panatta-hip-flexor-machine",
+    "slug": "panatta-hip-flexor-machine",
+    "nameIt": "Hip Flexor con Macchina",
+    "nameEn": "Panatta Hip Flexor Machine",
+    "descriptionIt": "Flessione dell'anca con macchina. Rinforza gli iliopsoas e migliora la mobilità dell'anca.",
+    "primaryMuscles": ["hip_flexors"],
+    "secondaryMuscles": ["abs"],
+    "equipmentId": "panatta",
+    "difficulty": "beginner",
+    "movementType": "flexion",
+    "instructionsIt": [
+      "Posizionati con il cuscinetto sulla coscia o al ginocchio",
+      "In piedi con la schiena eretta e core attivo",
+      "Porta il ginocchio verso l'alto contro la resistenza",
+      "Mantieni l'equilibrio sull'altra gamba",
+      "Abbassa controllato"
+    ],
+    "mistakesIt": [
+      "Inclinarsi troppo in avanti perdendo la postura",
+      "Usare troppo peso causando compensi lombari"
+    ],
+    "tipsIt": [
+      "Utile per atleti e per correggere squilibri muscolare anca",
+      "Esegui unilateralmente per bilanciare i due lati"
+    ],
+    "breathingIt": "Espira nella flessione, inspira nel ritorno.",
+    "alternatives": ["hanging-knee-raise", "cable-hip-flexion"],
+    "tags": ["machine", "core", "hip-flexors", "panatta"]
+  },
+  {
+    "id": "panatta-smith-machine-squat",
+    "slug": "panatta-smith-machine-squat",
+    "nameIt": "Squat con Smith Machine",
+    "nameEn": "Panatta Smith Machine Squat",
+    "descriptionIt": "Squat con percorso guidato verticale. Permette di focalizzarsi sulla tecnica e caricare in sicurezza.",
+    "primaryMuscles": ["quadriceps"],
+    "secondaryMuscles": ["glutes", "hamstrings", "erector_spinae"],
+    "equipmentId": "panatta",
+    "difficulty": "beginner",
+    "movementType": "push",
+    "instructionsIt": [
+      "Posiziona il bilanciere sulla parte superiore delle trapezie",
+      "Piedi leggermente davanti all'asse della barra",
+      "Sblocca la barra ruotando i polsi",
+      "Scendi abbassando i fianchi parallelamente al suolo",
+      "Spingi verso l'alto espirando e blocca la barra a fine set"
+    ],
+    "mistakesIt": [
+      "Posizionare i piedi troppo indietro aumentando stress sulle ginocchia",
+      "Non abbassarsi abbastanza",
+      "Dimenticarsi di bloccare la barra a fine set"
+    ],
+    "tipsIt": [
+      "Piedi più avanti del bilanciere rispetto al free squat",
+      "Ottima alternativa per chi ha problemi di equilibrio o schiena"
+    ],
+    "breathingIt": "Inspira nella discesa, espira nella salita.",
+    "alternatives": ["barbell-squat", "goblet-squat", "panatta-hack-squat"],
+    "tags": ["machine", "legs", "compound", "panatta", "smith"]
+  },
+  {
+    "id": "panatta-smith-machine-bench-press",
+    "slug": "panatta-smith-machine-bench-press",
+    "nameIt": "Panca Piana con Smith Machine",
+    "nameEn": "Panatta Smith Machine Bench Press",
+    "descriptionIt": "Spinta orizzontale con percorso verticale guidato. Sicura per chi si allena senza spotter.",
+    "primaryMuscles": ["chest"],
+    "secondaryMuscles": ["triceps", "front_delts"],
+    "equipmentId": "panatta",
+    "difficulty": "beginner",
+    "movementType": "push",
+    "instructionsIt": [
+      "Posiziona la panca sotto la Smith Machine",
+      "Sdraiati con gli occhi sotto la barra",
+      "Abbassa la barra al petto controllando la traiettoria",
+      "Spingi verso l'alto senza bloccare i gomiti",
+      "Blocca la barra alla fine del set ruotando i polsi"
+    ],
+    "mistakesIt": [
+      "Dimenticare di bloccare la barra tra le serie",
+      "Arcuare eccessivamente la schiena"
+    ],
+    "tipsIt": [
+      "Percorso verticale = diverso dalla panca libera: regola la posizione del corpo",
+      "Ottimo per i principianti o quando non c'è spotter disponibile"
+    ],
+    "breathingIt": "Inspira nella discesa, espira nella spinta.",
+    "alternatives": ["barbell-bench-press", "panatta-chest-press"],
+    "tags": ["machine", "chest", "smith", "panatta"]
+  },
+  {
+    "id": "panatta-smith-machine-shoulder-press",
+    "slug": "panatta-smith-machine-shoulder-press",
+    "nameIt": "Shoulder Press con Smith Machine",
+    "nameEn": "Panatta Smith Machine Shoulder Press",
+    "descriptionIt": "Spinta verticale con percorso guidato. Sviluppa le spalle in sicurezza.",
+    "primaryMuscles": ["front_delts"],
+    "secondaryMuscles": ["lateral_delts", "triceps"],
+    "equipmentId": "panatta",
+    "difficulty": "beginner",
+    "movementType": "push",
+    "instructionsIt": [
+      "Seduto con il bilanciere all'altezza del mento",
+      "Presa leggermente più larga delle spalle",
+      "Spingi verso l'alto passando vicino alla fronte",
+      "Abbassa controllato fino all'altezza del mento"
+    ],
+    "mistakesIt": [
+      "Abbassare troppo causando stress alla spalla",
+      "Bloccare i gomiti in cima"
+    ],
+    "tipsIt": [
+      "Variante sicura per chi ha mobilità limitata alle spalle",
+      "Esegui davanti alla testa per ridurre lo stress articolare"
+    ],
+    "breathingIt": "Espira nella spinta, inspira nel ritorno.",
+    "alternatives": ["barbell-overhead-press", "panatta-shoulder-press"],
+    "tags": ["machine", "shoulders", "smith", "panatta"]
+  },
+  {
+    "id": "panatta-smith-machine-bent-row",
+    "slug": "panatta-smith-machine-bent-row",
+    "nameIt": "Rematore Curvato con Smith Machine",
+    "nameEn": "Panatta Smith Machine Bent Over Row",
+    "descriptionIt": "Rematore con busto inclinato e Smith Machine. Il percorso guidato riduce il rischio di infortuni alla schiena.",
+    "primaryMuscles": ["lats"],
+    "secondaryMuscles": ["rhomboids", "biceps", "rear_delts"],
+    "equipmentId": "panatta",
+    "difficulty": "intermediate",
+    "movementType": "pull",
+    "instructionsIt": [
+      "Inclinati con il busto a 45-60° e afferra la barra a larghezza spalle",
+      "Tira la barra verso l'ombelico portando i gomiti verso il soffitto",
+      "Schiaccia le scapole a fine movimento",
+      "Abbassa lentamente controllando la fase eccentrica"
+    ],
+    "mistakesIt": [
+      "Arrotondare la schiena durante la tirata",
+      "Non sfruttare la retrazione scapolare"
+    ],
+    "tipsIt": [
+      "Il percorso verticale della Smith aiuta a mantenere la forma",
+      "Variante più sicura del rematore con bilanciere"
+    ],
+    "breathingIt": "Espira nella tirata, inspira nel ritorno.",
+    "alternatives": ["bent-over-barbell-row", "panatta-low-row"],
+    "tags": ["machine", "back", "smith", "panatta"]
+  },
+  {
+    "id": "panatta-cable-lateral-raise",
+    "slug": "panatta-cable-lateral-raise",
+    "nameIt": "Alzate Laterali ai Cavi",
+    "nameEn": "Panatta Cable Lateral Raise",
+    "descriptionIt": "Alzate laterali con cavo per isolamento del deltoide laterale. Tensione costante durante tutto il ROM.",
+    "primaryMuscles": ["lateral_delts"],
+    "secondaryMuscles": ["traps"],
+    "equipmentId": "panatta",
+    "difficulty": "beginner",
+    "movementType": "isolation",
+    "instructionsIt": [
+      "Imposta il cavo basso, lateralmente alla macchina",
+      "Afferra la maniglia con la mano opposta attraversando il corpo",
+      "Alza il braccio lateralmente fino all'altezza della spalla",
+      "Abbassa lentamente controllando il peso"
+    ],
+    "mistakesIt": [
+      "Alzare le spalle durante il movimento",
+      "Usare troppo peso e perdere la forma"
+    ],
+    "tipsIt": [
+      "La versione ai cavi mantiene tensione anche in basso",
+      "Esegui unilateralmente per sentire meglio la contrazione"
+    ],
+    "breathingIt": "Espira nell'alzata, inspira nel ritorno.",
+    "alternatives": ["dumbbell-lateral-raise", "panatta-lateral-raise-machine"],
+    "tags": ["cable", "shoulders", "isolation", "panatta"]
+  },
+  {
+    "id": "panatta-cable-hip-abduction",
+    "slug": "panatta-cable-hip-abduction",
+    "nameIt": "Abduzione Anca ai Cavi",
+    "nameEn": "Panatta Cable Hip Abduction",
+    "descriptionIt": "Abduzione dell'anca con cavo per gluteo medio. Tensione costante per tutto il ROM.",
+    "primaryMuscles": ["glutes"],
+    "secondaryMuscles": ["hip_abductors"],
+    "equipmentId": "panatta",
+    "difficulty": "beginner",
+    "movementType": "isolation",
+    "instructionsIt": [
+      "Metti la fascetta del cavo alla caviglia",
+      "In piedi lateralmente alla macchina con cavo interno",
+      "Alza la gamba lateralmente mantenendo il busto eretto",
+      "Ritorna lentamente controllando la discesa"
+    ],
+    "mistakesIt": [
+      "Inclinarsi lateralmente per aumentare il ROM",
+      "Alzare la gamba oltre i 45° perdendo l'attivazione del gluteo medio"
+    ],
+    "tipsIt": [
+      "Tieni sempre il core attivo per la stabilità",
+      "Ideale per isolare il gluteo medio meglio della macchina"
+    ],
+    "breathingIt": "Espira nell'abduzione, inspira nel ritorno.",
+    "alternatives": ["panatta-leg-abductor"],
+    "tags": ["cable", "glutes", "isolation", "panatta"]
+  },
+  {
+    "id": "panatta-cable-hip-adduction",
+    "slug": "panatta-cable-hip-adduction",
+    "nameIt": "Adduzione Anca ai Cavi",
+    "nameEn": "Panatta Cable Hip Adduction",
+    "descriptionIt": "Adduzione dell'anca con cavo. Sviluppo degli adduttori con tensione costante.",
+    "primaryMuscles": ["adductors"],
+    "secondaryMuscles": [],
+    "equipmentId": "panatta",
+    "difficulty": "beginner",
+    "movementType": "isolation",
+    "instructionsIt": [
+      "Fascetta del cavo alla caviglia esterna",
+      "In piedi lateralmente alla macchina con cavo esterno",
+      "Porta la gamba verso l'interno attraversando la gamba di appoggio",
+      "Ritorna lentamente controllando"
+    ],
+    "mistakesIt": [
+      "Ruotare il busto perdendo l'isolamento",
+      "Andare oltre il ROM naturale"
+    ],
+    "tipsIt": [
+      "Tieni il core stabile durante il movimento",
+      "Abbina sempre all'abduzione per bilanciamento"
+    ],
+    "breathingIt": "Espira nell'adduzione, inspira nel ritorno.",
+    "alternatives": ["panatta-leg-adductor"],
+    "tags": ["cable", "legs", "adductors", "panatta"]
+  },
+  {
+    "id": "panatta-neck-extension-machine",
+    "slug": "panatta-neck-extension-machine",
+    "nameIt": "Estensione Cervicale con Macchina",
+    "nameEn": "Panatta Neck Extension Machine",
+    "descriptionIt": "Rinforzo della muscolatura posteriore del collo. Esercizio preventivo per atleti da contatto.",
+    "primaryMuscles": ["neck"],
+    "secondaryMuscles": ["traps"],
+    "equipmentId": "panatta",
+    "difficulty": "beginner",
+    "movementType": "extension",
+    "instructionsIt": [
+      "Siediti con la fronte contro il cuscinetto imbottito",
+      "Parti con il mento al petto",
+      "Estendi il collo verso il basso (dietro) in modo controllato",
+      "Ritorna lentamente alla posizione di partenza"
+    ],
+    "mistakesIt": [
+      "Movimenti bruschi o rapidi",
+      "Caricare troppo all'inizio"
+    ],
+    "tipsIt": [
+      "Inizia senza peso per imparare il movimento",
+      "Progressione lenta e conservativa per questo esercizio"
+    ],
+    "breathingIt": "Respiro continuo durante il movimento.",
+    "alternatives": ["isometric-neck-exercise"],
+    "tags": ["machine", "neck", "panatta", "preventive"]
+  },
+  {
+    "id": "panatta-neck-flexion-machine",
+    "slug": "panatta-neck-flexion-machine",
+    "nameIt": "Flessione Cervicale con Macchina",
+    "nameEn": "Panatta Neck Flexion Machine",
+    "descriptionIt": "Rinforzo della muscolatura anteriore del collo. Completa il lavoro cervicale con l'estensione.",
+    "primaryMuscles": ["neck"],
+    "secondaryMuscles": [],
+    "equipmentId": "panatta",
+    "difficulty": "beginner",
+    "movementType": "flexion",
+    "instructionsIt": [
+      "Siediti con la nuca contro il cuscinetto",
+      "Parti con la testa leggermente estesa",
+      "Fletti il collo portando il mento verso il petto",
+      "Ritorna lentamente controllando"
+    ],
+    "mistakesIt": [
+      "Movimenti bruschi",
+      "Eccessiva flessione oltre la posizione naturale"
+    ],
+    "tipsIt": [
+      "Sempre in coppia con l'estensione cervicale",
+      "Progressione di carico lenta e graduale"
+    ],
+    "breathingIt": "Respiro continuo durante il movimento.",
+    "alternatives": ["isometric-neck-exercise"],
+    "tags": ["machine", "neck", "panatta", "preventive"]
+  },
+  {
+    "id": "panatta-cable-kickback-glute",
+    "slug": "panatta-cable-kickback-glute",
+    "nameIt": "Kickback Glutei ai Cavi",
+    "nameEn": "Panatta Cable Glute Kickback",
+    "descriptionIt": "Estensione dell'anca in quadrupedia con cavo. Isola il gluteo con eccellente tensione di partenza.",
+    "primaryMuscles": ["glutes"],
+    "secondaryMuscles": ["hamstrings"],
+    "equipmentId": "panatta",
+    "difficulty": "beginner",
+    "movementType": "extension",
+    "instructionsIt": [
+      "Attacca la fascetta alla caviglia e imposta il cavo basso",
+      "In quadrupedia o appoggiato alla macchina",
+      "Estendi la gamba verso l'indietro contraendo il gluteo",
+      "Porta la coscia in linea o leggermente oltre",
+      "Ritorna controllato"
+    ],
+    "mistakesIt": [
+      "Inarcare la schiena eccessivamente",
+      "Usare la forza dei lombari invece del gluteo"
+    ],
+    "tipsIt": [
+      "Squeeze del gluteo al massimo punto di estensione",
+      "Mantieni ginocchio leggermente flesso per la sicurezza"
+    ],
+    "breathingIt": "Espira nell'estensione, inspira nel ritorno.",
+    "alternatives": ["panatta-glute-isolator", "hip-thrust"],
+    "tags": ["cable", "glutes", "isolation", "panatta"]
+  },
+  {
+    "id": "panatta-seated-row-close-grip",
+    "slug": "panatta-seated-row-close-grip",
+    "nameIt": "Rematore Seduto Presa Stretta",
+    "nameEn": "Panatta Close-Grip Seated Row",
+    "descriptionIt": "Rematore con presa neutra stretta. Enfatizza il basso trapezio e romboidei rispetto alla presa larga.",
+    "primaryMuscles": ["lats"],
+    "secondaryMuscles": ["rhomboids", "lower_traps", "biceps"],
+    "equipmentId": "panatta",
+    "difficulty": "beginner",
+    "movementType": "pull",
+    "instructionsIt": [
+      "Usa la barra a V o la maniglia neutra stretta",
+      "Siediti con piedi sulle pedane e schiena dritta",
+      "Tira la maniglia verso l'ombelico",
+      "Schiaccia le scapole nella posizione finale"
+    ],
+    "mistakesIt": [
+      "Curvare la schiena verso la fine del set",
+      "Non portare completamente le scapole indietro"
+    ],
+    "tipsIt": [
+      "La presa stretta neutra è più naturale e sicura per i polsi",
+      "Ottimo per migliorare la postura"
+    ],
+    "breathingIt": "Espira nella tirata, inspira nel ritorno.",
+    "alternatives": ["panatta-low-row"],
+    "tags": ["cable", "back", "panatta", "pull"]
+  },
+  {
+    "id": "panatta-chest-press-convergent",
+    "slug": "panatta-chest-press-convergent",
+    "nameIt": "Chest Press Convergente",
+    "nameEn": "Panatta Convergent Chest Press",
+    "descriptionIt": "Chest press con traiettoria convergente che imita il naturale percorso delle braccia durante la spinta.",
+    "primaryMuscles": ["chest"],
+    "secondaryMuscles": ["front_delts", "triceps"],
+    "equipmentId": "panatta",
+    "difficulty": "beginner",
+    "movementType": "push",
+    "instructionsIt": [
+      "Le maniglie convergono verso il centro durante la spinta",
+      "Avvicina le mani verso il centro del petto",
+      "Senti la contrazione del pettorale nel punto finale",
+      "Ritorna aprendo le mani verso l'esterno"
+    ],
+    "mistakesIt": [
+      "Non sfruttare la fase di convergenza finale",
+      "Caricare troppo perdendo il ROM"
+    ],
+    "tipsIt": [
+      "La convergenza aumenta la contrazione rispetto alla chest press dritta",
+      "Ottimo per sviluppare il 'centro' del pettorale"
+    ],
+    "breathingIt": "Espira nella spinta, inspira nel ritorno.",
+    "alternatives": ["panatta-chest-press", "panatta-pec-deck"],
+    "tags": ["machine", "chest", "panatta", "push"]
+  },
+  {
+    "id": "panatta-lat-machine-reverse-grip",
+    "slug": "panatta-lat-machine-reverse-grip",
+    "nameIt": "Lat Machine Presa Inversa",
+    "nameEn": "Panatta Reverse Grip Lat Pulldown",
+    "descriptionIt": "Tirata verticale con presa supina. Aumenta l'attivazione del bicipite e della parte bassa del dorsale.",
+    "primaryMuscles": ["lats"],
+    "secondaryMuscles": ["biceps", "lower_traps"],
+    "equipmentId": "panatta",
+    "difficulty": "beginner",
+    "movementType": "pull",
+    "instructionsIt": [
+      "Presa supina a larghezza spalle",
+      "Tira verso il petto con i gomiti che scendono ai fianchi",
+      "Petto in fuori, leggero arco lombare",
+      "Completa l'estensione in cima senza mollare il controllo"
+    ],
+    "mistakesIt": [
+      "Tirare troppo in avanti perdendo il percorso verticale",
+      "Non controllare la fase eccentrica"
+    ],
+    "tipsIt": [
+      "I bicipiti contribuiscono di più con la presa supina",
+      "Senti i dorsali lavorare nella fase eccentrica"
+    ],
+    "breathingIt": "Espira nella tirata, inspira nel ritorno.",
+    "alternatives": ["panatta-lat-machine", "chin-up"],
+    "tags": ["cable", "back", "lats", "panatta"]
+  },
+  {
+    "id": "panatta-cable-shrug",
+    "slug": "panatta-cable-shrug",
+    "nameIt": "Scrollate Spalle ai Cavi",
+    "nameEn": "Panatta Cable Shrug",
+    "descriptionIt": "Sviluppo del trapezio superiore con cavo. Tensione costante lungo tutto il ROM.",
+    "primaryMuscles": ["traps"],
+    "secondaryMuscles": [],
+    "equipmentId": "panatta",
+    "difficulty": "beginner",
+    "movementType": "isolation",
+    "instructionsIt": [
+      "Imposta due cavi bassi, uno per mano",
+      "In piedi al centro della macchina, braccia tese verso il basso",
+      "Alza le spalle verso le orecchie",
+      "Mantieni 1-2 secondi in cima",
+      "Abbassa lentamente"
+    ],
+    "mistakesIt": [
+      "Rotare le spalle durante il movimento",
+      "Flettere le braccia aiutandosi con i bicipiti"
+    ],
+    "tipsIt": [
+      "Movimento puro verticale senza rotazione",
+      "Pausa isometrica in cima per massima attivazione"
+    ],
+    "breathingIt": "Espira nell'alzata, inspira nel ritorno.",
+    "alternatives": ["barbell-shrug", "dumbbell-shrug"],
+    "tags": ["cable", "traps", "isolation", "panatta"]
+  },
+  {
+    "id": "panatta-cable-woodchop-high",
+    "slug": "panatta-cable-woodchop-high",
+    "nameIt": "Wood Chop dall'Alto ai Cavi",
+    "nameEn": "Panatta High-to-Low Cable Woodchop",
+    "descriptionIt": "Rotazione diagonale del tronco dal alto verso il basso. Sviluppa gli obliqui e la potenza rotatoria.",
+    "primaryMuscles": ["obliques"],
+    "secondaryMuscles": ["abs", "glutes", "shoulders"],
+    "equipmentId": "panatta",
+    "difficulty": "intermediate",
+    "movementType": "rotation",
+    "instructionsIt": [
+      "Imposta il cavo in posizione alta",
+      "In piedi di fianco alla macchina, afferrate la maniglia con entrambe le mani",
+      "Ruota il tronco portando la maniglia in basso verso il ginocchio opposto",
+      "Mantieni le braccia tese durante la rotazione",
+      "Ritorna controllato seguendo lo stesso percorso"
+    ],
+    "mistakesIt": [
+      "Flettere le braccia come in un pull",
+      "Ruotare solo le spalle senza coinvolgere le gambe e il core"
+    ],
+    "tipsIt": [
+      "Il pattern diagonale attiva tutti gli strati del core",
+      "Esegui entrambi i lati con lo stesso carico"
+    ],
+    "breathingIt": "Espira nella rotazione verso il basso, inspira nel ritorno.",
+    "alternatives": ["panatta-rotary-torso", "russian-twist"],
+    "tags": ["cable", "core", "obliques", "panatta", "functional"]
+  },
+  {
+    "id": "panatta-cable-woodchop-low",
+    "slug": "panatta-cable-woodchop-low",
+    "nameIt": "Wood Chop dal Basso ai Cavi",
+    "nameEn": "Panatta Low-to-High Cable Woodchop",
+    "descriptionIt": "Rotazione diagonale dal basso verso l'alto. Attiva obliqui, spalle e la catena cinetica completa.",
+    "primaryMuscles": ["obliques"],
+    "secondaryMuscles": ["abs", "shoulders", "glutes"],
+    "equipmentId": "panatta",
+    "difficulty": "intermediate",
+    "movementType": "rotation",
+    "instructionsIt": [
+      "Imposta il cavo in basso",
+      "Porta la maniglia dall'esterno del ginocchio verso l'alto e all'esterno dell'altra spalla",
+      "Ruota il tronco estendendo le gambe",
+      "Ritorna lentamente controllando"
+    ],
+    "mistakesIt": [
+      "Tirare con le braccia invece di ruotare il tronco",
+      "Bloccare i piedi senza ruotare il tallone posteriore"
+    ],
+    "tipsIt": [
+      "Abbina al wood chop dall'alto per allenamento core completo",
+      "Pattern funzionale usato in molti sport"
+    ],
+    "breathingIt": "Espira nell'alzata rotatoria, inspira nel ritorno.",
+    "alternatives": ["panatta-cable-woodchop-high"],
+    "tags": ["cable", "core", "obliques", "panatta", "functional"]
+  },
+  {
+    "id": "panatta-cable-crunch",
+    "slug": "panatta-cable-crunch",
+    "nameIt": "Cable Crunch (Crunch ai Cavi)",
+    "nameEn": "Panatta Cable Crunch",
+    "descriptionIt": "Crunch con cavo alto in inginocchiato. Carico progressivo per il retto addominale.",
+    "primaryMuscles": ["abs"],
+    "secondaryMuscles": ["obliques"],
+    "equipmentId": "panatta",
+    "difficulty": "intermediate",
+    "movementType": "flexion",
+    "instructionsIt": [
+      "Imposta il cavo in alto con corda",
+      "Inginocchiati tenendo la corda alle tempie",
+      "Fletti il busto verso il basso contraendo gli addominali",
+      "Non tirare con le braccia o con il collo",
+      "Ritorna lentamente alla posizione di partenza"
+    ],
+    "mistakesIt": [
+      "Tirare il cavo con le braccia invece di usare il core",
+      "Muoversi dai fianchi invece che dalla colonna",
+      "Caricare troppo perdendo il range"
+    ],
+    "tipsIt": [
+      "Focus sull'arrotolamento della colonna, non sulla distanza percorsa",
+      "Esegui a fine sessione addominali per il pump finale"
+    ],
+    "breathingIt": "Espira nella flessione, inspira nel ritorno.",
+    "alternatives": ["panatta-abdominal-machine", "crunch"],
+    "tags": ["cable", "abs", "core", "panatta"]
+  }
+]

@@ -13,7 +13,7 @@ struct ContentView: View {
                     Label("Storico", systemImage: "clock.fill")
                 }
 
-            ProgressPlaceholderView()
+            ProgressView()
                 .tabItem {
                     Label("Progressi", systemImage: "chart.line.uptrend.xyaxis")
                 }
@@ -24,25 +24,5 @@ struct ContentView: View {
                 }
         }
         .tint(.appAccent)
-    }
-}
-
-// Placeholder — implementato in Milestone 4
-private struct ProgressPlaceholderView: View {
-    var body: some View {
-        NavigationStack {
-            VStack(spacing: Spacing.lg) {
-                Image(systemName: "chart.line.uptrend.xyaxis")
-                    .font(.system(size: 64))
-                    .foregroundStyle(.appInactive)
-                Text("Progressi")
-                    .font(.titleMedium)
-                    .foregroundStyle(.appTextSecondary)
-                Text("Disponibile nella prossima versione")
-                    .font(.bodySmall)
-                    .foregroundStyle(.appTextTertiary)
-            }
-            .navigationTitle("Progressi")
-        }
     }
 }
